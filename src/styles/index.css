@@ -155,7 +155,7 @@ button::-moz-focus-inner {
 /* sidemenu -- Styles the side menu */
 .sidemenu {
   position: fixed; /* Menu stays in place */
-  top: 56px; /* Position menu just below top navbar */
+  top: 54px; /* Position menu just below top navbar */
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */
   z-index: 200; /* Force the menu to be near the front */
