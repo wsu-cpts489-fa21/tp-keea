@@ -194,7 +194,7 @@ button::-moz-focus-inner {
 /* .modetab -- Style the container enclosing the mode tabs */
 .modetab-container {
   position: fixed;
-  top: 60px;
+  top: 54px;
   left: 0px;
   width: 100%;
   z-index: 150;

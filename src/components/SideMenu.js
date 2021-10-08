@@ -4,7 +4,7 @@ class SideMenu extends React.Component {
     
     render() {
        return (
-        <ul id="sideMenu" role="menu" className="sidemenu sidemenu-open"
+        <ul id="sideMenu" role="menu" className="sidemenu"
           arial-labelledby="menuBtn">
             <li role="menuitem" tabIndex="-1">
             Settings
