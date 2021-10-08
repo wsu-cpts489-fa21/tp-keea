@@ -1,0 +1,410 @@
+/*************************************************************************
+* SPEEDSCORE APP's MAIN STYLESHEET
+* This stylesheet defines the CSS styles that give the SpeedScore app
+* its look and feel. It is divided logically into sections, with each
+* section addressing a specific user interface element or component.
+*************************************************************************/
+
+/*************************************************************************
+* GLOBAL CSS VARIABLES
+* These are global variable definitions for the theme colors and other
+* attributes of the app's visual appearance. They can be easily tweaked.
+*************************************************************************/
+:root {
+  --main-color: #13294E;
+  --text-color: white;  
+  --main-red-color: #ff0f00;   
+  --item-highlight-color: #f0f0f0;    
+  --side-menu-width: 250px;    
+}
+
+/*************************************************************************
+* GLOBAL CSS CLASSES
+* These are global classes that care useful for a variety of elements.
+*************************************************************************/
+/* This CSS definition gives all focusable items a shadowed blue outline 
+ when they have the focus. This is recommended as a  highly visible 
+ focus technique for keyboard users. 
+*/
+
+*:focus {
+  border: 3px solid #94BFF9 !important;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 
+     0 0 3px rgba(102, 175, 233, 0.6);
+  outline: 0 none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR SKIP LINK (USED BY SCREEN READERS AND KEYBOARD NAV)
+* A skip link allows keyboard users to quickly skip over an app's 
+* navigation elements to reach its content. It is a best practice for
+* accessibility.
+*************************************************************************/
+.skip-link {
+  cursor: pointer;    
+  background: var(--main-color);
+  color: var(--text-color);
+  font-weight: 700;              
+  left: 50%;
+  padding: 4px;
+  position: absolute;
+  transform: translateY(-200%);
+  transition: transform 0.3s;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  transform: translateY(0%);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR TOP NAVIGATION BAR
+*************************************************************************/
+
+/* Styling of the fixed navbar ("banner") bar in the app. Its background
+ needs to be the app's main color (--main-color).  */
+ .navbar {
+  display: flex; /* Occupies its own horizontal space */
+  background-color: var(--main-color);
+  position: fixed; /* Doesn't move */
+  top: 0px; /* 0px from top-left */
+  left: 0px; 
+  width: 100%; /* 100% of width of screen */
+  align-items: center;
+  z-index: 200; /* Force it to be on top */
+}
+
+/* navbar-right-item styles items within navbar that should be right-justified.
+*/
+.navbar-right-items {
+ display: flex;
+ margin-left: auto;
+ align-items: center;
+}
+
+/* navbar-btn styles the buttons in the navbar. Its background 
+ needs to be transparent so that it looks like it's part of the 
+ navbar. Its border color needs to be --main-color so it blends in to
+ the navbar.
+*/
+.navbar-btn {
+ background-color: transparent;
+ border: none;      
+}
+
+/* navbar-btn-icon styles button icons in the navbar. It should be white, in a large
+ font, centered within the button, and the cursor should change to a pointer 
+ when over it. 
+*/
+.navbar-btn-icon {
+  color: var(--text-color);
+  font-size: 36px;
+  cursor: pointer;
+}
+
+/* navbar-app-icon styles the SpeedScore app icon in the navbar. 
+ It should be 38 x 38 pixels, with a small right margin so that 
+ there is space between it and the navbar's title
+*/ 
+.navbar-app-icon {
+  height: 38px;
+  width: 38px;  
+}
+/* navbar-title styles the navbar's title text (the name of the app). 
+ It should be text color in a large font.
+*/
+.navbar-title {
+  margin: 0px 0px 0px 4px;
+  color: var(--text-color);
+  font-size: 26px;  
+}
+
+/* navbar-profile-pic styles the user's profile picture 
+ that appears in the navbar 
+*/
+.navbar-profile-btn {
+  margin-left: 8px;
+  margin-right: 8px;
+  height: 44px;
+  width: 44px;
+  background-image: url("../images/DefaultProfilePic.jpg");
+  background-size: cover;
+  flex-shrink: 0;
+}
+
+.navbar-profile-pic {
+  background-size: cover;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR SIDE MENU
+*************************************************************************/
+
+/* sidemenu -- Styles the side menu */
+.sidemenu {
+  position: fixed; /* Menu stays in place */
+  top: 56px; /* Position menu just below top navbar */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+  z-index: 200; /* Force the menu to be near the front */
+  left: 0px; /* Position side menu on left-hand side of screen */
+  height: 100%; /* Menu is full height of window */
+  width: var(--side-menu-width);
+  overflow: hidden;
+  background-color: var(--main-color); /* Match to main-color */
+  color: var(--text-color);
+  list-style-type: none; /* Remove bullets */
+  transition: 0.5s;
+  width: 0px;
+}
+
+.sidemenu-open {
+  width: var(--side-menu-width);
+}
+
+/* sidemenu-li -- Styles items in the side menu. */
+.sidemenu li {
+  padding: 24px 0px 24px 24px; /* top, right, bottom, left */
+  font-size: 18px;
+}
+
+/* sidemenu-li -- Styles items in the side menu on hover. */
+.sidemenu li:hover {
+  cursor: pointer;
+  background-color: var(--item-highlight-color);
+  color: var(--main-color);
+}  
+
+
+/*************************************************************************
+* CSS CLASSES FOR TOP "MODE" TABS
+*************************************************************************/
+/* .modetab -- Style the container enclosing the mode tabs */
+.modetab-container {
+  position: fixed;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+  z-index: 150;
+  display: flex; 
+}
+  
+/* .modetab-btn -- Style mode tabs */
+.modetab-btn { 
+  border: none;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  font-size: 17px; 
+  font-variant: small-caps;
+  width: 25%;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+}   
+
+/* .modetab-selected -- Style the selected mode tab */
+.modetab-selected {
+  cursor: default;
+  border-bottom: 4px solid var(--main-red-color) !important;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR MODE TABS AND PAGES
+*************************************************************************/
+
+.mode-page {
+  padding-top: 100px;
+}
+
+.mode-page-header {
+  text-align: center;
+  font-size: 48px;
+}
+
+.mode-page-content {
+  text-align: center;
+  font-size: 24px;
+}
+
+.mode-page-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 200px;
+}
+
+.mode-page-btn-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 80%;  
+  gap: 10%;
+}
+
+.mode-page-btn {
+  display: inline;
+  font-size: 36px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  color: var(--text-color);
+  background-color: var(--main-color);
+  cursor: pointer;
+}
+
+.mode-page-btn-cancel {
+  display: inline;
+  font-size: 36px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  color: var(--text-color);
+  background-color: var(--main-red-color);
+  cursor: pointer;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR FLOATING ACTION BUTTON
+*************************************************************************/
+/* Float-btn -- Styling for the floating action button. */
+ .float-btn {
+      position:fixed;
+      width: 130px;
+      height: 40px;
+      bottom: 20px;
+      right: 20px;
+      color: var(--text-color);
+      background-color: var(--main-color);
+      border-radius: 50px;
+      text-align: center;
+      box-shadow: 2px 2px 3px #999;
+}
+
+/* float-btn:hover -- When float button is hovered, 
+ change cursor to pointer */
+.float-btn:hover {
+ cursor: pointer;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR FORMS
+*************************************************************************/
+.fm-label {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.fm-field {
+  text-align: center;
+  width: 90%;
+  height: 10%;
+  font-size:24px;
+}
+
+.fm-field-descr {
+  font-style: italic;
+  padding-bottom: 16px;
+}
+
+.fm-primary-btn {
+  width:70%; 
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 36px;
+  color: var(--text-color);
+  background-color: var(--main-color);
+}
+
+.fm-profile-pic {
+  padding-bottom: 8px;
+}
+
+.fm-legend-sm {
+  font-size: 18px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.fm-left-just {
+  text-align: left;
+}
+
+.highlight-error {
+  background-color: #ffdddd;
+}    
+
+/*************************************************************************
+* CSS CLASSES FOR DIALOGS
+*************************************************************************/
+
+.dialog-primary-btn {
+  width:35%; 
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  font-size: 24px;
+  color: var(--text-color);
+  background-color: var(--main-color);
+}
+
+.dialog-cancel-btn {
+  width:35%; 
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 24px;
+  color: var(--text-color);
+  background-color: var(--main-red-color);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR TOAST NOTIFICATION
+*************************************************************************/
+
+.toast-container {
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+  line-height: 40px;
+  display: flex;
+   
+}
+
+.toast-text {
+  font-size: larger;
+  width: 100%;
+  text-align: center;
+}
+
+.toast-close {
+ pointer-events: visible;
+ margin-left: auto;
+ vertical-align: middle;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR ROUNDS TABLE
+*************************************************************************/
+.clickable-header {
+  cursor: pointer;
+}
+
+.cell-align-middle {
+  vertical-align: middle;
+}
