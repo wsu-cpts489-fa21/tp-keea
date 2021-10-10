@@ -167,11 +167,6 @@ button::-moz-focus-inner {
   color: var(--text-color);
   list-style-type: none; /* Remove bullets */
   transition: 0.5s;
-  width: 0px;
-}
-
-.sidemenu-open {
-  width: var(--side-menu-width);
 }
 
 /* sidemenu-li -- Styles items in the side menu. */

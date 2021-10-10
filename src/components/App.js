@@ -13,6 +13,9 @@ function App() {
       <SideMenu />
       <ModeTabs />
       <LoginPage />
+      <FloatingButton icon={faCalendar}
+                      label={"Log Round"}
+                      action={() => {alert("Log Round")}}/>
     </div>
   ); 
 }

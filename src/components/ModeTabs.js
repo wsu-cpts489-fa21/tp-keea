@@ -3,7 +3,7 @@ import React from 'react';
 class ModeTabs extends React.Component {
     render() {
       return(
-        <div id="modeTabs" className="modetab-container hidden" role="tablist" 
+        <div id="modeTabs" className="modetab-container" role="tablist" 
             aria-label="App Modes">
             <button id="feedMode" type="button" 
                 className="modetab-btn modetab-selected" 

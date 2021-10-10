@@ -11,7 +11,7 @@ class NavBar extends React.Component {
         <header className="navbar">  
         <a id="sLink" className="skip-link" tabIndex="0">
          Skip to content</a>
-         <button id="menuBtn" type="button" className="navbar-btn hidden" 
+         <button id="menuBtn" type="button" className="navbar-btn" 
             title="Menu" aria-controls="sideMenu" 
             aria-label="Actions" aria-haspopup="true" 
             aria-expanded="false">
