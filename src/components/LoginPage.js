@@ -18,9 +18,9 @@ class LoginPage extends React.Component {
                     <a id="passwordError" href="#password" className="alert-link">Enter a valid password</a>
                     <a id="authError" href="#email" className="alert-link">No user account exists with email and password entered. Create an account or re-enter email and/or password</a>
                 </p>
-                <form id="loginForm" className="centered" novalidate>
+                <form id="loginForm" className="centered" noValidate>
                     <div className="mb-3">
-                    <label for="email" className="form-label">Email:<br/>
+                    <label htmlFor="email" className="form-label">Email:<br/>
                         <input id="email" type="email" className="form-control-lg centered"
                             aria-describedby="emailDescr"required />
                     </label>
@@ -29,7 +29,7 @@ class LoginPage extends React.Component {
                     </div>
                     </div>
                     <div className="mb-3">
-                    <label for="password" className="form-label">Password:<br/>
+                    <label htmlFor="password" className="form-label">Password:<br/>
                         <input id="password" type="password" className="form-control-lg centered"
                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
                         aria-describedby="passwordDescr"

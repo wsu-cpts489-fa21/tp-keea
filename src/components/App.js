@@ -6,24 +6,25 @@ import AppMode from './AppMode.js';
 
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {mode: AppMode.LOGIN};
   }
 
-  handleChangeMode = (newMode) => {
+  setMode = (newMode) => {
     this.setState({mode: newMode});
   }
 
   render() {
     return (
       <>
-        <NavBar mode={this.state.mode}/>
+        <NavBar mode={this.state.mode}
+                />
         {this.state.mode !== AppMode.LOGIN ? 
           <ModeTabs mode={this.state.mode}
-                    changeMode={this.handleChangeMode} /> 
+                    setMode={this.setMode} /> 
             : null }
-        <LoginPage changeMode={this.handleChangeMode} />
+        <LoginPage setMode={this.setMode} />
       </>
     ); 
   }
