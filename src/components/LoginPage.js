@@ -1,6 +1,14 @@
 import React from 'react';
 
 class LoginPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.emailError = React.createRef();
+        this.passwordError = React.createRef();
+        this.authError = React.createRef();
+    }
+
     render() {
         return(
             <div id="loginPage" className="mode-page">
@@ -14,9 +22,23 @@ class LoginPage extends React.Component {
                 </button>
                 </div>
                 <p id="errorBox" className="alert alert-danger centered hidden">
-                    <a id="emailError" href="#email" className="alert-link">Enter a valid email address<br/></a>
-                    <a id="passwordError" href="#password" className="alert-link">Enter a valid password</a>
-                    <a id="authError" href="#email" className="alert-link">No user account exists with email and password entered. Create an account or re-enter email and/or password</a>
+                    <a id="emailError" href="#email" 
+                        className="alert-link" 
+                        ref={this.emailError}>
+                        Enter a valid email address<br/>
+                    </a>
+                    <a id="passwordError" 
+                        href="#password" 
+                        className="alert-link" 
+                        ref={this.passwordError}>
+                        Enter a valid password
+                    </a>
+                    <a id="authError" 
+                        href="#email" 
+                        className="alert-link"
+                        ref={this.authError}>
+                            No user account exists with email and password entered. Create an account or re-enter email and/or password
+                    </a>
                 </p>
                 <form id="loginForm" className="centered" noValidate>
                     <div className="mb-3">
