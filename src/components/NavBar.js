@@ -19,7 +19,7 @@ class NavBar extends React.Component {
           </button>
           <img src={logo} className="navbar-app-icon" 
             alt="SpeedScore logo" />
-           <h1 id="appName" className="navbar-title">{this.props.title}</h1> 
+           <h1 id="appName" className="navbar-title">SpeedScore</h1> 
            <div className="navbar-right-items">
                 <input id="searchBox" className="form-control hidden" 
                 aria-label="Search Rounds" size="30"

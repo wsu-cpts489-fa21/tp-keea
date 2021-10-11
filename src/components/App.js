@@ -1,23 +1,32 @@
-import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
 import NavBar from './NavBar.js';
-import SideMenu from './SideMenu.js';
 import ModeTabs from './ModeTabs.js';
-import FloatingButton from './FloatingButton.js';
 import LoginPage from './LoginPage.js';
+import AppMode from './AppMode.js';
 
+class App extends React.Component {
 
-function App() {
-  return (
-    <div>
-      <NavBar title="Welcome to SpeedScore"/>
-      <SideMenu />
-      <ModeTabs />
-      <LoginPage />
-      <FloatingButton icon={faCalendar}
-                      label={"Log Round"}
-                      action={() => {alert("Log Round")}}/>
-    </div>
-  ); 
+  constructor() {
+    super();
+    this.state = {mode: AppMode.LOGIN};
+  }
+
+  handleChangeMode = (newMode) => {
+    this.setState({mode: newMode});
+  }
+
+  render() {
+    return (
+      <>
+        <NavBar mode={this.state.mode}/>
+        {this.state.mode !== AppMode.LOGIN ? 
+          <ModeTabs mode={this.state.mode}
+                    changeMode={this.handleChangeMode} /> 
+            : null }
+        <LoginPage changeMode={this.handleChangeMode} />
+      </>
+    ); 
+  }
+
 }
-
 export default App;
