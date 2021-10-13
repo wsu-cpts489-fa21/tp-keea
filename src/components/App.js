@@ -12,7 +12,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {mode: AppMode.LOGIN,
+    this.state = {mode: AppMode.COURSES,
                   menuOpen: false,
                   modalOpen: false,
                   userId: ""};
@@ -49,10 +49,30 @@ class App extends React.Component {
                     menuOpen={this.state.menuOpen}
                     modalOpen={this.state.modalOpen}/> 
         {this.state.mode == AppMode.LOGIN ?
-        <LoginPage setMode={this.setMode}
-                   modalOpen={this.state.modalOpen}
-                   toggleModalOpen={this.toggleModalOpen} 
-                   setUserId={this.setUserId}/> : null }
+          <LoginPage setMode={this.setMode}
+                    modalOpen={this.state.modalOpen}
+                    toggleModalOpen={this.toggleModalOpen} 
+                    setUserId={this.setUserId}/> : 
+          this.state.mode == AppMode.FEED ? 
+          <FeedPage  modalOpen={this.state.modalOpen}
+                    toggleModalOpen={this.toggleModalOpen} 
+                    menuOpen={this.state.menuOpen}
+                    userId={this.state.userId}/> :
+          this.state.mode == AppMode.ROUNDS ?
+          <RoundsPage modalOpen={this.state.modalOpen}
+                      toggleModalOpen={this.toggleModalOpen} 
+                      menuOpen={this.state.menuOpen}
+                      userId={this.state.userId}/> :
+          this.state.mode == AppMode.COURSES ?
+          <CoursesPage modalOpen={this.state.modalOpen}
+                      toggleModalOpen={this.toggleModalOpen} 
+                      menuOpen={this.state.menuOpen}
+                      userId={this.state.userId}/> :
+          <BuddiesPage modalOpen={this.state.modalOpen}
+                      toggleModalOpen={this.toggleModalOpen} 
+                      menuOpen={this.state.menuOpen}
+                      userId={this.state.userId}/>
+        }
       </>
     ); 
   }
