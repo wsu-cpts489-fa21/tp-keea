@@ -12,7 +12,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {mode: AppMode.LOGIN,
+    this.state = {mode: AppMode.FEED,
                   menuOpen: false,
                   modalOpen: false,
                   userId: ""};
