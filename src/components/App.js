@@ -48,30 +48,33 @@ class App extends React.Component {
                     setMode={this.setMode} 
                     menuOpen={this.state.menuOpen}
                     modalOpen={this.state.modalOpen}/> 
-        {this.state.mode == AppMode.LOGIN ?
-          <LoginPage setMode={this.setMode}
-                    modalOpen={this.state.modalOpen}
-                    toggleModalOpen={this.toggleModalOpen} 
-                    setUserId={this.setUserId}/> : 
-          this.state.mode == AppMode.FEED ? 
-          <FeedPage  modalOpen={this.state.modalOpen}
-                    toggleModalOpen={this.toggleModalOpen} 
-                    menuOpen={this.state.menuOpen}
-                    userId={this.state.userId}/> :
-          this.state.mode == AppMode.ROUNDS ?
-          <RoundsPage modalOpen={this.state.modalOpen}
+        {
+          {LoginMode:
+            <LoginPage setMode={this.setMode}
+                      modalOpen={this.state.modalOpen}
+                      toggleModalOpen={this.toggleModalOpen} 
+                      setUserId={this.setUserId}/>, 
+          FeedMode:
+            <FeedPage  modalOpen={this.state.modalOpen}
                       toggleModalOpen={this.toggleModalOpen} 
                       menuOpen={this.state.menuOpen}
-                      userId={this.state.userId}/> :
-          this.state.mode == AppMode.COURSES ?
-          <CoursesPage modalOpen={this.state.modalOpen}
-                      toggleModalOpen={this.toggleModalOpen} 
-                      menuOpen={this.state.menuOpen}
-                      userId={this.state.userId}/> :
-          <BuddiesPage modalOpen={this.state.modalOpen}
-                      toggleModalOpen={this.toggleModalOpen} 
-                      menuOpen={this.state.menuOpen}
-                      userId={this.state.userId}/>
+                      userId={this.state.userId}/>,
+          RoundsMode:
+            <RoundsPage modalOpen={this.state.modalOpen}
+                        toggleModalOpen={this.toggleModalOpen} 
+                        menuOpen={this.state.menuOpen}
+                        userId={this.state.userId}/>,
+          CoursesMode:
+            <CoursesPage modalOpen={this.state.modalOpen}
+                        toggleModalOpen={this.toggleModalOpen} 
+                        menuOpen={this.state.menuOpen}
+                        userId={this.state.userId}/>,
+          BuddiesMode:
+            <BuddiesPage modalOpen={this.state.modalOpen}
+                        toggleModalOpen={this.toggleModalOpen} 
+                        menuOpen={this.state.menuOpen}
+                        userId={this.state.userId}/>
+        } [this.state.mode]
         }
       </>
     ); 
