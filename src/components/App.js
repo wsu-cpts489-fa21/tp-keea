@@ -2,6 +2,10 @@ import React from 'react';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
 import LoginPage from './LoginPage.js';
+import FeedPage from './FeedPage.js';
+import RoundsPage from './RoundsPage.js';
+import CoursesPage from './CoursesPage.js';
+import BuddiesPage from './BuddiesPage.js';
 import AppMode from './AppMode.js';
 
 class App extends React.Component {
@@ -39,18 +43,16 @@ class App extends React.Component {
                 modalOpen={this.state.modalOpen}
                 toggleModalOpen={this.toggleModalOpen}
                 userId={this.state.userId}
-                setUserId={this.setUserid} />
-        {this.state.mode !== AppMode.LOGIN ? 
-          <ModeTabs mode={this.state.mode}
+                setUserId={this.setUserid} /> 
+        <ModeTabs mode={this.state.mode}
                     setMode={this.setMode} 
                     menuOpen={this.state.menuOpen}
                     modalOpen={this.state.modalOpen}/> 
-            : null }
-        <LoginPage changeMode={this.handleChangeMode}
-                   menuOpen={this.state.menuOpen}
-                   modalOpen={this.state.dialogOpen}
-                   toggleModalOpen={this.state.toggleModalOpen} 
-                   userid={this.state.userId}/>
+        {this.state.mode == AppMode.LOGIN ?
+        <LoginPage setMode={this.setMode}
+                   modalOpen={this.state.modalOpen}
+                   toggleModalOpen={this.toggleModalOpen} 
+                   setUserId={this.setUserId}/> : null }
       </>
     ); 
   }
