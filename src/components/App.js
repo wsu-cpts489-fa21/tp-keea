@@ -12,7 +12,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {mode: AppMode.LOGIN,
+    this.state = {mode: AppMode.FEED,
                   menuOpen: false,
                   modalOpen: false,
                   userId: ""};
@@ -45,17 +45,17 @@ class App extends React.Component {
                 userId={this.state.userId}
                 setUserId={this.setUserid} /> 
         <ModeTabs mode={this.state.mode}
-                    setMode={this.setMode} 
-                    menuOpen={this.state.menuOpen}
-                    modalOpen={this.state.modalOpen}/> 
+                  setMode={this.setMode} 
+                  menuOpen={this.state.menuOpen}
+                  modalOpen={this.state.modalOpen}/> 
         {
           {LoginMode:
             <LoginPage setMode={this.setMode}
-                      modalOpen={this.state.modalOpen}
-                      toggleModalOpen={this.toggleModalOpen} 
-                      setUserId={this.setUserId}/>, 
+                       modalOpen={this.state.modalOpen}
+                       toggleModalOpen={this.toggleModalOpen} 
+                       setUserId={this.setUserId}/>, 
           FeedMode:
-            <FeedPage  modalOpen={this.state.modalOpen}
+            <FeedPage modalOpen={this.state.modalOpen}
                       toggleModalOpen={this.toggleModalOpen} 
                       menuOpen={this.state.menuOpen}
                       userId={this.state.userId}/>,
@@ -74,7 +74,7 @@ class App extends React.Component {
                         toggleModalOpen={this.toggleModalOpen} 
                         menuOpen={this.state.menuOpen}
                         userId={this.state.userId}/>
-        } [this.state.mode]
+        }[this.state.mode]
         }
       </>
     ); 
