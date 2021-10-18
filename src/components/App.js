@@ -79,11 +79,11 @@ class App extends React.Component {
                   });
   }
 
-  updateRound = (id, newRoundData) => {
+  updateRound = (newRoundData) => {
     const newRounds = [...this.state.userData.rounds];
     let r;
     for (r = 0; r < newRounds.length; ++r) {
-        if (newRounds[r].roundNum === id) {
+        if (newRounds[r].roundNum === newRoundData.roundNum) {
             break;
         }
     }
@@ -142,6 +142,9 @@ class App extends React.Component {
                       userId={this.state.userId}/>,
           RoundsMode:
             <RoundsPage rounds={this.state.userData.rounds}
+                        addRound={this.addRound}
+                        updateRound={this.updateRound}
+                        deleteRound={this.deleteRound}
                         modalOpen={this.state.modalOpen}
                         toggleModalOpen={this.toggleModalOpen} 
                         menuOpen={this.state.menuOpen}

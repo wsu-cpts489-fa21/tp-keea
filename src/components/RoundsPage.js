@@ -13,6 +13,10 @@ class RoundsPage extends React.Component {
                           editId: -1};        
     }
 
+    setMode = (newMode) => {
+        this.setState({mode: newMode});
+    }
+
     initiateEditRound = (val) => {
         this.setState({editId: val,
                        mode: RoundsMode.EDITROUND}, 
@@ -63,6 +67,7 @@ class RoundsPage extends React.Component {
             }
             return (
             <RoundForm mode={this.state.mode}
+                editId = {this.state.editId}
                 roundData={this.props.rounds[i]}
                 saveRound={this.props.updateRound}
                 setMode={this.setMode}
