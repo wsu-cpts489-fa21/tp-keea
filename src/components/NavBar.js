@@ -1,6 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 import logo from '../images/sslogo.png'
 
 
@@ -15,7 +14,7 @@ class NavBar extends React.Component {
             title="Menu" aria-controls="sideMenu" 
             aria-label="Actions" aria-haspopup="true" 
             aria-expanded="false">
-            <FontAwesomeIcon icon={faBars} className="navbar-btn-icon"/>
+            <FontAwesomeIcon icon="bars" className="navbar-btn-icon"/>
           </button>
           <img src={logo} className="navbar-app-icon" 
             alt="SpeedScore logo" />
@@ -26,7 +25,7 @@ class NavBar extends React.Component {
                 type="search" />
                 <button id="searchBtn" type="button" className="navbar-btn hidden" 
                     aria-label="Open Rounds Search">
-                    <FontAwesomeIcon icon={faSearch} className="navbar-btn-icon"/>
+                    <FontAwesomeIcon icon="search" className="navbar-btn-icon"/>
                 </button>
                 <button id="profileBtn" type="button" 
                   className="navbar-btn navbar-profile-btn hidden" 

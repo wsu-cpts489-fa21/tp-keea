@@ -1,17 +1,14 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import RoundsMode  from './RoundsMode.js';
 import RoundsTable from './RoundsTable.js';
 import RoundForm from './RoundForm.js';
 import FloatingButton from './FloatingButton.js'
-import { faCalendar  } from '@fortawesome/free-solid-svg-icons'
-
 
 class RoundsPage extends React.Component {
     constructor(props) {
             super(props);
             this.state = {mode: RoundsMode.ROUNDSTABLE,
-                          rounds:[],
-                          roundCount: 0,
                           deleteId: -1,
                           editId: -1};        
     }
@@ -26,59 +23,23 @@ class RoundsPage extends React.Component {
         this.setState({deleteId: val},
         () => alert("Confirm delete goes here!"));
     }
-    
-
-    addRound = (newRound) => {
-        const newRounds = [...this.state.rounds];
-        const newRoundCount = this.state.roundCount + 1;
-        newRound.roundNum = newRoundCount;
-        newRounds.push(newRound);
-        this.setState({rounds: newRounds, 
-                        roundCount: newRoundCount,
-                        mode: RoundsMode.ROUNDSTABLE},this.props.toggleModalOpen);
-    }
-
-    updateRound = (newRound) => {
-        const newRounds = [...this.state.rounds];
-        let r;
-        for (r = 0; r < newRounds.length; ++r) {
-            if (newRounds[r].roundNum === this.state.editId) {
-                break;
-            }
-        }
-        newRounds[r] = newRound;
-        this.setState({rounds: newRounds, 
-                        editId: -1,
-                        mode: RoundsMode.ROUNDSTABLE},this.props.toggleModalOpen);
-    }
-
-    deleteRound = () => {
-        const newRounds = [...this.state.rounds];
-        let r;
-        for (r = 0; r < newRounds.length; ++r) {
-            if (newRounds[r].roundNum === this.state.deleteId) {
-                break;
-            }
-        }
-        delete newRounds[r];
-        this.setState({rounds: newRounds, deleteId: -1},this.props.toggleModal);
-    }
 
     render() {
         switch (this.state.mode) {
         case RoundsMode.ROUNDSTABLE: 
             return (
                 <>
-                    <RoundsTable rounds={this.state.rounds}
+                    <RoundsTable rounds={this.props.rounds}
                                 initiateDeleteRound={this.initiateDeleteRound}
+                                deleteRound={this.props.deleteRound} 
                                 deleteId={this.state.deleteId}
                                 initiateEditRound= {this.initiateEditRound}
+                                updateRound= {this.props.updateRound}
                                 setMode={this.setMode} 
-                                deleteRound={this.deleteRound} 
                                 toggleModalOpen={this.props.toggleModalOpen}
                                 menuOpen={this.props.menuOpen} /> 
                     <FloatingButton
-                        icon={faCalendar}
+                        icon="calendar"
                         label={"Log Round"}
                         menuOpen={this.props.menuOpen}
                         action={()=>this.setState({mode: RoundsMode.LOGROUND},
@@ -89,21 +50,21 @@ class RoundsPage extends React.Component {
             return (
             <RoundForm mode={this.state.mode}
                     roundData={null}
-                    saveRound={this.addRound}
+                    saveRound={this.props.addRound}
                     setMode={this.setMode}
                     toggleModalOpen={this.props.toggleModalOpen} />
             );
         case RoundsMode.EDITROUND:
             let i;
-            for (i = 0; i < this.state.rounds.length; ++i) {
-                if (this.state.rounds[i].roundNum === this.state.editId) {
+            for (i = 0; i < this.props.rounds.length; ++i) {
+                if (this.props.rounds[i].roundNum === this.state.editId) {
                     break;
                 }
             }
             return (
             <RoundForm mode={this.state.mode}
-                roundData={this.state.rounds[i]}
-                saveRound={this.updateRound}
+                roundData={this.props.rounds[i]}
+                saveRound={this.props.updateRound}
                 setMode={this.setMode}
                 toggleModalOpen={this.props.toggleModalOpen} />
             );

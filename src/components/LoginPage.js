@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import AppMode from './AppMode.js'
 
@@ -116,9 +117,7 @@ class LoginPage extends React.Component {
                 <p></p>
                 <button type="submit" id="loginBtn" 
                         className="btn btn-primary fm-primary-btn">
-                    <span id="loginBtnIcon" 
-                        className="fas fa-sign-in-alt" 
-                        aria-hidden="true"></span>
+                    <FontAwesomeIcon icon="sign-in-alt"/>
                         &nbsp;Log In
                 </button>
                 </form>

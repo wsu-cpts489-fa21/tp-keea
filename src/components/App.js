@@ -1,4 +1,8 @@
 import React from 'react';
+import { library } from "@fortawesome/fontawesome-svg-core"; 
+import { faWindowClose, faEdit, faCalendar, 
+        faSpinner, faSignInAlt, faBars, faSearch,
+        faSort, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
 import LoginPage from './LoginPage.js';
@@ -8,6 +12,10 @@ import CoursesPage from './CoursesPage.js';
 import BuddiesPage from './BuddiesPage.js';
 import AppMode from './AppMode.js';
 
+library.add(faWindowClose,faEdit, faCalendar, 
+            faSpinner, faSignInAlt, faBars, faSearch,
+            faSort, faTrash, faEye);
+
 class App extends React.Component {
 
   constructor(props) {
@@ -15,7 +23,7 @@ class App extends React.Component {
     this.state = {mode: AppMode.LOGIN,
                   menuOpen: false,
                   modalOpen: false,
-                  userId: ""};
+                  userData: {}};
   }
 
   setMode = (newMode) => {
@@ -30,8 +38,81 @@ class App extends React.Component {
     this.setState(prevState => ({dialogOpen: !prevState.dialogOpen}));
   }
 
-  setUserId = (Id) => {
-    this.setState({userId: Id});
+  setUserId = (id) => {
+    this.setState(
+      {userData: {
+          accountData: {
+            email: id,
+            password: "",
+            securityQuestion: "",
+            securityAnswer: ""
+          },
+          identityData: {
+            displayName: id,
+            profilePic: "images/DefaultProfilePic.jpg"
+          },
+          speedgolfProfileData: {
+            bio: "",
+            firstRound: "",
+            personalBest: {},
+            homeCourse: "",
+            clubs: {},
+            clubComments: ""
+        },
+        rounds: [],
+        roundCount: 0
+        }
+     }
+    );
+  }
+
+  addRound = (newRoundData) => {
+    const newRounds = [...this.state.userData.rounds];
+    const newRoundCount = this.state.userData.roundCount + 1;
+    newRoundData.roundNum = newRoundCount;
+    newRounds.push(newRoundData);
+    this.setState({userData: {accountData: this.state.userData.accountData,
+                              identityData: this.state.userData.identityData,
+                              speedgolfProfileData: this.state.userData.speedgolfProfileData,
+                              rounds: newRounds, 
+                              roundCount: newRoundCount}
+                  });
+  }
+
+  updateRound = (id, newRoundData) => {
+    const newRounds = [...this.state.userData.rounds];
+    let r;
+    for (r = 0; r < newRounds.length; ++r) {
+        if (newRounds[r].roundNum === id) {
+            break;
+        }
+    }
+    newRounds[r] = newRoundData;
+    this.setState({userData: 
+        {accountData: this.state.userData.accountData,
+        identityData: this.state.userData.identityData,
+        speedgolfProfileData: this.state.userData.speedgolfProfileData,
+        rounds: newRounds, 
+        roundCount: this.state.userData.roundCount
+      }
+    });
+  }
+
+  deleteRound = (id) => {
+    const newRounds = [...this.state.userData.rounds];
+    let r;
+    for (r = 0; r < newRounds.length; ++r) {
+        if (newRounds[r].roundNum === this.state.deleteId) {
+            break;
+        }
+    }
+    delete newRounds[r];
+    this.setState({userData: {accountData: this.state.userData.accountData,
+      identityData: this.state.userData.identityData,
+      speedgolfProfileData: this.state.userData.speedgolfProfileData,
+      rounds: newRounds, 
+      roundCount: this.state.userData.roundCount}
+    });
   }
 
   render() {
@@ -60,7 +141,8 @@ class App extends React.Component {
                       menuOpen={this.state.menuOpen}
                       userId={this.state.userId}/>,
           RoundsMode:
-            <RoundsPage modalOpen={this.state.modalOpen}
+            <RoundsPage rounds={this.state.userData.rounds}
+                        modalOpen={this.state.modalOpen}
                         toggleModalOpen={this.toggleModalOpen} 
                         menuOpen={this.state.menuOpen}
                         userId={this.state.userId}/>,
