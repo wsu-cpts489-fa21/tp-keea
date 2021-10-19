@@ -28,20 +28,18 @@ class App extends React.Component {
   }
 
   /*
-   handleClick -- document-level click handler assigned in componentDidMount().
-   using 'true' as third param addEventListener(). This means taht the event
+   handleClick -- document-level click handler assigned in componentDidMount()
+   using 'true' as third param to addEventListener(). This means that the event
    handler fires in the _capturing_ phase, not the default _bubbling_ phase.
-   So the event handler is fired _before_ any events reach their lowest-level
-   target. That's why the logic works: If the menu is open, we want to close
+   Thus, the event handler is fired _before_ any events reach their lowest-level
+   target. If the menu is open, we want to close
    it if the user clicks anywhere _except_ on a menu item, in which case we
    want the menu item event handler to get the event (through _bubbling_).
-   So we identifyt his border case by comparing 
+   We identify this border case by comparing 
    e.target.getAttribute("role") to "menuitem". If that's NOT true, then
    we close the menu and stop propagation so event does not reach anyone
-   else. However, if the target is a menu item (we could also test for 
-    this by looking at, e.g., a class list or id, but our menu items
-    don't have those), then we do not execute the if body and the event
-    bubbles to the target. 
+   else. However, if the target is a menu item, then we do not execute 
+   the if body and the event bubbles to the target. 
   */
   
   handleClick = (e) => {
@@ -49,6 +47,11 @@ class App extends React.Component {
       this.toggleMenuOpen();
       e.stopPropagation();
     }
+  }
+
+  logOut = () => {
+    this.setState({mode:AppMode.LOGIN,
+                   menuOpen: false});
   }
 
 
@@ -160,7 +163,7 @@ class App extends React.Component {
                   setMode={this.setMode} 
                   menuOpen={this.state.menuOpen}
                   modalOpen={this.state.modalOpen}/> 
-        {this.state.menuOpen  ? <SideMenu menuItemClicked={this.menuItemClicked}/> : null}
+        {this.state.menuOpen  ? <SideMenu logOut={this.logOut}/> : null}
         {
           {LoginMode:
             <LoginPage setMode={this.setMode}
