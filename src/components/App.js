@@ -1,7 +1,7 @@
 import React from 'react';
 import { library } from "@fortawesome/fontawesome-svg-core"; 
 import { faWindowClose, faEdit, faCalendar, 
-        faSpinner, faSignInAlt, faBars, faSearch,
+        faSpinner, faSignInAlt, faBars, faTimes, faSearch,
         faSort, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
@@ -10,10 +10,11 @@ import FeedPage from './FeedPage.js';
 import RoundsPage from './RoundsPage.js';
 import CoursesPage from './CoursesPage.js';
 import BuddiesPage from './BuddiesPage.js';
+import SideMenu from './SideMenu.js';
 import AppMode from './AppMode.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
-            faSpinner, faSignInAlt, faBars, faSearch,
+            faSpinner, faSignInAlt, faBars, faTimes, faSearch,
             faSort, faTrash, faEye);
 
 class App extends React.Component {
@@ -24,6 +25,36 @@ class App extends React.Component {
                   menuOpen: false,
                   modalOpen: false,
                   userData: {}};
+  }
+
+  /*
+   handleClick -- document-level click handler assigned in componentDidMount().
+   using 'true' as third param addEventListener(). This means taht the event
+   handler fires in the _capturing_ phase, not the default _bubbling_ phase.
+   So the event handler is fired _before_ any events reach their lowest-level
+   target. That's why the logic works: If the menu is open, we want to close
+   it if the user clicks anywhere _except_ on a menu item, in which case we
+   want the menu item event handler to get the event (through _bubbling_).
+   So we identifyt his border case by comparing 
+   e.target.getAttribute("role") to "menuitem". If that's NOT true, then
+   we close the menu and stop propagation so event does not reach anyone
+   else. However, if the target is a menu item (we could also test for 
+    this by looking at, e.g., a class list or id, but our menu items
+    don't have those), then we do not execute the if body and the event
+    bubbles to the target. 
+  */
+  
+  handleClick = (e) => {
+    if (this.state.menuOpen && e.target.getAttribute("role") !== "menuitem") {
+      this.toggleMenuOpen();
+      e.stopPropagation();
+    }
+  }
+
+
+  componentDidMount() {
+    //Install a doc-level click handler
+    document.addEventListener("click",this.handleClick, true)
   }
 
   setMode = (newMode) => {
@@ -120,7 +151,7 @@ class App extends React.Component {
       <>
         <NavBar mode={this.state.mode}
                 menuOpen={this.state.menuOpen}
-                toggleMenuOpen={this.state.toggleMenuOpen}
+                toggleMenuOpen={this.toggleMenuOpen}
                 modalOpen={this.state.modalOpen}
                 toggleModalOpen={this.toggleModalOpen}
                 userId={this.state.userId}
@@ -129,6 +160,7 @@ class App extends React.Component {
                   setMode={this.setMode} 
                   menuOpen={this.state.menuOpen}
                   modalOpen={this.state.modalOpen}/> 
+        {this.state.menuOpen  ? <SideMenu menuItemClicked={this.menuItemClicked}/> : null}
         {
           {LoginMode:
             <LoginPage setMode={this.setMode}
