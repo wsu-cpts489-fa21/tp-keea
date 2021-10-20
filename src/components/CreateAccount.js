@@ -1,6 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import profilePic from './../images/DefaultProfilePic.jpg'
 
 class CreateAccount extends React.Component {
@@ -339,13 +338,13 @@ class CreateAccount extends React.Component {
               </div>
               <div className="mode-page-btn-container">
                 <button type="submit" className="mode-page-btn action-dialog action-button">
-                    <FontAwesomeIcon icon={faUserPlus}/>
+                    <FontAwesomeIcon icon="user-plus"/>
                     &nbsp;Create Account
                 </button>
                 <button type="button" 
                         className="mode-page-btn-cancel action-dialog cancel-button"
                         onClick={this.props.createAccountCancel}>
-                  <FontAwesomeIcon icon={faWindowClose}/>&nbsp;Cancel
+                  <FontAwesomeIcon icon="window-close"/>&nbsp;Cancel
                 </button>
               </div>
             </form>

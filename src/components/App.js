@@ -2,7 +2,7 @@ import React from 'react';
 import { library } from "@fortawesome/fontawesome-svg-core"; 
 import { faWindowClose, faEdit, faCalendar, 
         faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-        faSort, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
+        faSort, faTrash, faEye, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
 import LoginPage from './LoginPage.js';
@@ -15,7 +15,7 @@ import AppMode from './AppMode.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
             faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-            faSort, faTrash, faEye);
+            faSort, faTrash, faEye, faUserPlus);
 
 class App extends React.Component {
 
