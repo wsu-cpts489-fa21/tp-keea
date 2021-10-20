@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import AppMode from './AppMode.js'
+import CreateAccount from './CreateAccount.js';
 
 class LoginPage extends React.Component {
 
@@ -8,13 +9,22 @@ class LoginPage extends React.Component {
         super(props);
         this.emailError = React.createRef();
         this.passwordError = React.createRef();
+        this.accountError = React.createRef();
         this.email = React.createRef();
         this.password = React.createRef();
         this.state = {emailValid: true, 
-                      passwordValid: true};
+                      passwordValid: true,
+                      accountValid: true,
+                      showCreateAccount: false,
+                      showAccountCreated: false};
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate() {
+        if (!this.state.accountValid) {
+            this.email.current.value = "";
+            this.password.current.value = "";
+            this.accountError.current.focus();
+        }
         if (!this.state.passwordValid) {
             this.password.current.value = "";
             this.passwordError.current.focus();
@@ -33,62 +43,72 @@ class LoginPage extends React.Component {
          //Is the password field valid?
          const pValid = !this.password.current.validity.patternMismatch && 
                             !this.password.current.validity.valueMissing;
-        if (eValid && pValid) {
-            this.props.setMode(AppMode.FEED);
-            this.props.setUserId(this.email.current.value);
+        //Is account valid?
+        const aValid = eValid && pValid && this.props.accountValid(this.email.current.value,this.password.current.value);
+        if (eValid && pValid && aValid) {
+            this.props.logInUser(this.email.current.value);
         } else { //at least one field is invalid--trigger re-render
             this.setState({emailValid: eValid,
-                passwordValid: pValid});
+                           passwordValid: pValid,
+                           accountValid: aValid});
         }
+    }
+
+    createAccountDone = (data) => {
+        this.props.createAccount(data);
+        this.setState({showCreateAccount: false,
+                       showAccountCreated: true});
+    }
+
+    createAccountCancel = () => {
+        this.setState({showCreaetAccount: false});
     }
 
     renderErrorBox = () => {
-        if (this.state.emailValid && this.state.passwordValid) {
-            return null;
-        }
-        if (!this.state.emailValid && this.state.passwordValid) {
-            return (
-                <p id="errorBox" className="alert alert-danger centered">
-                        <a id="emailError" href="#email" 
-                            className="alert-link" 
-                            ref={this.emailError}>
-                            Enter a valid email address<br/>
-                        </a>
-                </p>
-            );
-        }
-        if (this.state.emailValid && !this.state.passwordValid) {
-                return (
-                    <p id="errorBox" className="alert alert-danger centered">
-                            <a id="passwordError" 
-                                href="#password" 
-                                className="alert-link" 
-                                ref={this.passwordError}>
-                                Enter a valid password
-                            </a>
-                    </p>
-                );
-        }
-        //If here, both email and password are invalid
-        return (<p id="errorBox" className="alert alert-danger centered">
-                        <a id="emailError" href="#email" 
-                            className="alert-link" 
-                            ref={this.emailError}>
-                            Enter a valid email address<br/>
-                        </a>
-                        <a id="passwordError" 
-                            href="#password" 
-                            className="alert-link" 
-                            ref={this.passwordError}>
-                            Enter a valid password
-                        </a>
-                    </p>);
+      return (
+        this.state.emailValid && this.state.passwordValid && this.state.accountValid ? null:
+          <p id="errorBox" className="alert alert-danger centered">
+            {!this.state.emailValid && 
+                <a id="emailError" href="#email" 
+                    className="alert-link" 
+                    ref={this.emailError}>
+                    Enter a valid email address<br/>
+                </a>
+            }
+            {!this.state.passwordValid &&
+              <a id="passwordError" 
+                href="#password" 
+                className="alert-link" 
+                ref={this.passwordError}>
+                Enter a valid password
+              </a>
+            }
+            {!this.state.accountValid && 
+              <a id="accountError" 
+                href="#email" 
+                className="alert-link" 
+                ref={this.accountError}>
+                No account with that email and password exists. Re-enter credentials or create an account.
+              </a>
+            }
+          </p>
+      );
     }
-
+       
     render() {
-        return(
+        return(this.state.showCreateAccount ?
+            <CreateAccount 
+              createAccount = {this.props.createAccount}
+              accountExists = {this.props.accountExists}
+              accountValid = {this.props.accountValid}
+              createAccountDone = {this.createAccountDone} 
+              createAccountCancel = {this.createAccountCancel}/> :
             <div id="loginPage" className="mode-page">
                 <h1 className="mode-page-header">Log In</h1>
+                {this.state.showAccountCreated && 
+                  <div className="toast-container">
+                    <p className="toast-text">New account created!</p>
+                  </div> }
                 {this.renderErrorBox()}
                 <form id="loginForm" className="centered" 
                     onSubmit={this.handleSubmit} noValidate>
@@ -123,7 +143,8 @@ class LoginPage extends React.Component {
                 </form>
                 <ul className="nav justify-content-center">
                 <li className="nav-item">
-                    <button id="createAccountBtn" className="nav-link btn btn-link">
+                    <button id="createAccountBtn" className="nav-link btn btn-link"
+                     onClick={() => this.setState({showCreateAccount: true})}>
                         Create Account
                     </button>
                 </li>

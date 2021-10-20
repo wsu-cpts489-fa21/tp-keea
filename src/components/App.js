@@ -24,7 +24,12 @@ class App extends React.Component {
     this.state = {mode: AppMode.LOGIN,
                   menuOpen: false,
                   modalOpen: false,
-                  userData: {}};
+                  userData: {accountData: {},
+                             identityData: {},
+                             speedgolfData: {},
+                             rounds: [],
+                             roundCount: 0}
+                  };
   }
 
   /*
@@ -49,17 +54,22 @@ class App extends React.Component {
     }
   }
 
+  /*
+   * Menu item functionality 
+   */
   logOut = () => {
     this.setState({mode:AppMode.LOGIN,
                    menuOpen: false});
   }
-
 
   componentDidMount() {
     //Install a doc-level click handler
     document.addEventListener("click",this.handleClick, true)
   }
 
+  
+   //User interface statem management methods
+   
   setMode = (newMode) => {
     this.setState({mode: newMode});
   }
@@ -72,45 +82,53 @@ class App extends React.Component {
     this.setState(prevState => ({dialogOpen: !prevState.dialogOpen}));
   }
 
-  setUserId = (id) => {
-    this.setState(
-      {userData: {
-          accountData: {
-            email: id,
-            password: "",
-            securityQuestion: "",
-            securityAnswer: ""
-          },
-          identityData: {
-            displayName: id,
-            profilePic: "images/DefaultProfilePic.jpg"
-          },
-          speedgolfProfileData: {
-            bio: "",
-            firstRound: "",
-            personalBest: {},
-            homeCourse: "",
-            clubs: {},
-            clubComments: ""
-        },
-        rounds: [],
-        roundCount: 0
-        }
-     }
-    );
+  //Account Management methods
+   
+  accountExists = (email) => {
+    return (localStorage.getItem(email) !== null);
   }
+
+  accountValid = (email, pw) => {
+    let userData = localStorage.getItem(email);
+    if (userData == null) {
+      return false;
+    }
+    userData = JSON.parse(userData);
+    return (userData.accountData.password === pw);
+    
+  }
+
+  logInUser = (email) => {
+      const data = JSON.parse(localStorage.getItem(email));
+      this.setState({userData: data,
+                     mode: AppMode.FEED});
+  }
+
+  createAccount = (data) => {
+    localStorage.setItem(data.accountData.email, JSON.stringify(data));
+  }
+
+  updateUserdata = (data) => {
+   localStorage.setItem(data.accountData.email,JSON.stringify(data));
+   this.setState({userData: data});
+  }
+
+  //Round Management methods
 
   addRound = (newRoundData) => {
     const newRounds = [...this.state.userData.rounds];
     const newRoundCount = this.state.userData.roundCount + 1;
     newRoundData.roundNum = newRoundCount;
     newRounds.push(newRoundData);
-    this.setState({userData: {accountData: this.state.userData.accountData,
-                              identityData: this.state.userData.identityData,
-                              speedgolfProfileData: this.state.userData.speedgolfProfileData,
-                              rounds: newRounds, 
-                              roundCount: newRoundCount}
-                  });
+    const newUserData = {
+      accountData: this.state.userData.accountData,
+      identityData: this.state.userData.identityData,
+      speedgolfProfileData: this.state.userData.speedgolfProfileData,
+      rounds: newRounds, 
+      roundCount: newRoundCount
+    };
+    localStorage.setItem(newUserData.accountData.email,JSON.stringify(newUserData));
+    this.setState({userData: newUserData});
   }
 
   updateRound = (newRoundData) => {
@@ -122,14 +140,15 @@ class App extends React.Component {
         }
     }
     newRounds[r] = newRoundData;
-    this.setState({userData: 
-        {accountData: this.state.userData.accountData,
-        identityData: this.state.userData.identityData,
-        speedgolfProfileData: this.state.userData.speedgolfProfileData,
-        rounds: newRounds, 
-        roundCount: this.state.userData.roundCount
-      }
-    });
+    const newUserData = {
+      accountData: this.state.userData.accountData,
+      identityData: this.state.userData.identityData,
+      speedgolfProfileData: this.state.userData.speedgolfProfileData,
+      rounds: newRounds, 
+      roundCount: this.state.userData.roundCount
+    }
+    localStorage.setItem(newUserData.accountData.email,JSON.stringify(newUserData));
+    this.setState({userData: newUserData}); 
   }
 
   deleteRound = (id) => {
@@ -141,12 +160,15 @@ class App extends React.Component {
         }
     }
     delete newRounds[r];
-    this.setState({userData: {accountData: this.state.userData.accountData,
+    const newUserData = {
+      accountData: this.state.userData.accountData,
       identityData: this.state.userData.identityData,
       speedgolfProfileData: this.state.userData.speedgolfProfileData,
       rounds: newRounds, 
-      roundCount: this.state.userData.roundCount}
-    });
+      roundCount: this.state.userData.roundCount
+    }
+    localStorage.setItem(newUserData.accountData.email,JSON.stringify(newUserData));
+    this.setState({userData: newUserData});
   }
 
   render() {
@@ -157,8 +179,8 @@ class App extends React.Component {
                 toggleMenuOpen={this.toggleMenuOpen}
                 modalOpen={this.state.modalOpen}
                 toggleModalOpen={this.toggleModalOpen}
-                userId={this.state.userId}
-                setUserId={this.setUserid} /> 
+                userData={this.state.userData}
+                updateUserData={this.setUser} /> 
         <ModeTabs mode={this.state.mode}
                   setMode={this.setMode} 
                   menuOpen={this.state.menuOpen}
@@ -166,10 +188,12 @@ class App extends React.Component {
         {this.state.menuOpen  ? <SideMenu logOut={this.logOut}/> : null}
         {
           {LoginMode:
-            <LoginPage setMode={this.setMode}
-                       modalOpen={this.state.modalOpen}
+            <LoginPage modalOpen={this.state.modalOpen}
                        toggleModalOpen={this.toggleModalOpen} 
-                       setUserId={this.setUserId}/>, 
+                       logInUser={this.logInUser}
+                       createAccount={this.createAccount}
+                       accountExists={this.accountExists}
+                       accountValid={this.accountValid}/>, 
           FeedMode:
             <FeedPage modalOpen={this.state.modalOpen}
                       toggleModalOpen={this.toggleModalOpen} 
