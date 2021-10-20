@@ -89,13 +89,12 @@ class App extends React.Component {
   }
 
   accountValid = (email, pw) => {
-    let userData = localStorage.getItem(email);
-    if (userData == null) {
+    const userDataString = localStorage.getItem(email);
+    if (userDataString == null) {
       return false;
     }
-    userData = JSON.parse(userData);
-    return (userData.accountData.password === pw);
-    
+    const userData = JSON.parse(userDataString);
+    return (userData.accountData.password === pw);   
   }
 
   logInUser = (email) => {

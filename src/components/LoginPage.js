@@ -16,10 +16,14 @@ class LoginPage extends React.Component {
                       passwordValid: true,
                       accountValid: true,
                       showCreateAccount: false,
-                      showAccountCreated: false};
+                      showAccountCreated: false,
+                      accountCreatedEmail: ""};
     }
 
     componentDidUpdate() {
+        if (this.state.showCreateAccount) {
+            return;
+        }
         if (!this.state.accountValid) {
             this.email.current.value = "";
             this.password.current.value = "";
@@ -57,11 +61,12 @@ class LoginPage extends React.Component {
     createAccountDone = (data) => {
         this.props.createAccount(data);
         this.setState({showCreateAccount: false,
-                       showAccountCreated: true});
+                       showAccountCreated: true,
+                        accountCreatedEmail: data.accountData.email});
     }
 
     createAccountCancel = () => {
-        this.setState({showCreaetAccount: false});
+        this.setState({showCreateAccount: false});
     }
 
     renderErrorBox = () => {
@@ -80,7 +85,7 @@ class LoginPage extends React.Component {
                 href="#password" 
                 className="alert-link" 
                 ref={this.passwordError}>
-                Enter a valid password
+                Enter a valid password<br/>
               </a>
             }
             {!this.state.accountValid && 
@@ -106,9 +111,21 @@ class LoginPage extends React.Component {
             <div id="loginPage" className="mode-page">
                 <h1 className="mode-page-header">Log In</h1>
                 {this.state.showAccountCreated && 
-                  <div className="toast-container">
-                    <p className="toast-text">New account created!</p>
-                  </div> }
+                  <div id="accountCreated" className="toast-container" 
+                       role="alert" aria-atomic="true" aria-live="assertive">
+                  <div className="toast-text">
+                     {"New account created with email " + this.state.accountCreatedEmail + "."}
+                  </div>
+                    <button id="accountCreatedClose" 
+                            type="button" 
+                            className="btn-close toast-close" 
+                            aria-label="Close"
+                            onClick={() => this.setState({showAccountCreated: false,
+                                                          accountCreatedEmail: ""})}>
+                           <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                }
                 {this.renderErrorBox()}
                 <form id="loginForm" className="centered" 
                     onSubmit={this.handleSubmit} noValidate>

@@ -20,19 +20,14 @@ class CreateAccount extends React.Component {
                       repeatPasswordValid: true,
                       securityQuestionValid: true,
                       securityAnswerValid: true,
-                      accountIsAvailable: true
+                      accountValid: true
                     };
         this.formSubmitted = false;
-        this.email= React.createRef();
         this.accountError = React.createRef();
         this.emailError = React.createRef();
-        this.password = React.createRef();
         this.passwordError = React.createRef();
-        this.repeatPassword = React.createRef();
         this.repeatPasswordError = React.createRef();
-        this.securityQuestion = React.createRef();
         this.securityQuestionError = React.createRef();
-        this.securityAnswer = React.createRef();
         this.securityAnswerError = React.createRef();
     }
 
@@ -50,7 +45,7 @@ class CreateAccount extends React.Component {
           if (!this.state.passwordValid) {
               this.passwordError.current.focus();
           }
-          if (!this.state.accountIsAvailable) {
+          if (!this.state.accountValid) {
               this.accountError.current.focus();
           } 
           if (!this.state.emailValid) {
@@ -129,7 +124,7 @@ class CreateAccount extends React.Component {
             this.props.createAccountDone(newAccount);
         } else { //At least one field invalid
                  //Clear out invalid fields and display errors
-            const eVal = (!eValid || !acctAvail ? "" : this.state.email);
+            const eVal = (!eValid ? "" : this.state.email);
             const pVal = (!pValid ? "" : this.state.password);
             const rpVal = (!rpValid ? "" : this.state.repeatPassword);
             const dnVal = (this.state.displayName !== "" ? this.state.displayName : this.state.email);
@@ -143,7 +138,7 @@ class CreateAccount extends React.Component {
                            repeatPasswordValid: rpValid,
                            securityQuestionValid: sqValid,
                            securityAnswerValid: saValid,
-                           accountIsAvailable: acctAvail});
+                           accountValid: acctAvail});
         }
     }
 
@@ -162,7 +157,7 @@ class CreateAccount extends React.Component {
                 Enter a valid email address<br/>
             </a>
           }
-          {!this.state.accountIsAvailable && 
+          {!this.state.accountValid && 
             <a id="accountError" href="#email" 
                 className="alert-link" 
                 ref={this.accountError}>
