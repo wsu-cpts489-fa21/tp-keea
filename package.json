@@ -1,43 +1,42 @@
 {
   "name": "speedscore-book",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.15",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "bootstrap": "^5.1.2",
-    "fontawesome": "^5.6.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.compiled.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "nodemon --exec node server.compiled.js",
+    "start": "node server.compiled.js",
+    "build": "babel server.js --out-file server.compiled.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSWebDevBook/speedscore-book.git"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "keywords": [
+    "heroku",
+    "react",
+    "express",
+    "node"
+  ],
+  "author": "C. Hundhausen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FSWebDevBook/speedscore-book/issues"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "homepage": "https://github.com/FSWebDevBook/speedscore-book#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "nodemon": "^2.0.14"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
