@@ -169,6 +169,7 @@ class LoginPage extends React.Component {
                     <button id="resetPasswordBtn" className="nav-link btn btn-link">Reset Password</button>
                 </li>
                 </ul>
+                <p>Heroku deployment</p>
             </div>  
         )
     }
