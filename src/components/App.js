@@ -68,7 +68,7 @@ class App extends React.Component {
   }
 
   
-   //User interface statem management methods
+   //User interface state management methods
    
   setMode = (newMode) => {
     this.setState({mode: newMode});
@@ -107,7 +107,7 @@ class App extends React.Component {
     localStorage.setItem(data.accountData.email, JSON.stringify(data));
   }
 
-  updateUserdata = (data) => {
+  updateUserData = (data) => {
    localStorage.setItem(data.accountData.email,JSON.stringify(data));
    this.setState({userData: data});
   }
@@ -179,7 +179,7 @@ class App extends React.Component {
                 modalOpen={this.state.modalOpen}
                 toggleModalOpen={this.toggleModalOpen}
                 userData={this.state.userData}
-                updateUserData={this.setUser} /> 
+                updateUserData={this.updateUserData} /> 
         <ModeTabs mode={this.state.mode}
                   setMode={this.setMode} 
                   menuOpen={this.state.menuOpen}
