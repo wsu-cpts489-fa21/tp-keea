@@ -4,11 +4,11 @@
   "description": "",
   "main": "server.compiled.js",
   "scripts": {
-    "dev": "nodemon --exec node server.compiled.js",
-    "start": "node server.compiled.js",
+    "dev": "nodemon --exec node -r dotenv/config server.compiled.js",
+    "start": "node -r dotenv/config server.compiled.js",
     "build": "babel server.js --out-file server.compiled.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FSWebDevBook/speedscore-book.git"
@@ -26,7 +26,11 @@
   },
   "homepage": "https://github.com/FSWebDevBook/speedscore-book#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.5.0",
+    "passport-github": "^1.1.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
