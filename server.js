@@ -10,6 +10,7 @@ import { URL } from 'url';
 import express from 'express';
 import passportConfig from './passport/config.js';
 import authRoute from './routes/authRoutes.js';
+import { Server } from 'http';
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 const app = express(); //Instantiate express app
 const buildPath = (new URL('client/build/', import.meta.url).pathname).substring(1);
@@ -21,6 +22,7 @@ const buildPath = (new URL('client/build/', import.meta.url).pathname).substring
 /////////////////////////////////////////////////////////////////////////
 
 passportConfig(app); //Configure session and passport
+server.log(buildPath);
 app
   .use(express.static(buildPath))
   .use(authRoute)
