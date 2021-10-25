@@ -1,9 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from '../images/sslogo.png'
-import App from './App';
+import profilePic from "../images/DefaultProfilePic.jpg";
 import AppMode from './AppMode';
-
 
 class NavBar extends React.Component {
     
@@ -25,19 +24,24 @@ class NavBar extends React.Component {
           <img src={logo} className="navbar-app-icon" 
             alt="SpeedScore logo" />
            <h1 id="appName" className="navbar-title">SpeedScore</h1> 
-           <div className="navbar-right-items">
+           {this.props.mode != AppMode.LOGIN && !this.props.modalOpen ?
+             <div className="navbar-right-items">
                 <input id="searchBox" className="form-control hidden" 
                 aria-label="Search Rounds" size="30"
                 type="search" />
-                <button id="searchBtn" type="button" className="navbar-btn hidden" 
+                <button id="searchBtn" type="button" className="navbar-btn" 
                     aria-label="Open Rounds Search">
                     <FontAwesomeIcon icon="search" className="navbar-btn-icon"/>
                 </button>
                 <button id="profileBtn" type="button" 
-                  className="navbar-btn navbar-profile-btn hidden" 
-                  aria-label="Account and Profile Settings">
+                  className="navbar-btn navbar-profile-btn" 
+                  aria-label="Account and Profile Settings"
+                  style={{backgroundImage: this.props.userData.identityData.profilePic === "" ? 
+                            profilePic : 
+                            "url(" + this.props.userData.identityData.profilePic + ")"}}>
                 </button> 
-            </div>
+              </div> : 
+              <div className="navbar-right-items"></div>}
       </header>
     ); 
   }
