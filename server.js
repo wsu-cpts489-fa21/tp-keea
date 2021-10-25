@@ -22,7 +22,6 @@ const buildPath = new URL('client/build/', import.meta.url).pathname;
 /////////////////////////////////////////////////////////////////////////
 
 passportConfig(app); //Configure session and passport
-console.log(buildPath);
 app
   .use(express.static(buildPath))
   .use(authRoute)
