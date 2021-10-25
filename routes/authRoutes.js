@@ -2,20 +2,22 @@
 //DEFINE EXPRESS APP ROUTES
 //////////////////////////////////////////////////////////////////////////
 
+import passport from 'passport';
 import express from 'express';
-const router = express.Router();
+const authRoute = express.Router();
 
 //AUTHENTICATE route: Uses passport to authenticate with GitHub.
 //Should be accessed when user clicks on 'Login with GitHub' button on 
 //Log In page.
-router.get('/auth/github', passport.authenticate('github'));
+authRoute.get('/auth/github', passport.authenticate('github'));
 
 //CALLBACK route:  GitHub will call this route after the
 //OAuth authentication process is complete.
 //req.isAuthenticated() tells us whether authentication was successful.
-router.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }),
+authRoute.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
-    console.log("auth/github/callback reached.")
+    console.log("auth/github/callback reached.");
+    console.log(req.isAuthenticated());
     res.redirect('/'); //sends user back to login screen; 
                        //req.isAuthenticated() indicates status
   }
@@ -23,7 +25,7 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
 
 //LOGOUT route: Use passport's req.logout() method to log the user out and
 //redirect the user to the main app page. req.isAuthenticated() is toggled to false.
-router.get('/auth/logout', (req, res) => {
+authRoute.get('/auth/logout', (req, res) => {
     console.log('/auth/logout reached. Logging out');
     req.logout();
     res.redirect('/');
@@ -31,8 +33,9 @@ router.get('/auth/logout', (req, res) => {
 
 //TEST route: Tests whether user was successfully authenticated.
 //Should be called from the React.js client to set up app state.
-router.get('/auth/test', (req, res) => {
+authRoute.get('/auth/test', (req, res) => {
     console.log("auth/test reached.");
+    console.log(req.isAuthenticated());
     const isAuth = req.isAuthenticated();
     if (isAuth) {
         console.log("User is authenticated");
@@ -45,4 +48,4 @@ router.get('/auth/test', (req, res) => {
     res.json({isAuthenticated: isAuth, user: req.user});
 });
 
-export { router as authRoute }
+export default authRoute;

@@ -17,7 +17,7 @@ class LoginPage extends React.Component {
                       accountValid: true,
                       showCreateAccount: false,
                       showAccountCreated: false,
-                      accountCreatedEmail: ""};
+                      };
     }
 
     componentDidUpdate() {

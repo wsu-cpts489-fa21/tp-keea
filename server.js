@@ -4,25 +4,25 @@
 //variables used in the server middleware.
 //////////////////////////////////////////////////////////////////////////
 import session from 'express-session';
-import path from 'path';
+import passport from 'passport';
+//import path from 'path';
+import { URL } from 'url';
 import express from 'express';
-import passportConfig from '.passport/config';
-import authRoute from './routes/authRoutes';
+import passportConfig from './passport/config.js';
+import authRoute from './routes/authRoutes.js';
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 const app = express(); //Instantiate express app
-passportConfig(app); //Configure passport
+const buildPath = (new URL('client/build/', import.meta.url).pathname).substring(1);
 
 //////////////////////////////////////////////////////////////////////////
 //INITIALIZE EXPRESS APP
 // The following code uses express.static to serve the React app defined 
-//in the client/ directory at PORT. It also writes an express session
-//to a cookie, and defines auth routes to support OAuth.
+//in the client/ directory at PORT.
 /////////////////////////////////////////////////////////////////////////
+
+passportConfig(app); //Configure session and passport
 app
-  .use(express.static(path.join(__dirname,"client/build")))
-  .use(session({secret: "speedgolf", 
-                resave: false,
-                saveUninitialized: false,
-                cookie: {maxAge: 1000 * 60}}))
+  .use(express.static(buildPath))
   .use(authRoute)
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  .listen(PORT, () => console.log(`Listening on ${PORT}`))
+  

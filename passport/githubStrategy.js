@@ -3,6 +3,7 @@
 //The following code sets up the app with OAuth authentication using
 //the 'github' strategy in passport.js.
 //////////////////////////////////////////////////////////////////////////
+import passport from 'passport'
 import passportGithub from 'passport-github'; 
 
 const githubStrategy = new passportGithub.Strategy ({

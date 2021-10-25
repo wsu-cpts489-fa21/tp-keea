@@ -6,7 +6,7 @@ var _path = _interopRequireDefault(require("path"));
 
 var _express = _interopRequireDefault(require("express"));
 
-var _config = _interopRequireDefault(require(".passport/config"));
+var _config = _interopRequireDefault(require("./passport/config"));
 
 var _authRoutes = _interopRequireDefault(require("./routes/authRoutes"));
 
