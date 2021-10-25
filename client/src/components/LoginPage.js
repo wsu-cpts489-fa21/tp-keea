@@ -17,7 +17,12 @@ class LoginPage extends React.Component {
                       accountValid: true,
                       showCreateAccount: false,
                       showAccountCreated: false,
-                      };
+                      accountCreatedEmail: "",
+                      loginBtnIcon: "sign-in",
+                      loginBtnLabel: "Log In",
+                      githubIcon: ['fab','github'],
+                      githubLabel: "Sign in with GitHub"
+                    };
     }
 
     componentDidUpdate() {
@@ -58,6 +63,16 @@ class LoginPage extends React.Component {
         }
     }
 
+    handleOAuthLogin = (provider) => {
+        window.open(`/auth/${provider}`,"_self");
+    }
+    
+    handleOAuthLoginClick = (provider) => {
+        this.setState({[provider + "Icon"] : "spinner",
+                       [provider + "Label"] : "Connecting..."});
+        setTimeout(() => this.handleOAuthLogin(provider),1000);
+     }
+     
     createAccountDone = (data) => {
         this.props.createAccount(data);
         this.setState({showCreateAccount: false,
@@ -169,6 +184,14 @@ class LoginPage extends React.Component {
                     <button id="resetPasswordBtn" className="nav-link btn btn-link">Reset Password</button>
                 </li>
                 </ul>
+                <div className="centered">
+                <button type="button" className="btn btn-github"
+                  onClick={() => this.handleOAuthLoginClick("github")}>
+                  <FontAwesomeIcon icon={this.state.githubIcon} 
+                                   className={this.state.githubIcon == "spinner" ? "fa-spin" : ""}/>
+                  &nbsp;{this.state.githubLabel}
+                </button>
+                </div>
             </div>  
         )
     }

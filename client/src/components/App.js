@@ -3,6 +3,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faWindowClose, faEdit, faCalendar, 
         faSpinner, faSignInAlt, faBars, faTimes, faSearch,
         faSort, faTrash, faEye, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faGithub} from '@fortawesome/free-brands-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
 import LoginPage from './LoginPage.js';
@@ -15,7 +16,7 @@ import AppMode from './AppMode.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
             faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-            faSort, faTrash, faEye, faUserPlus);
+            faSort, faTrash, faEye, faUserPlus, faGithub);
 
 class App extends React.Component {
 
@@ -28,9 +29,60 @@ class App extends React.Component {
                              identityData: {},
                              speedgolfData: {},
                              rounds: [],
-                             roundCount: 0}
+                             roundCount: 0},
+                  authenticated: false                  
                   };
   }
+
+  componentDidMount() {
+    document.addEventListener("click",this.handleClick, true);
+    if (!this.state.authenticated) { 
+      //Use /auth/test route to (re)-test authentication and obtain user data
+      fetch("/auth/test")
+        .then((response) => response.json())
+        .then((obj) => {
+          if (obj.isAuthenticated) {
+            const userId = obj.user.id + '@' + obj.user.provider;
+            let data = JSON.parse(localStorage.getItem(userId));
+            if (data == null) {
+              //create new user with this id in database (localStorage)
+              data = {
+                accountData: {
+                    email: userId,
+                    password: "",
+                    securityQuestion: "",
+                    securityAnswer: ""
+                },
+                identityData: {
+                    displayName: obj.user.id,
+                    profilePic: obj.user.profileImageUrl
+                },
+                speedgolfData: {
+                    bio: "",
+                    homeCourse: "",
+                    firstRound: "",
+                    personalBest: {strokes: "",minutes: "", seconds: "", course: ""},
+                    clubs: {},
+                    clubComments: ""
+                },
+                rounds: [],
+                roundCount: 0
+              };
+              //Commit to localStorage:
+              localStorage.setItem(userId,JSON.stringify(data));
+            } 
+            //Update current user
+            this.setState({
+              userData: data,
+              authenticated: true,
+              mode: AppMode.FEED //We're authenticated so can get into the app.
+            });
+          }
+        }
+      )
+    } 
+  }
+  
 
   /*
    handleClick -- document-level click handler assigned in componentDidMount()
@@ -61,12 +113,6 @@ class App extends React.Component {
     this.setState({mode:AppMode.LOGIN,
                    menuOpen: false});
   }
-
-  componentDidMount() {
-    //Install a doc-level click handler
-    document.addEventListener("click",this.handleClick, true)
-  }
-
   
    //User interface state management methods
    
@@ -100,7 +146,8 @@ class App extends React.Component {
   logInUser = (email) => {
       const data = JSON.parse(localStorage.getItem(email));
       this.setState({userData: data,
-                     mode: AppMode.FEED});
+                     mode: AppMode.FEED,
+                     authenticated: true});
   }
 
   createAccount = (data) => {
