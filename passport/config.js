@@ -27,7 +27,7 @@ const passportConfig = (app) => {
         done(null, user);
     }); 
 
-    app.use(session({secret: "speedgolf", 
+    app.use(session({secret: process.env.SESSION_SECRET, 
                 resave: false,
                 saveUninitialized: false,
                 cookie: {maxAge: 1000 * 60}}))

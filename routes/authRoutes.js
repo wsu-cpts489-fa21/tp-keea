@@ -17,7 +17,6 @@ authRoute.get('/auth/github', passport.authenticate('github'));
 authRoute.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
     console.log("auth/github/callback reached.");
-    console.log(req.isAuthenticated());
     res.redirect('/'); //sends user back to login screen; 
                        //req.isAuthenticated() indicates status
   }
@@ -35,7 +34,6 @@ authRoute.get('/auth/logout', (req, res) => {
 //Should be called from the React.js client to set up app state.
 authRoute.get('/auth/test', (req, res) => {
     console.log("auth/test reached.");
-    console.log(req.isAuthenticated());
     const isAuth = req.isAuthenticated();
     if (isAuth) {
         console.log("User is authenticated");
