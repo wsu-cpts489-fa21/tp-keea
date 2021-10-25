@@ -13,7 +13,7 @@ import authRoute from './routes/authRoutes.js';
 import { Server } from 'http';
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 const app = express(); //Instantiate express app
-const buildPath = (new URL('client/build/', import.meta.url).pathname).substring(1);
+const buildPath = new URL('client/build/', import.meta.url).pathname;
 
 //////////////////////////////////////////////////////////////////////////
 //INITIALIZE EXPRESS APP
