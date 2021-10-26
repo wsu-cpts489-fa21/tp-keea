@@ -43,10 +43,9 @@ class App extends React.Component {
         .then((obj) => {
           if (obj.isAuthenticated) {
             const userId = obj.user.id + '@' + obj.user.provider;
-            let data = JSON.parse(localStorage.getItem(userId));
-            if (data == null) {
-              //create new user with this id in database (localStorage)
-              data = {
+            if (!this.accountExists(userId)) {
+              //create new user with this id
+              const data = {
                 accountData: {
                     email: userId,
                     password: "",
@@ -68,18 +67,11 @@ class App extends React.Component {
                 rounds: [],
                 roundCount: 0
               };
-              //Commit to localStorage:
-              localStorage.setItem(userId,JSON.stringify(data));
-            } 
-            //Update current user
-            this.setState({
-              userData: data,
-              authenticated: true,
-              mode: AppMode.FEED //We're authenticated so can get into the app.
-            });
+              this.createAccount(data);
+            }
+            this.logInUser(userId);
           }
-        }
-      )
+        })
     } 
   }
   
@@ -111,6 +103,8 @@ class App extends React.Component {
    */
   logOut = () => {
     this.setState({mode:AppMode.LOGIN,
+                   userData: null,
+                   authenticated: false,
                    menuOpen: false});
   }
   
@@ -132,6 +126,10 @@ class App extends React.Component {
    
   accountExists = (email) => {
     return (localStorage.getItem(email) !== null);
+  }
+
+  getAccountData = (email) => {
+    return JSON.parse(localStorage.getItem(email));
   }
 
   accountValid = (email, pw) => {
