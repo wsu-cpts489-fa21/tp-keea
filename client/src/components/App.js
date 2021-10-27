@@ -42,34 +42,7 @@ class App extends React.Component {
         .then((response) => response.json())
         .then((obj) => {
           if (obj.isAuthenticated) {
-            const userId = obj.user.id + '@' + obj.user.provider;
-            if (!this.accountExists(userId)) {
-              //create new user with this id
-              const data = {
-                accountData: {
-                    email: userId,
-                    password: "",
-                    securityQuestion: "",
-                    securityAnswer: ""
-                },
-                identityData: {
-                    displayName: obj.user.id,
-                    profilePic: obj.user.profileImageUrl
-                },
-                speedgolfData: {
-                    bio: "",
-                    homeCourse: "",
-                    firstRound: "",
-                    personalBest: {strokes: "",minutes: "", seconds: "", course: ""},
-                    clubs: {},
-                    clubComments: ""
-                },
-                rounds: [],
-                roundCount: 0
-              };
-              this.createAccount(data);
-            }
-            this.logInUser(userId);
+            this.logInUser(obj.user);
           }
         })
     } 
@@ -141,9 +114,8 @@ class App extends React.Component {
     return (userData.accountData.password === pw);   
   }
 
-  logInUser = (email) => {
-      const data = JSON.parse(localStorage.getItem(email));
-      this.setState({userData: data,
+  logInUser = (userObj) => {
+      this.setState({userData: userObj,
                      mode: AppMode.FEED,
                      authenticated: true});
   }

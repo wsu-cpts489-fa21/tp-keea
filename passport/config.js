@@ -1,6 +1,7 @@
 import passport from 'passport';
 import session from 'express-session';
-import githubStrategy from './githubStrategy.js'
+import githubStrategy from './githubStrategy.js';
+import User from '../models/User.js';
 
 const passportConfig = (app) => {
 
@@ -8,24 +9,23 @@ const passportConfig = (app) => {
 
     passport.serializeUser((user, done) => {
         console.log("In serializeUser.");
-        //Note: The code does not use a back-end database. When we have back-end 
-        //database, we would put user info into the database in the callback 
-        //above and only serialize the unique user id into the session
-        let userObject = {
-            id: user.username,
-            provider : user.provider,
-            profileImageUrl : user.photos[0].value
-        };
-        done(null, userObject);
+        console.log("Contents of user param: " + JSON.stringify(user));
+        done(null,user.accountData.id);
     });
-    
-    passport.deserializeUser((user, done) => {
+        
+    passport.deserializeUser(async (userId, done) => {
         console.log("In deserializeUser.");
-        //TO DO: Look up the user in the database and attach their data record to
-        //req.user. For the purposes of this demo, the user record received as a param 
-        //is just being passed through, without any database lookup.
-        done(null, user);
-    }); 
+        let thisUser;
+        try {
+          thisUser = await User.findOne({"accountData.id": userId});
+          console.log("User with id " + userId + 
+            " found in DB. User object will be available in server routes as req.user.")
+          done(null,thisUser);
+        } catch (err) {
+          done(err);
+        }
+      });
+      
 
     app.use(session({secret: process.env.SESSION_SECRET, 
                 resave: false,
