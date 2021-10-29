@@ -8,6 +8,7 @@ import { URL } from 'url';
 import express from 'express';
 import passportConfig from './passport/config.js';
 import authRoute from './routes/authRoutes.js';
+import userRoute from './routes/userRoutes.js';
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 const app = express(); //Instantiate express app
 const buildPath = (PORT === process.env.PORT) ?
@@ -37,6 +38,8 @@ mongoose.connect(connectStr, {useNewUrlParser: true, useUnifiedTopology: true})
 passportConfig(app); //Configure session and passport
 app
   .use(express.static(buildPath))
+  .use(express.json({limit: '20mb'}))
   .use(authRoute)
+  .use(userRoute)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
   
