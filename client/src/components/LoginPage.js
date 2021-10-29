@@ -17,7 +17,7 @@ class LoginPage extends React.Component {
                       accountValid: true,
                       showCreateAccount: false,
                       showAccountCreated: false,
-                      accountCreatedEmail: "",
+                      accountCreatedResult: "",
                       loginBtnIcon: "sign-in",
                       loginBtnLabel: "Log In",
                       githubIcon: ['fab','github'],
@@ -82,10 +82,10 @@ class LoginPage extends React.Component {
      }
      
     createAccountDone = (data) => {
-        this.props.createAccount(data);
+        const result = this.props.createAccount(data);
         this.setState({showCreateAccount: false,
                        showAccountCreated: true,
-                        accountCreatedEmail: data.accountData.email});
+                        accountCreatedResult: result});
     }
 
     createAccountCancel = () => {
@@ -136,7 +136,7 @@ class LoginPage extends React.Component {
                   <div id="accountCreated" className="toast-container" 
                        role="alert" aria-atomic="true" aria-live="assertive">
                   <div className="toast-text">
-                     {"New account created with email " + this.state.accountCreatedEmail + "."}
+                     {this.state.accountCreatedResult}
                   </div>
                     <button id="accountCreatedClose" 
                             type="button" 

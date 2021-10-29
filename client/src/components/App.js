@@ -122,8 +122,21 @@ class App extends React.Component {
                      authenticated: true});
   }
 
-  createAccount = (data) => {
-    localStorage.setItem(data.accountData.email, JSON.stringify(data));
+  createAccount = async(data) => {
+    const url = '/users' + data.accountData.id;
+    const res = await fetch(url, {
+      headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+        method: 'POST',
+        body: JSON.stringify(data)}); 
+    if (res.status == 200) { 
+        return("New account created with email " + data.accountData.id);
+    } else { 
+        const resText = await res.text();
+        return("New account was not created. " + resText);
+    }
   }
 
   updateUserData = (data) => {

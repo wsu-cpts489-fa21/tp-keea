@@ -100,7 +100,7 @@ class CreateAccount extends React.Component {
             //All fields valid: create account
             const newAccount = {
                 accountData: {
-                    email: this.state.email,
+                    id: this.state.email,
                     password: this.state.password,
                     securityQuestion: this.state.securityQuestion,
                     securityAnswer: this.state.securityAnswer
