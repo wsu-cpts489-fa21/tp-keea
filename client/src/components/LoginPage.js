@@ -44,23 +44,31 @@ class LoginPage extends React.Component {
         } 
     } 
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-         //Is the email field valid
-         const eValid = !this.email.current.validity.typeMismatch && 
-                          !this.email.current.validity.valueMissing;
-         //Is the password field valid?
-         const pValid = !this.password.current.validity.patternMismatch && 
+            //Is the email field valid
+            const eValid = !this.email.current.validity.typeMismatch && 
+                            !this.email.current.validity.valueMissing;
+            //Is the password field valid?
+            const pValid = !this.password.current.validity.patternMismatch && 
                             !this.password.current.validity.valueMissing;
-        //Is account valid?
-        const aValid = eValid && pValid && this.props.accountValid(this.email.current.value,this.password.current.value);
-        if (eValid && pValid && aValid) {
-            this.props.logInUser(this.email.current.value);
-        } else { //at least one field is invalid--trigger re-render
-            this.setState({emailValid: eValid,
-                           passwordValid: pValid,
-                           accountValid: aValid});
+        if (!eValid || !pValid) {
+            this.setState({
+                emailValid: eValid,
+                passwordValid: pValid,
+                accountValid: true});
+            return;
         }
+        //Can we log in user?
+        const aValid = await this.props.authenticateUser(this.email.current.value,this.password.current.value);
+        if (aValid) {
+            window.open('/', '_self'); //App.componentDidMount() takes it from here
+        } else { //at least one field is invalid--trigger re-render of LoginPage component
+            this.setState({emailValid: eValid,
+                            passwordValid: pValid,
+                            accountValid: aValid});
+        } 
+    
     }
 
     handleOAuthLogin = (provider) => {
@@ -120,7 +128,6 @@ class LoginPage extends React.Component {
             <CreateAccount 
               createAccount = {this.props.createAccount}
               accountExists = {this.props.accountExists}
-              accountValid = {this.props.accountValid}
               createAccountDone = {this.createAccountDone} 
               createAccountCancel = {this.createAccountCancel}/> :
             <div id="loginPage" className="mode-page">

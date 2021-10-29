@@ -46,4 +46,23 @@ authRoute.get('/auth/test', (req, res) => {
     res.json({isAuthenticated: isAuth, user: req.user});
 });
 
+//LOGIN route: Attempts to log in user using local strategy
+authRoute.post('/auth/login', 
+  passport.authenticate('local', { failWithError: true }),
+  (req, res) => {
+    console.log("/login route reached: successful authentication.");
+    //Redirect to app's main page; the /auth/test route should return true
+    res.status(200).send("Login successful");
+  },
+  (err, req, res, next) => {
+    console.log("/login route reached: unsuccessful authentication");
+    if (req.authError) {
+      console.log("req.authError: " + req.authError);
+      res.status(401).send(req.authError);
+    } else {
+      res.status(401).send("Unexpected error occurred when attempting to authenticate. Please try again.");
+    }
+  });
+
+
 export default authRoute;

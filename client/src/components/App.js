@@ -105,13 +105,15 @@ class App extends React.Component {
     return JSON.parse(localStorage.getItem(email));
   }
 
-  accountValid = (email, pw) => {
-    const userDataString = localStorage.getItem(email);
-    if (userDataString == null) {
+  authenticateUser = async(id, pw) => {
+    const url = "auth/login?username=" + id + 
+      "&password=" + pw;
+    const res = await fetch(url,{method: 'POST'});
+    if (res.status == 200) { //successful login!
+      return true;
+    } else { //Unsuccessful login
       return false;
-    }
-    const userData = JSON.parse(userDataString);
-    return (userData.accountData.password === pw);   
+    } 
   }
 
   logInUser = (userObj) => {
@@ -209,7 +211,7 @@ class App extends React.Component {
                        logInUser={this.logInUser}
                        createAccount={this.createAccount}
                        accountExists={this.accountExists}
-                       accountValid={this.accountValid}/>, 
+                       authenticateUser={this.authenticateUser}/>, 
           FeedMode:
             <FeedPage modalOpen={this.state.modalOpen}
                       toggleModalOpen={this.toggleModalOpen} 
