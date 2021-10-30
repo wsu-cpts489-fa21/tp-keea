@@ -97,8 +97,9 @@ class App extends React.Component {
 
   //Account Management methods
    
-  accountExists = (email) => {
-    return (localStorage.getItem(email) !== null);
+  accountExists = async(email) => {
+    const res = await fetch("/user/" + email);
+    return (res.status === 200);
   }
 
   getAccountData = (email) => {
@@ -106,7 +107,7 @@ class App extends React.Component {
   }
 
   authenticateUser = async(id, pw) => {
-    const url = "auth/login?username=" + id + 
+    const url = "/auth/login?username=" + id + 
       "&password=" + pw;
     const res = await fetch(url,{method: 'POST'});
     if (res.status == 200) { //successful login!
@@ -123,7 +124,7 @@ class App extends React.Component {
   }
 
   createAccount = async(data) => {
-    const url = '/users' + data.accountData.id;
+    const url = '/users/' + data.accountData.id;
     const res = await fetch(url, {
       headers: {
                 'Accept': 'application/json',
@@ -131,7 +132,7 @@ class App extends React.Component {
               },
         method: 'POST',
         body: JSON.stringify(data)}); 
-    if (res.status == 200) { 
+    if (res.status == 201) { 
         return("New account created with email " + data.accountData.id);
     } else { 
         const resText = await res.text();

@@ -87,7 +87,7 @@ class CreateAccount extends React.Component {
       }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         //Are fields valid?
         const eValid = this.emailIsValid(this.state.email);
@@ -95,7 +95,7 @@ class CreateAccount extends React.Component {
         const rpValid = (this.state.password === this.state.repeatPassword);
         const sqValid = (this.state.securityQuestion.length > 0);
         const saValid = (this.state.securityAnswer.length > 0);
-        const acctAvail = (!eValid || !this.props.accountExists(this.state.email));
+        const acctAvail = !(await this.props.accountExists(this.state.email));
         if (eValid && pValid && rpValid && sqValid && saValid && acctAvail) { 
             //All fields valid: create account
             const newAccount = {
@@ -113,12 +113,10 @@ class CreateAccount extends React.Component {
                     bio: "",
                     homeCourse: "",
                     firstRound: "",
-                    personalBest: {strokes: "",minutes: "", seconds: "", course: ""},
+                    personalBest: {},
                     clubs: {},
                     clubComments: ""
-                },
-                rounds: [],
-                roundCount: 0
+                }
             };
             this.props.createAccountDone(newAccount);
         } else { //At least one field invalid

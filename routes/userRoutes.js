@@ -32,7 +32,7 @@ userRoute.post('/users/:userId',  async (req, res, next) => {
       " and body = " + JSON.stringify(req.body)); 
     const validAccountProps = ['id', 'password', 'securityQuestion', 'securityAnswer'];
     const validIdentityProps = ['displayName', 'profilePic'];
-    const validSGProps = ['bio','homeCourse','personalBest', 'clubs', 'clubComments'];
+    const validSGProps = ['bio','homeCourse','firstRound', 'personalBest', 'clubs', 'clubComments'];
     for (const bodyProp in req.body) {
             if (bodyProp === 'accountData') {
                 for (const aProp in req.body.accountData) {
@@ -63,7 +63,7 @@ userRoute.post('/users/:userId',  async (req, res, next) => {
                 }
             } else { 
                 return res.status(400).send(
-                    "users/ PUT request formulated incorrectly." +
+                    "users/ POST request formulated incorrectly." +
                     "Only the following top-level props are allowed in user data: " +
                     "'accountData', 'identityData', 'speedgolfData'");
             }
@@ -107,7 +107,7 @@ userRoute.put('/users/:userId',  async (req, res, next) => {
     }
     const validAccountProps = ['id', 'password', 'securityQuestion', 'securityAnswer'];
     const validIdentityProps = ['displayName', 'profilePic'];
-    const validSGProps = ['bio','homeCourse','personalBest', 'clubs', 'clubComments'];
+    const validSGProps = ['bio','homeCourse','personalBest', 'firstRound','clubs', 'clubComments'];
     for (const bodyProp in req.body) {
         if (bodyProp === 'accountData') {
             for (const aProp in req.body.accountData) {

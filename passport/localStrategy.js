@@ -7,16 +7,16 @@ import passportLocal from 'passport-local';
 import User from '../models/User.js';
 
 
-passport.use(new passportLocal.Strategy({passReqToCallback: true},
+const localStrategy = new passportLocal.Strategy({passReqToCallback: true},
     //Called when user is attempting to log in with local username and password. 
     //userId contains the email address entered into the form and password
     //contains the password entered into the form.
     async (req, userId, password, done) => {
       let thisUser;
       try {
-        thisUser = await User.findOne({id: userId});
+        thisUser = await User.findOne({"accountData.id": userId});
         if (thisUser) {
-          if (thisUser.password === password) {
+          if (thisUser.accountData.password === password) {
             return done(null, thisUser);
           } else {
             req.authError = "The password is incorrect. Please try again" + 
@@ -32,5 +32,6 @@ passport.use(new passportLocal.Strategy({passReqToCallback: true},
         return done(err);
       }
     }
-  ));
+  );
   
+  export default localStrategy;
