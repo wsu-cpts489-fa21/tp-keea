@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////////
 import passportLocal from 'passport-local'; 
 import User from '../models/User.js';
-
+import bcrypt from 'bcrypt';
 
 const localStrategy = new passportLocal.Strategy({passReqToCallback: true},
     //Called when user is attempting to log in with local username and password. 
@@ -16,7 +16,8 @@ const localStrategy = new passportLocal.Strategy({passReqToCallback: true},
       try {
         thisUser = await User.findOne({"accountData.id": userId});
         if (thisUser) {
-          if (thisUser.accountData.password === password) {
+          const match = await bcrypt.compare(password,thisUser.accountData.password);
+          if  (match) {
             return done(null, thisUser);
           } else {
             req.authError = "The password is incorrect. Please try again" + 

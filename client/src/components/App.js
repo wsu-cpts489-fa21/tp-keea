@@ -25,11 +25,12 @@ class App extends React.Component {
     this.state = {mode: AppMode.LOGIN,
                   menuOpen: false,
                   modalOpen: false,
-                  userData: {accountData: {},
-                             identityData: {},
-                             speedgolfData: {},
-                             rounds: [],
-                             roundCount: 0},
+                  userData: {
+                    accountData: {},
+                    identityData: {},
+                    speedgolfData: {},
+                    rounds: [],
+                    roundCount: 0},
                   authenticated: false                  
                   };
   }
@@ -76,7 +77,12 @@ class App extends React.Component {
    */
   logOut = () => {
     this.setState({mode:AppMode.LOGIN,
-                   userData: null,
+                   userData: {
+                    accountData: {},
+                    identityData: {},
+                    speedgolfData: {},
+                    rounds: [],
+                    roundCount: 0},
                    authenticated: false,
                    menuOpen: false});
   }

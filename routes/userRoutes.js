@@ -4,7 +4,9 @@
 
 import User from "../models/User.js";
 import express from 'express';
+import bcrypt from 'bcrypt';
 const userRoute = express.Router();
+const saltRounds = 10;
 
 
 //READ user route: Retrieves the user with the specified userId from users collection (GET)
@@ -71,12 +73,13 @@ userRoute.post('/users/:userId',  async (req, res, next) => {
     try {
         let thisUser = await User.findOne({"accountData.id": req.params.userId});
         if (thisUser) { //account already exists
-        res.status(400).send("There is already an account with email '" + 
-            req.params.userId + "'.");
+            res.status(400).send("There is already an account with email '" + 
+             req.params.userId + "'.");
         } else { //account available -- add to database
-        thisUser = await new User({
+            const hash = await bcrypt.hash(req.body.accountData.password, saltRounds);
+            thisUser = await new User({
                 accountData: {id: req.params.userId,
-                            password: req.body.accountData.password,
+                            password: hash,
                             securityQuestion: req.body.accountData.securityQuestion,
                             securityAnswer: req.body.accountData.securityAnswer},
                 identityData: {displayName: req.body.identityData.displayName,
