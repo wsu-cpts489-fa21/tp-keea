@@ -84,7 +84,7 @@ class LoginPage extends React.Component {
     createAccountDone = async (data) => {
         const result = await this.props.createAccount(data);
         this.setState({showCreateAccount: false,
-                       showAccountCreated: true,
+                        showAccountCreated: true,
                         accountCreatedResult: result});
     }
 

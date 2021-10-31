@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from '../images/sslogo.png'
-import profilePic from "../images/DefaultProfilePic.jpg";
+import profilePic from '../images/DefaultProfilePic.jpg';
 import AppMode from './AppMode';
 
 class NavBar extends React.Component {
@@ -37,8 +37,8 @@ class NavBar extends React.Component {
                   className="navbar-btn navbar-profile-btn" 
                   aria-label="Account and Profile Settings"
                   style={{backgroundImage: this.props.userData.identityData.profilePic === "" ? 
-                            profilePic : 
-                            "url(" + this.props.userData.identityData.profilePic + ")"}}>
+                            `url(${profilePic})` : 
+                            `url(${this.props.userData.identityData.profilePic})`}}>
                 </button> 
               </div> : 
               <div className="navbar-right-items"></div>}
