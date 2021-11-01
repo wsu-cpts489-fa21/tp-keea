@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import RoundSchema from './Round.js';
 
 const UserSchema = new mongoose.Schema({
   accountData: {
@@ -21,7 +22,8 @@ const UserSchema = new mongoose.Schema({
                    course: String},
     clubs: {},
     clubComments: String
-  }
+  },
+  rounds:[RoundSchema]
 });
 
 const User = mongoose.model("User",UserSchema);

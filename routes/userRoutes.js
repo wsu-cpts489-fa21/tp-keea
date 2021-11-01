@@ -88,7 +88,8 @@ userRoute.post('/users/:userId',  async (req, res, next) => {
                                 homeCourse: req.body.speedgolfData.homeCourse,
                                 personalBest: req.body.speedgolfData.personalBest,
                                 clubs: req.body.speedgolfData.clubs,
-                                clubComments: req.body.speedgolfData.clubComments}
+                                clubComments: req.body.speedgolfData.clubComments},
+                rounds: []
             }).save();
         return res.status(201).send("New account for '" + 
             req.params.userId + "' successfully created.");
