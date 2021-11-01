@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 import User from "../models/User.js";
-import Round from "../models/Round.js";
+import {Round} from "../models/Round.js";
 import express from 'express';
 const roundRoute = express.Router();
 
@@ -27,19 +27,24 @@ roundRoute.post('/rounds/:userId', async (req, res, next) => {
         "minutes, seconds, notes.");
     }
     try {
-      let status = await User.updateOne(
-      {"accountData.id": req.params.userId},
-      {$push: {rounds: req.body}});
+      const round = new Round(req.body);
+      const error = round.validateSync();
+      if (error) { //Schema validation error occurred
+        return res.status(400).send("Round not added to database. " + error.message);
+      }
+      const status = await User.updateOne(
+        {"accountData.id": req.params.userId},
+        {$push: {rounds: req.body}});
       if (status.modifiedCount != 1) {
-        res.status(400).send("Error occurred when adding round to"+
-          " database. User '" + req.params.userId + "' does not exist.");
+        return res.status(400).send("Round not added to database. "+
+          "User '" + req.params.userId + "' does not exist.");
       } else {
-        res.status(200).send("Round successfully added to database.");
+        return res.status(200).send("Round successfully added to database.");
       }
     } catch (err) {
       console.log(err);
-      return res.status(400).send("Unexpected error occurred when adding round" +
-       " to database: " + err);
+      return res.status(400).send("Round not added to database. " +
+        "Unexpected error occurred: " + err);
     } 
   });
 

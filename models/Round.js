@@ -24,5 +24,5 @@ const RoundSchema = new mongoose.Schema({
   });
   
 
-//const Round = mongoose.model("Round",RoundSchema);
-export default RoundSchema;
+const Round = mongoose.model("Round",RoundSchema);
+export {RoundSchema, Round};

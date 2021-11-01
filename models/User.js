@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import RoundSchema from './Round.js';
+import {RoundSchema} from './Round.js';
 
 const UserSchema = new mongoose.Schema({
   accountData: {
