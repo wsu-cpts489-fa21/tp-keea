@@ -82,7 +82,7 @@ class App extends React.Component {
                     identityData: {},
                     speedgolfData: {},
                     rounds: [],
-                    roundCount: 0},
+                    },
                    authenticated: false,
                    menuOpen: false});
   }
@@ -153,20 +153,30 @@ class App extends React.Component {
 
   //Round Management methods
 
-  addRound = (newRoundData) => {
-    const newRounds = [...this.state.userData.rounds];
-    const newRoundCount = this.state.userData.roundCount + 1;
-    newRoundData.roundNum = newRoundCount;
-    newRounds.push(newRoundData);
-    const newUserData = {
-      accountData: this.state.userData.accountData,
-      identityData: this.state.userData.identityData,
-      speedgolfProfileData: this.state.userData.speedgolfProfileData,
-      rounds: newRounds, 
-      roundCount: newRoundCount
-    };
-    localStorage.setItem(newUserData.accountData.email,JSON.stringify(newUserData));
-    this.setState({userData: newUserData});
+  addRound = async(newRoundData) => {
+    const url = "/rounds/" + this.state.userData.accountData.id;
+    let res = await fetch(url, {
+                  method: 'POST',
+                  headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                                },
+                          method: 'POST',
+                          body: JSON.stringify(newRoundData)
+                }); 
+    if (res.status == 201) { 
+      const newRounds = [...this.state.userData.rounds];
+      newRounds.push(newRoundData);
+      const newUserData = {accountData: this.state.userData.accountData,
+                           identityData: this.state.userData.identityData,
+                           speedgolfData: this.state.userData.speedgolfData,
+                           rounds: newRounds};
+      this.setState({userData: newUserData});
+      return("New round logged.");
+    } else { 
+      const resText = await res.text();
+      return("New Round could not be logged. " + resText);
+    }
   }
 
   updateRound = (newRoundData) => {

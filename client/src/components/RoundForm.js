@@ -55,18 +55,16 @@ class RoundForm extends React.Component {
         }
     }
   
-
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({btnIcon: "spinner", btnLabel: "Saving..."});
-        setTimeout(this.handleSubmitCallback,1000);
+        this.setState({btnIcon: "spinner", btnLabel: "Saving..."},this.handleSubmitCallback);
     }
 
-    handleSubmitCallback = () => {
+    handleSubmitCallback = async() => {
         const newRound = {...this.state};
         delete newRound.btnIcon;
         delete newRound.btnLabel;
-        this.props.saveRound(newRound);
+        const res = await this.props.saveRound(newRound);
         this.props.toggleModalOpen();
         this.props.setMode(RoundsMode.ROUNDSTABLE);
     }

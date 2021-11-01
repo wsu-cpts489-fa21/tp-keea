@@ -59,16 +59,10 @@ class RoundsPage extends React.Component {
                     toggleModalOpen={this.props.toggleModalOpen} />
             );
         case RoundsMode.EDITROUND:
-            let i;
-            for (i = 0; i < this.props.rounds.length; ++i) {
-                if (this.props.rounds[i].roundNum === this.state.editId) {
-                    break;
-                }
-            }
             return (
             <RoundForm mode={this.state.mode}
                 editId = {this.state.editId}
-                roundData={this.props.rounds[i]}
+                roundData={this.props.rounds[this.state.editId]}
                 saveRound={this.props.updateRound}
                 setMode={this.setMode}
                 toggleModalOpen={this.props.toggleModalOpen} />

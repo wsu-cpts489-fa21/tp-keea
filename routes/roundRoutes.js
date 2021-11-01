@@ -39,7 +39,7 @@ roundRoute.post('/rounds/:userId', async (req, res, next) => {
         return res.status(400).send("Round not added to database. "+
           "User '" + req.params.userId + "' does not exist.");
       } else {
-        return res.status(200).send("Round successfully added to database.");
+        return res.status(201).send("Round successfully added to database.");
       }
     } catch (err) {
       console.log(err);

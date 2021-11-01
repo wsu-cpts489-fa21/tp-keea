@@ -6,25 +6,28 @@ class RoundsTable extends React.Component {
   renderTable = () => {
     const table = [];
     for (let r = 0; r < this.props.rounds.length; ++r) {
-      const thisRoundNum = this.props.rounds[r].roundNum;
       table.push(
-        <tr key={thisRoundNum.toString()}>
-          <td>{this.props.rounds[r].date}</td>
+        <tr key={r}>
+          <td>{this.props.rounds[r].date.substring(0,10)}</td>
           <td>{this.props.rounds[r].course}</td>
           <td>{(Number(this.props.rounds[r].strokes) + 
-                Number(this.props.rounds[r].minutes)) +
-                ":" + this.props.rounds[r].seconds + " (" + 
-                this.props.rounds[r].strokes + 
-                " in " + this.props.rounds[r].minutes + ":" + 
-                this.props.rounds[r].seconds + ")"}
+              Number(this.props.rounds[r].minutes)) +
+              ":" + (this.props.rounds[r].seconds < 10 ?  
+                "0" + this.props.rounds[r].seconds :
+                this.props.rounds[r].seconds) + " (" + 
+              this.props.rounds[r].strokes + 
+              " in " + this.props.rounds[r].minutes + ":" + 
+              (this.props.rounds[r].seconds < 10 ?  
+                "0" + this.props.rounds[r].seconds :
+                this.props.rounds[r].seconds) + ")"}
           </td>
           <td><button onClick={this.props.menuOpen ? null : () => 
-                  this.props.initiateEditRound(thisRoundNum)}>
+                  this.props.initiateEditRound(r)}>
                 <FontAwesomeIcon icon="eye"/> 
                 <FontAwesomeIcon icon="edit"/> 
               </button></td>
           <td><button onClick={this.props.menuOpen ? null : 
-            () => this.props.initiateDeleteRound(thisRoundNum)}>
+            () => this.props.initiateDeleteRound(r)}>
                 <FontAwesomeIcon icon="trash"/>
               </button></td>
         </tr> 

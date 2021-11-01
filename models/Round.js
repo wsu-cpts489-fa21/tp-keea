@@ -8,7 +8,7 @@ const RoundSchema = new mongoose.Schema({
     strokes: {type: Number, required: true, min: 1, max: 300},
     minutes: {type: Number, required: true, min: 1, max: 240},
     seconds: {type: Number, required: true, min: 0, max: 60},
-    notes: {type: String, required: true}
+    notes: {type: String}
   },
   {
     toObject: {
