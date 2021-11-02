@@ -16,7 +16,7 @@ const githubStrategy = new passportGithub.Strategy ({
     //Our convention is to build userId from displayName and provider
     const userId = `${profile.username}@${profile.provider}`;
     //See if document with this unique userId exists in database 
-    let currentUser = await User.findOne({"accountData.email": userId});
+    let currentUser = await User.findOne({"accountData.id": userId});
     if (!currentUser) { //Add this user to the database
         currentUser = await new User({
           accountData: {id: userId},
