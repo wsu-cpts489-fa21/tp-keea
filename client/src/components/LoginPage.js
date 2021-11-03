@@ -60,6 +60,12 @@ class LoginPage extends React.Component {
             return;
         }
         //Can we log in user?
+        this.setState({loginBtnIcon: 'spinner',
+                       loginBtnLabel: 'Logging In...'},
+                       () => this.handleSubmitCallback(eValid,pValid));
+    }
+
+    handleSubmitCallback = async(eValid, pValid) => {
         const aValid = await this.props.authenticateUser(this.email.current.value,this.password.current.value);
         if (aValid) {
             window.open('/', '_self'); //App.componentDidMount() takes it from here
@@ -68,7 +74,6 @@ class LoginPage extends React.Component {
                             passwordValid: pValid,
                             accountValid: aValid});
         } 
-    
     }
 
     handleOAuthLogin = (provider) => {
@@ -175,9 +180,10 @@ class LoginPage extends React.Component {
                     </div>
                 <p></p>
                 <button type="submit" id="loginBtn" 
-                        className="btn btn-primary fm-primary-btn">
-                    <FontAwesomeIcon icon="sign-in-alt"/>
-                        &nbsp;Log In
+                        className="btn btn-primary fm-primary-btn">                    
+                        <FontAwesomeIcon icon={this.state.loginBtnIcon}
+                                         className={this.state.loginBtnIcon == "spinner" ? "fa-spin" : ""}/>
+                        &nbsp;{this.state.loginBtnLabel}
                 </button>
                 </form>
                 <ul className="nav justify-content-center">
