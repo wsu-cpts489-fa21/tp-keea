@@ -44,7 +44,7 @@ class LoginPage extends React.Component {
         } 
     } 
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
             //Is the email field valid
             const eValid = !this.email.current.validity.typeMismatch && 
@@ -60,19 +60,24 @@ class LoginPage extends React.Component {
             return;
         }
         //Can we log in user?
+        const emailHold = this.email.current.value;
+        const pwHold = this.password.current.value;
         this.setState({loginBtnIcon: 'spinner',
                        loginBtnLabel: 'Logging In...'},
-                       () => this.handleSubmitCallback(eValid,pValid));
+                       () => this.handleSubmitCallback(eValid,pValid,
+                               emailHold, pwHold));
     }
 
-    handleSubmitCallback = async(eValid, pValid) => {
-        const aValid = await this.props.authenticateUser(this.email.current.value,this.password.current.value);
+    handleSubmitCallback = async(eValid, pValid,email,password) => {
+        const aValid = await this.props.authenticateUser(email,password);
         if (aValid) {
             window.open('/', '_self'); //App.componentDidMount() takes it from here
         } else { //at least one field is invalid--trigger re-render of LoginPage component
             this.setState({emailValid: eValid,
                             passwordValid: pValid,
-                            accountValid: aValid});
+                            accountValid: aValid,
+                            loginBtnIcon: "sign-in",
+                            loginBtnLabel: "Log In"});
         } 
     }
 
