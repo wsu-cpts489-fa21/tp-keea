@@ -3,6 +3,7 @@
 .env
 server.crt
 server.key
+node_modules
 
 # dependencies
 node_modules
