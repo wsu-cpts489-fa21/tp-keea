@@ -13,6 +13,29 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
 
 ## Milestone 0 (Due 11/17)
 
+### Tasks
+- [ ] Complete Qualtrics pre-survey (each individual is required to complete survey)
+- [ ] Clone [project starter repo](https://github.com/wsu-cpts489-fa21/Team_Project_Starting_Repo.git) to your team's GitHub repo
+- [ ] Set up [MongoDB Cloud Atlas](https://www.mongodb.com/) database for project
+- [ ] Connect starter app to MongoDB Cloud Atlas
+- [ ] Add Google OAuth to app (3 story pts)
+- [ ] Support ability to update and delete Speedgolf rounds (3 story pts)
+  - [ ] Write and execute Postman API tests
+  - [ ] Write and execute Test Cafe or Playwright UI tests
+- [ ] Support ability to view and update user account data through profile pic (5 story pts)
+  - [ ] Write and execute Postman API tests
+  - [ ] Write and execute Test Cafe or Playwright UI tests
+- [ ] Deploy updated starter app to (Heroku) [https://heroku.com] using team leader's account
+- [ ] In project repo, create three milestones with proper due dates in your project repo ("M0", "M1", "M2")
+- [ ] Create project board for your team's GitHub repo
+- [ ] Identify set of issues from "Team_Project_Starting_Repo project to address for Milestone 1
+  - [ ] Copy/paste issues into your project
+  - [ ] Add issues to "To Do" column of your team's project board
+  - [ ] Assign issues to team members such that story points are equitably distributed
+- [ ] Regularly with team and coordinate work via team Slack channel 
+- [ ] Participate in team retrospective
+- [ ] Complete CATME peer evaluation survey (each individual is required to complete survey)
+
 ### Progress
 
 | Issue  | Linked PR | Contributors (Story pts) | Status Summary | 
