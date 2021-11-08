@@ -11,16 +11,77 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
 1. *Team member 4 (GitHub Id)*
 1. *Team member 5 (GitHub Id)*
 
-## Milestone Progress
+## Milestone 0 (Due 11/17)
 
-| Milestone # | Issue  | Linked PR | Contributors (Story pts) | Status Summary | 
---------------|-----------------|----------------|--------|------------|
-| [0](https://www.github.com/) | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts)<br>...<li>Name n (*y* *pts*)| *100% Complete* | 
-| [0](https://www.github.com/) | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts)<br>...<li>Name n (*y* pts)| *100% Complete* |
-| [1](https://www.github.com/) | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *100% Complete* | 
-| [1](https://www.github.com/) | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *40% Complete*<br><li>We updated the database schema<li>We have not completed the UI updates yet.|
-| [2](https://www.github.com/) | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *100% Complete* | 
-| [2](https://www.github.com/) | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *40% Complete*<br><li>We updated the database schema<li>We have not completed the UI updates yet.|
+### Progress
 
+| Issue  | Linked PR | Contributors (Story pts) | Status Summary | 
+|---------|----------|--------------------------|----------------|
+| [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts)<br>...<li>Name n (*y* *pts*)| *100% Complete* | 
+| [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *40% Complete*<br><li>We updated the database schema<li>We have not completed the UI updates yet.|
 
-Each CptS 489 project team should copy this repo into their team's repository and use it as a starting point for the team project.
+### Retrospective Summary
+*What went well:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+ *What we'd like to improve:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+*Specific changes we plan to implement in next sprint:*
+  - Item 1
+  - Item 2
+  - Item x
+
+## Milestone 1 (Due 12/1)
+
+### Progress
+
+| Issue  | Linked PR | Contributors (Story pts) | Status Summary | 
+|---------|----------|--------------------------|----------------|
+| [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts)<br>...<li>Name n (*y* *pts*)| *100% Complete* | 
+| [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *40% Complete*<br><li>We updated the database schema<li>We have not completed the UI updates yet.|
+
+### Retrospective Summary
+*What went well:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+ *What we'd like to improve:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+*Specific changes we plan to implement in next sprint:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+## Milestone 2 (Due 12/9)
+
+### Progress
+
+| Issue  | Linked PR | Contributors (Story pts) | Status Summary | 
+|---------|----------|--------------------------|----------------|
+| [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts)<br>...<li>Name n (*y* *pts*)| *100% Complete* | 
+| [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *40% Complete*<br><li>We updated the database schema<li>We have not completed the UI updates yet.|
+
+### Retrospective Summary
+*What went well:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+ *What we'd like to improve:*
+  - Item 1
+  - Item 2
+  - Item x
+  
+*Specific changes we plan to implement in next sprint:*
+  - Item 1
+  - Item 2
+  - Item x
