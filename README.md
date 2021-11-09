@@ -38,10 +38,23 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
 
 ### Progress
 
-| Issue  | Linked PR | Contributors (Story pts) | Status Summary | 
+| Issue  | Linked PR | Contributors (Story pts) | Status | 
 |---------|----------|--------------------------|----------------|
 | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts)<br>...<li>Name n (*y* *pts*)| *100% Complete* | 
 | [Issue #](https://www.github.com/) | [PR #](https://www.github.com/) | <li>Name 1 (*x* pts<br>...<li>Name n (*y* pts)| *40% Complete*<br><li>We updated the database schema<li>We have not completed the UI updates yet.|
+
+### Testing
+
+| Test Fixture File | Feature Tested | Results Summary |
+|-------------------|----------------|-----------------|
+| [Google.js](https://www.github.com/)|Google Authentication| 3 tests passed |
+| [routes.js](https://www.github.com/)|PUT and DELETE routes for rounds | 15 tests passed |
+  
+### Communication
+ 
+- Slack: x posts and replies during milestone period
+- Zoom: y meetings during milestone period (Include dates and durations)
+- <<List other communication stats, as appropriate>>
 
 ### Retrospective Summary
 *What went well:*
