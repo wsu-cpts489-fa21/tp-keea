@@ -14,6 +14,7 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
 ## Milestone 0 (Due 11/19)
 
 ### Progress
+#### Issues and Story Points
 <table> 
   <thead>
     <tr>
@@ -35,6 +36,14 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </tbody>
 </table>
 
+#### Context Statements
+| Team Member | Context Statement |
+|-------------|-------------------|
+|TM1| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM2| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM3| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM4| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM5| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
 
 ### Testing
 
@@ -111,7 +120,19 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </tbody>
 </table>
 
-### Retrospective Summary
+#### Context Statements
+| Team Member | Context Statement |
+|-------------|-------------------|
+|TM1| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM2| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM3| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM4| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM5| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+
+### Retrospective
+
+[Link to Recording](https://wsu.zoom.us/recording)
+
 #### What went well
   - Item 1
   - Item 2
@@ -130,6 +151,7 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
 ## Milestone 1 (Due 12/3)
 
 ### Progress
+#### Issues and Story Points
 <table> 
   <thead>
     <tr>
@@ -151,6 +173,14 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </tbody>
 </table>
 
+#### Context Statements
+| Team Member | Context Statement |
+|-------------|-------------------|
+|TM1| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM2| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM3| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM4| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM5| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
 
 ### Testing
 
@@ -227,7 +257,19 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </tbody>
 </table>
 
-### Retrospective Summary
+#### Context Statements
+| Team Member | Context Statement |
+|-------------|-------------------|
+|TM1| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM2| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM3| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM4| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM5| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+
+### Retrospective
+
+[Link to Recording](https://wsu.zoom.us/recording)
+
 #### What went well
   - Item 1
   - Item 2
@@ -246,6 +288,7 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
 ## Milestone 2 (Due 12/10)
 
 ### Progress
+#### Issues and Story Points
 <table> 
   <thead>
     <tr>
@@ -267,6 +310,14 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </tbody>
 </table>
 
+#### Context Statements
+| Team Member | Context Statement |
+|-------------|-------------------|
+|TM1| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM2| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM3| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM4| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
+|TM5| <*Optional but encouraged*: Brief statement explaining your contribution to this milestone> |
 
 ### Testing
 
@@ -343,7 +394,19 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </tbody>
 </table>
 
-### Retrospective Summary
+#### Context Statements
+| Team Member | Context Statement |
+|-------------|-------------------|
+|TM1| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM2| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM3| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM4| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+|TM5| <*Optional but encouraged*: Brief statement explaining your communication to this milestone> |
+
+### Retrospective
+
+[Link to Recording](https://wsu.zoom.us/recording)
+
 #### What went well
   - Item 1
   - Item 2
