@@ -70,7 +70,57 @@ roundRoute.get('/rounds/:userId', async(req, res) => {
   
 //UPDATE round route: Updates a specific round for a given user
 //in the users collection (PUT)
-//TO DO: Implement this route
+roundRoute.put('/rounds/:userId/:roundId', async (req, res, next) => {
+  console.log("in /rounds (PUT) route with params = " + 
+              JSON.stringify(req.params) + " and body = " + 
+              JSON.stringify(req.body));
+  if (!req.body.hasOwnProperty("date") || 
+      !req.body.hasOwnProperty("course") || 
+      !req.body.hasOwnProperty("type") ||
+      !req.body.hasOwnProperty("holes") || 
+      !req.body.hasOwnProperty("strokes") ||
+      !req.body.hasOwnProperty("minutes") ||
+      !req.body.hasOwnProperty("seconds") || 
+      !req.body.hasOwnProperty("notes")) {
+    //Body does not contain correct properties
+    return res.status(400).send("PUT request on /rounds formulated incorrectly." +
+      "Body must contain all 8 required fields: date, course, type, holes, strokes, " +
+      "minutes, seconds, notes.");
+  }
+  try {
+    const round = new Round(req.body);
+    const error = round.validateSync();
+    if (error) { //Schema validation error occurred
+      return res.status(400).send("Round not added to database. " + error.message);
+    }
+    const status = await User.findOneAndUpdate(
+      {"accountData.id": req.params.userId, "rounds._id": req.params.roundId},
+      {"$set": {
+        "rounds.$.date": req.body.date,
+        "rounds.$.course": req.body.course,
+        "rounds.$.type": req.body.type,
+        "rounds.$.holes": req.body.holes,
+        "rounds.$.strokes": req.body.strokes,
+        "rounds.$.minutes": req.body.minutes,
+        "rounds.$.seconds": req.body.seconds,
+        "rounds.$.notes": req.body.notes
+      }}
+    );
+    if (status == null)
+    {
+      return res.status(400).send("Round not updated in database. "+
+          "User '" + req.params.userId + "' or Round '" + req.params.roundId + "' does not exist.");
+    }
+    else {
+      return res.status(201).send("Round successfully updated in database.");
+    }
+  } catch (err)
+  {
+    console.log(err);
+      return res.status(400).send("Round not updated in database. " +
+        "Unexpected error occurred: " + err);
+  }
+});
 
 //DELETE round route: Deletes a specific round for a given user
 //in the users collection (DELETE)
