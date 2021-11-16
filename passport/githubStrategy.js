@@ -20,7 +20,7 @@ const githubStrategy = new passportGithub.Strategy ({
     if (!currentUser) { //Add this user to the database
         currentUser = await new User({
           accountData: {id: userId},
-          identityData: {displayName: profile.displayName,
+          identityData: {displayName: profile.username,
                          profilePic: profile.photos[0].value},
           speedgolfData: {bio: "",
                           homeCourse: "",
