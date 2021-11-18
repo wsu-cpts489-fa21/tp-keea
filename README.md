@@ -5,7 +5,7 @@ This repository implements SpeedScore, a web app that enables users to log, anal
 You can access our team's deployed app at [this Heroku site](https://ourapp.herokuapp.com)
 
 ## Team members
-1. **Team leader:** *Alex (alex-eshock)*
+1. **Team leader:** *Alex Ishaque (alex-eshock)*
 1. *Team member 2 Kristian Suzara (drwontoned)*
 1. *Team member 3 Malachi Potts (Mhpotts)*
 1. *Team member 4 Elisha Aguilera (EJAguilera)*
