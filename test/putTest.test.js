@@ -1,6 +1,6 @@
 import {test, expect} from "@playwright/test";
 
-test('basic test', async ({page}) => {
+test('Update round test with mouse clicks', async ({page}) => {
     await page.goto('http://localhost:8080');
     await page.fill('#email', 'gooba@mail.co'); // Only works for my configuration
     await page.fill('#password', 'Breakfast12!'); // Again, only works for my configuration
