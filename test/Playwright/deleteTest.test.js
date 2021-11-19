@@ -51,7 +51,7 @@ test('Delete keyboard input test', async ({page}) => {
     await page.keyboard.press('Tab'); // 8 Tab presses to get to confirm button
     await page.keyboard.press('Enter')
     const roundDescription = page.locator('#roundsTableCaption');
-    await expect(roundDescription.innerText).toHaveText('Table displaying 0 speedgolf rounds');
+    await expect(roundDescription).toHaveText('Table displaying 0 speedgolf rounds');
     // Resets and adds the round back
     await page.click('#roundsModeActionBtn');
     await page.fill('#roundCourse', 'Marriotta');
