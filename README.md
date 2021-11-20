@@ -1,4 +1,4 @@
-# CptS 489 Team Project: *Team Name*
+# CptS 489 Team Project: *KEEA*
 This repository implements SpeedScore, a web app that enables users to log, analyze, share, and discuss their speedgolf rounds and experiences. SpeedScore is built using MongoDB, Express.js, React.js, and Node.js.
 
 ## Link to Deployed App
