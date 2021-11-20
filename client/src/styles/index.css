@@ -368,6 +368,17 @@ button::-moz-focus-inner {
   background-color: var(--main-red-color);
 }
 
+.dialog-backdropStyle {
+  padding-top: 100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 50;
+}
+
 /*************************************************************************
 * CSS CLASSES FOR TOAST NOTIFICATION
 *************************************************************************/

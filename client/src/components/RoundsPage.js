@@ -4,6 +4,7 @@ import RoundsMode  from './RoundsMode.js';
 import RoundsTable from './RoundsTable.js';
 import RoundForm from './RoundForm.js';
 import FloatingButton from './FloatingButton.js'
+import PopUpModal from './PopUpModal.js';
 
 class RoundsPage extends React.Component {
     constructor(props) {
@@ -24,8 +25,16 @@ class RoundsPage extends React.Component {
     }
     
     initiateDeleteRound = (val) => {
-        this.setState({deleteId: val},
-        () => alert("Confirm delete goes here!"));
+        this.setState({deleteId: val});
+    }
+
+    completeDeleteRound = () => {
+        this.props.deleteRound(this.props.rounds[this.state.deleteId]._id);
+        this.setState({deleteId: -1});
+    }
+
+    cancelDeleteRound = () => {
+        this.setState({deleteId: -1});
     }
 
     render() {
@@ -33,6 +42,13 @@ class RoundsPage extends React.Component {
         case RoundsMode.ROUNDSTABLE: 
             return (
                 <>
+                    {this.state.deleteId > -1 ? 
+                            <PopUpModal
+                                id={"Delete Round"}
+                                text={"Press yes to delete the round, or No to cancel"}
+                                choices={{Yes: this.completeDeleteRound, No: this.cancelDeleteRound}}
+                            /> 
+                    : null}
                     <RoundsTable rounds={this.props.rounds}
                                 initiateDeleteRound={this.initiateDeleteRound}
                                 deleteRound={this.props.deleteRound} 
@@ -42,12 +58,14 @@ class RoundsPage extends React.Component {
                                 setMode={this.setMode} 
                                 toggleModalOpen={this.props.toggleModalOpen}
                                 menuOpen={this.props.menuOpen} /> 
+                    {this.state.deleteId === -1 ? 
                     <FloatingButton
                         icon="calendar"
                         label={"Log Round"}
                         menuOpen={this.props.menuOpen}
                         action={()=>this.setState({mode: RoundsMode.LOGROUND},
                                     this.props.toggleModalOpen)} />
+                    :null}
             </>
             );
         case RoundsMode.LOGROUND:
