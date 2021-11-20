@@ -12,6 +12,7 @@ import userRoute from './routes/userRoutes.js';
 import roundRoute from './routes/roundRoutes.js';
 const __dirname = path.resolve();
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
+const __dirname = path.resolve();
 const app = express(); //Instantiate express app
 const buildPath = (PORT === process.env.PORT) ?
   new URL('client/build/', import.meta.url).pathname :
