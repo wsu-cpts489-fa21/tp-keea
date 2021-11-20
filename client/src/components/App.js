@@ -179,24 +179,39 @@ class App extends React.Component {
     }
   }
 
-  updateRound = (newRoundData) => {
-    const newRounds = [...this.state.userData.rounds];
-    let r;
-    for (r = 0; r < newRounds.length; ++r) {
-        if (newRounds[r].roundNum === newRoundData.roundNum) {
-            break;
+  updateRound = async(newRoundData) => {
+    const url = "/rounds/" + this.state.userData.accountData.id + "/" + newRoundData._id;
+    let res = await fetch(url, {
+      method: 'PUT',
+      headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                    },
+              method: 'PUT',
+              body: JSON.stringify(newRoundData)
+    }); 
+    if (res.status == 201) { 
+      const newRounds = [...this.state.userData.rounds];
+
+      let i;
+      for (i = 0; i < newRounds.length; i++)
+      {
+        if (newRounds[i]._id === newRoundData._id)
+        {
+          newRounds[i] = newRoundData;
         }
+      }
+      
+      const newUserData = {accountData: this.state.userData.accountData,
+                           identityData: this.state.userData.identityData,
+                           speedgolfData: this.state.userData.speedgolfData,
+                           rounds: newRounds};
+      this.setState({userData: newUserData});
+      return("Round updated.");
+    } else { 
+      const resText = await res.text();
+      return("Round could not be updated. " + resText);
     }
-    newRounds[r] = newRoundData;
-    const newUserData = {
-      accountData: this.state.userData.accountData,
-      identityData: this.state.userData.identityData,
-      speedgolfProfileData: this.state.userData.speedgolfProfileData,
-      rounds: newRounds, 
-      roundCount: this.state.userData.roundCount
-    }
-    localStorage.setItem(newUserData.accountData.email,JSON.stringify(newUserData));
-    this.setState({userData: newUserData}); 
   }
 
   deleteRound = async(id) => {
