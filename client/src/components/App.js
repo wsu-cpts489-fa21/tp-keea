@@ -3,7 +3,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faWindowClose, faEdit, faCalendar, 
         faSpinner, faSignInAlt, faBars, faTimes, faSearch,
         faSort, faTrash, faEye, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { faGithub} from '@fortawesome/free-brands-svg-icons';
+        import { faGithub, faGoogle} from '@fortawesome/free-brands-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
 import LoginPage from './LoginPage.js';
@@ -16,7 +16,7 @@ import AppMode from './AppMode.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
             faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-            faSort, faTrash, faEye, faUserPlus, faGithub);
+            faSort, faTrash, faEye, faUserPlus, faGithub, faGoogle);
 
 class App extends React.Component {
 
@@ -214,24 +214,39 @@ class App extends React.Component {
     }
   }
 
-  deleteRound = (id) => {
-    const newRounds = [...this.state.userData.rounds];
-    let r;
-    for (r = 0; r < newRounds.length; ++r) {
-        if (newRounds[r].roundNum === this.state.deleteId) {
-            break;
+  deleteRound = async(id) => {
+    const url = "/rounds/" + this.state.userData.accountData.id + "/" + id;
+    let res = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                    },
+              method: 'DELETE'
+    });
+    if (res.status == 201) { 
+      const newRounds = [...this.state.userData.rounds];
+
+      let i;
+      for (i = 0; i < newRounds.length; i++)
+      {
+        if (newRounds[i]._id === id)
+        {
+          newRounds.splice(i, 1);
         }
+      }
+
+      const newUserData = {accountData: this.state.userData.accountData,
+        identityData: this.state.userData.identityData,
+        speedgolfData: this.state.userData.speedgolfData,
+        rounds: newRounds};
+      this.setState({userData: newUserData});
+      return("Round deleted.");
     }
-    delete newRounds[r];
-    const newUserData = {
-      accountData: this.state.userData.accountData,
-      identityData: this.state.userData.identityData,
-      speedgolfProfileData: this.state.userData.speedgolfProfileData,
-      rounds: newRounds, 
-      roundCount: this.state.userData.roundCount
+    else {
+      const resText = await res.text();
+      return("Round could not be deleted. " + resText);
     }
-    localStorage.setItem(newUserData.accountData.email,JSON.stringify(newUserData));
-    this.setState({userData: newUserData});
   }
 
   render() {

@@ -10,6 +10,7 @@ import passportConfig from './passport/config.js';
 import authRoute from './routes/authRoutes.js';
 import userRoute from './routes/userRoutes.js';
 import roundRoute from './routes/roundRoutes.js';
+const __dirname = path.resolve();
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 const __dirname = path.resolve();
 const app = express(); //Instantiate express app

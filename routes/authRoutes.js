@@ -6,6 +6,22 @@ import passport from 'passport';
 import express from 'express';
 const authRoute = express.Router();
 
+//AUTHENTICATE route: Uses passport to authenticate with Google.
+//Should be accessed when user clicks on 'Login with Google' button on 
+//Log In page.
+authRoute.get('/auth/google', passport.authenticate('google', {scope: ['email', 'profile']}));
+
+//CALLBACK route:  Google will call this route after the
+//OAuth authentication process is complete.
+//req.isAuthenticated() tells us whether authentication was successful.
+authRoute.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    console.log("auth/google/callback reached.");
+    res.redirect('/'); //sends user back to login screen; 
+                       //req.isAuthenticated() indicates status
+  }
+);
+
 //AUTHENTICATE route: Uses passport to authenticate with GitHub.
 //Should be accessed when user clicks on 'Login with GitHub' button on 
 //Log In page.
