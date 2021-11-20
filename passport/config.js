@@ -1,12 +1,14 @@
 import passport from 'passport';
 import session from 'express-session';
 import githubStrategy from './githubStrategy.js';
+import googleStrategy from './googleStrategy.js';
 import localStrategy from './localStrategy.js';
 import User from '../models/User.js';
 
 const passportConfig = (app) => {
 
     passport.use(githubStrategy);  
+    passport.use(googleStrategy);
     passport.use(localStrategy);
 
     passport.serializeUser((user, done) => {

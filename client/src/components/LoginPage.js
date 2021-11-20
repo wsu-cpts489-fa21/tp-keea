@@ -21,7 +21,9 @@ class LoginPage extends React.Component {
                       loginBtnIcon: "sign-in",
                       loginBtnLabel: "Log In",
                       githubIcon: ['fab','github'],
-                      githubLabel: "Sign in with GitHub"
+                      githubLabel: "Sign in with GitHub",
+                      googleIcon: ['fab', 'google'],
+                      googleLabel: "Sign in with Google"
                     };
     }
 
@@ -208,6 +210,13 @@ class LoginPage extends React.Component {
                   <FontAwesomeIcon icon={this.state.githubIcon} 
                                    className={this.state.githubIcon == "spinner" ? "fa-spin" : ""}/>
                   &nbsp;{this.state.githubLabel}
+                </button>
+                &nbsp;
+                <button type="button" className="btn btn-google"
+                  onClick={() => this.handleOAuthLoginClick("google")}>
+                  <FontAwesomeIcon icon={this.state.googleIcon} 
+                                   className={this.state.googleIcon == "spinner" ? "fa-spin" : ""}/>
+                  &nbsp;{this.state.googleLabel}
                 </button>
                 </div>
             </div>  
