@@ -92,44 +92,76 @@ class ProfileSettings extends React.Component {
   
     handleSubmit = async(event) => {
         event.preventDefault();
-        //Are fields valid?
-        const eValid = this.emailIsValid(this.state.email);
-        const sqValid = (this.state.securityQuestion.length > 0);
-        const saValid = (this.state.securityAnswer.length > 0);
-        const acctAvail = !(await this.props.accountExists(this.state.email));
-        if (eValid && sqValid && saValid && acctAvail) { 
-            //All fields valid: create account
-            const newAccount = {
-                accountData: {
-                    id: this.state.email,
-                    securityQuestion: this.state.securityQuestion,
-                    securityAnswer: this.state.securityAnswer
-                },
-                identityData: {
-                    displayName: (this.state.displayName !== "" ? this.state.displayName : this.state.email),
-                    profilePic: this.state.profilePic
-                },
-                speedgolfData: {
-                    bio: this.state.speedGolfBio,
-                    homeCourse: this.state.speedGolfHome,
-                    firstRound: "",
-                    personalBest: {},
-                    clubs: {},
-                    clubComments: this.state.speedGolfClubs
-                }
-            };
-            this.props.updateUserData(newAccount);
-            //this.props.cancel();
-        } else { //At least one field invalid
-                //Clear out invalid fields and display errors
-            const eVal = (!eValid ? "" : this.state.email);
-            const dnVal = (this.state.displayName !== "" ? this.state.displayName : this.state.email);
-            this.formSubmitted = true; //Ensures error message gets focus
-            this.setState({email: eVal,
-                            displayName: dnVal,
-                            emailValid: eValid,
-                            securityQuestionValid: sqValid,
-                            securityAnswerValid: saValid});
+        if (this.IsOAuth)
+        {
+            //Are fields valid?
+            const eValid = this.emailIsValid(this.state.email);
+            const acctAvail = !(await this.props.accountExists(this.state.email));
+            if (eValid && acctAvail) { 
+                //All fields valid: create account
+                const newAccount = {
+                    accountData: {
+                        id: this.state.email,
+                    },
+                    identityData: {
+                        displayName: (this.state.displayName !== "" ? this.state.displayName : this.state.email),
+                        profilePic: this.state.profilePic
+                    },
+                    speedgolfData: {
+                        bio: this.state.speedGolfBio,
+                        homeCourse: this.state.speedGolfHome,
+                        clubComments: this.state.speedGolfClubs
+                    }
+                };
+                this.props.updateUserData(newAccount);
+                this.props.cancel();
+            } else { //At least one field invalid
+                    //Clear out invalid fields and display errors
+                const eVal = (!eValid ? "" : this.state.email);
+                const dnVal = (this.state.displayName !== "" ? this.state.displayName : this.state.email);
+                this.formSubmitted = true; //Ensures error message gets focus
+                this.setState({email: eVal,
+                                displayName: dnVal,
+                                emailValid: eValid});
+            }
+        }
+        else {
+            //Are fields valid?
+            const eValid = this.emailIsValid(this.state.email);
+            const sqValid = (this.state.securityQuestion.length > 0);
+            const saValid = (this.state.securityAnswer.length > 0);
+            const acctAvail = !(await this.props.accountExists(this.state.email));
+            if (eValid && sqValid && saValid && acctAvail) { 
+                //All fields valid: create account
+                const newAccount = {
+                    accountData: {
+                        id: this.state.email,
+                        securityQuestion: this.state.securityQuestion,
+                        securityAnswer: this.state.securityAnswer
+                    },
+                    identityData: {
+                        displayName: (this.state.displayName !== "" ? this.state.displayName : this.state.email),
+                        profilePic: this.state.profilePic
+                    },
+                    speedgolfData: {
+                        bio: this.state.speedGolfBio,
+                        homeCourse: this.state.speedGolfHome,
+                        clubComments: this.state.speedGolfClubs
+                    }
+                };
+                this.props.updateUserData(newAccount);
+                //this.props.cancel();
+            } else { //At least one field invalid
+                    //Clear out invalid fields and display errors
+                const eVal = (!eValid ? "" : this.state.email);
+                const dnVal = (this.state.displayName !== "" ? this.state.displayName : this.state.email);
+                this.formSubmitted = true; //Ensures error message gets focus
+                this.setState({email: eVal,
+                                displayName: dnVal,
+                                emailValid: eValid,
+                                securityQuestionValid: sqValid,
+                                securityAnswerValid: saValid});
+            }
         }
     }
 
@@ -198,6 +230,7 @@ class ProfileSettings extends React.Component {
                 <form onSubmit={this.handleSubmit} id="editProfileForm" className="centered" novalidate>
                     <div id="profileFormAccordion" className="accordion">
                         <div className="accordion-item">
+                        {this.state.panelOne ?
                             <fieldset>
                                 <h2 className="accordion-header" id="accountHeader">
                                     <button id="accountSettingsBtn" className="accordion-button" type="button"
@@ -206,8 +239,7 @@ class ProfileSettings extends React.Component {
                                         aria-controls="accountSettingsPanel" onClick={this.panelOneClick}>
                                         <legend>Account</legend>
                                     </button>
-                                </h2>
-                                {this.state.panelOne ? 
+                                </h2> 
                                 <div id="accountSettingsPanel"
                                 className="accordion-collapse collapse show" 
                                 aria-labelledby="accountHeader" 
@@ -257,17 +289,32 @@ class ProfileSettings extends React.Component {
                                         </div>
                                         <div className="mb-3">
                                             <label for="profileSecurityQuestion" className="form-label">Security Question:
-                                                <input id="profileSecurityQuestion"
-                                                ref={this.securityQuestion}
-                                                value={this.state.securityQuestion}
-                                                onChange={this.handleChange}
-                                                className="form-control centered"
-                                                name="securityQuestion"
-                                                size="35"
-                                                type="text"
-                                                minlength="5"
-                                                aria-describedby="profileSecurityQuestionDescr"
-                                                />
+                                                {this.IsOAuth ?
+                                                    <input id="profileSecurityQuestion"
+                                                    ref={this.securityQuestion}
+                                                    value={this.state.securityQuestion}
+                                                    onChange={this.handleChange}
+                                                    className="form-control centered"
+                                                    name="securityQuestion"
+                                                    size="35"
+                                                    type="text"
+                                                    minlength="5"
+                                                    disabled
+                                                    aria-describedby="profileSecurityQuestionDescr"
+                                                    /> :
+                                                    <input id="profileSecurityQuestion"
+                                                    ref={this.securityQuestion}
+                                                    value={this.state.securityQuestion}
+                                                    onChange={this.handleChange}
+                                                    className="form-control centered"
+                                                    name="securityQuestion"
+                                                    size="35"
+                                                    type="text"
+                                                    minlength="5"
+                                                    required
+                                                    aria-describedby="profileSecurityQuestionDescr"
+                                                    />
+                                                }
                                             </label>
                                             <div id="profileSecurityQuestionDescr" className="form-text">
                                                 Your security question must be at least 5 characters and should have a memorable answer. You will be asked
@@ -276,16 +323,28 @@ class ProfileSettings extends React.Component {
                                         </div>
                                         <div className="mb-3">
                                             <label for="profileSecurityAnswer" className="form-label">Answer to Security Question:
-                                                <input id="profileSecurityAnswer"
-                                                ref={this.securityAnswer}
-                                                value={this.state.securityAnswer}
-                                                onChange={this.handleChange}
-                                                className="form-control centered"
-                                                name="securityAnswer"
-                                                type="text"
-                                                minlength="5"
-                                                aria-describedby="profileSecurityAnswerDescr"
-                                                required/>
+                                                {this.IsOAuth ?
+                                                    <input id="profileSecurityAnswer"
+                                                    ref={this.securityAnswer}
+                                                    value={this.state.securityAnswer}
+                                                    onChange={this.handleChange}
+                                                    className="form-control centered"
+                                                    name="securityAnswer"
+                                                    type="text"
+                                                    minlength="5"
+                                                    aria-describedby="profileSecurityAnswerDescr"
+                                                    disabled/> :
+                                                    <input id="profileSecurityAnswer"
+                                                    ref={this.securityAnswer}
+                                                    value={this.state.securityAnswer}
+                                                    onChange={this.handleChange}
+                                                    className="form-control centered"
+                                                    name="securityAnswer"
+                                                    type="text"
+                                                    minlength="5"
+                                                    aria-describedby="profileSecurityAnswerDescr"
+                                                    required/>
+                                                }
                                             </label>
                                             <div id="profileSecurityAnswerDescr" className="form-text">
                                                 Your security answer must be at least 5 characters and should be something you easily associate
@@ -293,7 +352,17 @@ class ProfileSettings extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>: 
+                                </div>
+                            </fieldset>:
+                            <fieldset>
+                                <h2 className="accordion-header" id="accountHeader">
+                                    <button id="accountSettingsBtn" className="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accountSettingsPanel" 
+                                        aria-expanded="true" 
+                                        aria-controls="accountSettingsPanel" onClick={this.panelOneClick}>
+                                        <legend>Account</legend>
+                                    </button>
+                                </h2> 
                                 <div id="accountSettingsPanel"
                                 className="accordion-collapse collapse" 
                                 aria-labelledby="accountHeader" 
@@ -343,17 +412,32 @@ class ProfileSettings extends React.Component {
                                         </div>
                                         <div className="mb-3">
                                             <label for="profileSecurityQuestion" className="form-label">Security Question:
-                                                <input id="profileSecurityQuestion"
-                                                ref={this.securityQuestion}
-                                                value={this.state.securityQuestion}
-                                                onChange={this.handleChange}
-                                                className="form-control centered"
-                                                name="securityQuestion"
-                                                size="35"
-                                                type="text"
-                                                minlength="5"
-                                                aria-describedby="profileSecurityQuestionDescr"
-                                                />
+                                                {this.IsOAuth ?
+                                                        <input id="profileSecurityQuestion"
+                                                        ref={this.securityQuestion}
+                                                        value={this.state.securityQuestion}
+                                                        onChange={this.handleChange}
+                                                        className="form-control centered"
+                                                        name="securityQuestion"
+                                                        size="35"
+                                                        type="text"
+                                                        minlength="5"
+                                                        disabled
+                                                        aria-describedby="profileSecurityQuestionDescr"
+                                                        /> :
+                                                        <input id="profileSecurityQuestion"
+                                                        ref={this.securityQuestion}
+                                                        value={this.state.securityQuestion}
+                                                        onChange={this.handleChange}
+                                                        className="form-control centered"
+                                                        name="securityQuestion"
+                                                        size="35"
+                                                        type="text"
+                                                        minlength="5"
+                                                        required
+                                                        aria-describedby="profileSecurityQuestionDescr"
+                                                        />
+                                                }
                                             </label>
                                             <div id="profileSecurityQuestionDescr" className="form-text">
                                                 Your security question must be at least 5 characters and should have a memorable answer. You will be asked
@@ -362,16 +446,28 @@ class ProfileSettings extends React.Component {
                                         </div>
                                         <div className="mb-3">
                                             <label for="profileSecurityAnswer" className="form-label">Answer to Security Question:
-                                                <input id="profileSecurityAnswer"
-                                                ref={this.securityAnswer}
-                                                value={this.state.securityAnswer}
-                                                onChange={this.handleChange}
-                                                className="form-control centered"
-                                                name="securityAnswer"
-                                                type="text"
-                                                minlength="5"
-                                                aria-describedby="profileSecurityAnswerDescr"
-                                                required/>
+                                                {this.IsOAuth ?
+                                                        <input id="profileSecurityAnswer"
+                                                        ref={this.securityAnswer}
+                                                        value={this.state.securityAnswer}
+                                                        onChange={this.handleChange}
+                                                        className="form-control centered"
+                                                        name="securityAnswer"
+                                                        type="text"
+                                                        minlength="5"
+                                                        aria-describedby="profileSecurityAnswerDescr"
+                                                        disabled/> :
+                                                        <input id="profileSecurityAnswer"
+                                                        ref={this.securityAnswer}
+                                                        value={this.state.securityAnswer}
+                                                        onChange={this.handleChange}
+                                                        className="form-control centered"
+                                                        name="securityAnswer"
+                                                        type="text"
+                                                        minlength="5"
+                                                        aria-describedby="profileSecurityAnswerDescr"
+                                                        required/>
+                                                }
                                             </label>
                                             <div id="profileSecurityAnswerDescr" className="form-text">
                                                 Your security answer must be at least 5 characters and should be something you easily associate
@@ -379,20 +475,20 @@ class ProfileSettings extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>}
-                            </fieldset>
+                                </div>
+                            </fieldset>}
                         </div>
                         <div className="accordion-item">
+                        {this.state.panelTwo ? 
                             <fieldset>
                                 <h2 id="profileHeader" className="accordion-header">
-                                    <button id="profileSettingsBtn" className="accordion-button collapsed" type="button"
+                                    <button id="profileSettingsBtn" className="accordion-button" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#profileSettingsPanel" 
                                         aria-expanded="false" 
                                         aria-controls="profileSettingsPanel" onClick={this.panelTwoClick}>
                                         <legend>Name & Picture</legend>
                                     </button>
                                 </h2>
-                                {this.state.panelTwo ? 
                                 <div id="profileSettingsPanel" className="accordion-collapse collapse show"
                                 aria-labelledby="profileHeader" data-bs-parent="#profileFormAccordion">
                                     <div className="accordion-body">
@@ -432,7 +528,17 @@ class ProfileSettings extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>: 
+                                </div>
+                            </fieldset>:
+                                <fieldset>
+                                <h2 id="profileHeader" className="accordion-header">
+                                    <button id="profileSettingsBtn" className="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#profileSettingsPanel" 
+                                        aria-expanded="false" 
+                                        aria-controls="profileSettingsPanel" onClick={this.panelTwoClick}>
+                                        <legend>Name & Picture</legend>
+                                    </button>
+                                </h2> 
                                 <div id="profileSettingsPanel" className="accordion-collapse collapse"
                                 aria-labelledby="profileHeader" data-bs-parent="#profileFormAccordion">
                                     <div className="accordion-body">
@@ -472,20 +578,20 @@ class ProfileSettings extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>}
-                            </fieldset>
+                                </div>
+                            </fieldset>}
                         </div>
                         <div className="accordion-item">
+                        {this.state.panelThree ?
                             <fieldset>
                                 <h2 id="sgHeader" className="accordion-header">
-                                    <button id="sgSettingsBtn" className="accordion-button collapsed" type="button"
+                                    <button id="sgSettingsBtn" className="accordion-button" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#sgSettingsPanel" 
                                     aria-expanded="false" 
                                     aria-controls="sgSettingsPanel" onClick={this.panelThreeClick}>
                                         <legend>Speedgolf Info</legend>
                                     </button>
-                                </h2>
-                                {this.state.panelThree ? 
+                                </h2> 
                                 <div id="sgSettingsPanel" className="accordion-collapse collapse show"
                                 aria-labelledby="sgHeader" data-bs-parent="#profileFormAccordion">
                                     <div className="accordion-body">
@@ -497,6 +603,7 @@ class ProfileSettings extends React.Component {
                                             rows="5"
                                             cols="40"
                                             maxlength="500"
+                                            name="speedGolfBio"
                                             value={this.state.speedGolfBio}
                                             onChange={this.handleChange}>
                                             </textarea>
@@ -511,6 +618,7 @@ class ProfileSettings extends React.Component {
                                             className="form-control centered"
                                             value={this.state.speedGolfHome}
                                             onChange={this.handleChange}
+                                            name="speedGolfHome"
                                             aria-describedby="sgHomeCourseDescr"/>
                                             <div id="sgHomeCourseDescr" className="form-text">
                                                 Course where you play most of your speedgolf.
@@ -524,6 +632,7 @@ class ProfileSettings extends React.Component {
                                                 className="form-control"
                                                 value={this.state.speedGolfClubs}
                                                 onChange={this.handleChange}
+                                                name="speedGolfClubs"
                                                 aria-describedby="sgClubCommentsDescr"></textarea>
                                                 <div id="sgClubCommentsDescr" className="form-text">
                                                     Describe your clubs in greater detail. 
@@ -531,7 +640,17 @@ class ProfileSettings extends React.Component {
                                             </div>
                                         </fieldset>
                                     </div>
-                                </div>: 
+                                </div>
+                            </fieldset>:
+                            <fieldset>
+                                <h2 id="sgHeader" className="accordion-header">
+                                    <button id="sgSettingsBtn" className="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#sgSettingsPanel" 
+                                    aria-expanded="false" 
+                                    aria-controls="sgSettingsPanel" onClick={this.panelThreeClick}>
+                                        <legend>Speedgolf Info</legend>
+                                    </button>
+                                </h2>
                                 <div id="sgSettingsPanel" className="accordion-collapse collapse"
                                 aria-labelledby="sgHeader" data-bs-parent="#profileFormAccordion">
                                     <div className="accordion-body">
@@ -543,6 +662,7 @@ class ProfileSettings extends React.Component {
                                             rows="5"
                                             cols="40"
                                             maxlength="500"
+                                            name="speedGolfBio"
                                             value={this.state.speedGolfBio}
                                             onChange={this.handleChange}>
                                             </textarea>
@@ -557,6 +677,7 @@ class ProfileSettings extends React.Component {
                                             className="form-control centered"
                                             value={this.state.speedGolfHome}
                                             onChange={this.handleChange}
+                                            name="speedGolfHome"
                                             aria-describedby="sgHomeCourseDescr"/>
                                             <div id="sgHomeCourseDescr" className="form-text">
                                                 Course where you play most of your speedgolf.
@@ -569,6 +690,7 @@ class ProfileSettings extends React.Component {
                                                 <textarea id="sgClubComments"
                                                 className="form-control"
                                                 value={this.state.speedGolfClubs}
+                                                name="speedGolfClubs"
                                                 onChange={this.handleChange}
                                                 aria-describedby="sgClubCommentsDescr"></textarea>
                                                 <div id="sgClubCommentsDescr" className="form-text">
@@ -577,8 +699,8 @@ class ProfileSettings extends React.Component {
                                             </div>
                                         </fieldset>
                                     </div>
-                                </div>}
-                            </fieldset>
+                                </div>
+                            </fieldset>}
                         </div>
                     </div>
                     <div className="mode-page-btn-container">
@@ -586,7 +708,7 @@ class ProfileSettings extends React.Component {
                         className="btn btn-primary dialog-primary-btn" 
                         aria-live="polite" aria-busy="false"
                         ref={buttonEl => (this.saveButton = buttonEl)}>
-                            <FontAwesomeIcon icon="fa-user-edit"/>
+                            <FontAwesomeIcon icon="user-edit"/>
                             &nbsp;Update
                         </button>
                         <button type="button" id="cancelUpdateProfileBtn" 

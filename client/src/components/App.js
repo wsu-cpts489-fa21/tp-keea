@@ -2,7 +2,7 @@ import React from 'react';
 import { library } from "@fortawesome/fontawesome-svg-core"; 
 import { faWindowClose, faEdit, faCalendar, 
         faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-        faSort, faTrash, faEye, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+        faSort, faTrash, faEye, faUserPlus, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import { faGithub} from '@fortawesome/free-brands-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
@@ -17,7 +17,7 @@ import ProfileSettings from './ProfileSettings.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
             faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-            faSort, faTrash, faEye, faUserPlus, faGithub);
+            faSort, faTrash, faEye, faUserPlus, faGithub, faUserEdit);
 
 class App extends React.Component {
 
@@ -155,7 +155,7 @@ class App extends React.Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify(data)});
     if (res.status == 200) {
       const newUserData = data;

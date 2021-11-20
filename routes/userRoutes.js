@@ -100,7 +100,7 @@ userRoute.post('/users/:userId',  async (req, res, next) => {
     }
   });
   
-//UPDATE user route: Updates a user account in the users collection (POST)
+//UPDATE user route: Updates a user account in the users collection (PUT)
 userRoute.put('/users/:userId',  async (req, res, next) => {
     console.log("in /users update route (PUT) with userId = " 
       + JSON.stringify(req.params) +
