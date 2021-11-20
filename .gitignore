@@ -26,4 +26,4 @@ client/yarn-debug.log*
 client/yarn-error.log*
 
 # build files
-client/build
+#client/build
