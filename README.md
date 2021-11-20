@@ -104,7 +104,7 @@ You can access our team's deployed app at [this Heroku site](https://teamkeea.he
   </thead> 
   <tbody>
     <tr>
-      <td>148</td><td>26</td><td>19</td><td>36</td><td>47</td><td>20</td>
+      <td>249</td><td>75</td><td>30</td><td>53</td><td>62</td><td>29</td>
     </tr>
   </tbody>
 </table>
