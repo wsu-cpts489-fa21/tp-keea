@@ -26,19 +26,19 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
   </thead> 
   <tbody>
     <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/1">Issue #1</a></td><td><a href="https://github.com/PR">PR #</a></td><td>3</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/1">Issue #1</a></td><td>PR #N/A</a></td><td>3</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/2">Issue #2</a></td><td><a href="https://github.com/PR">PR #</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/2">Issue #2</a></td><td>PR #N/A</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/3">Issue #3</a></td><td><a href="https://github.com/PR">PR #</a></td><td>3</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/3">Issue #3</a></td><td>PR #N/A</a></td><td>3</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/4">Issue #4</a></td><td><a href="https://github.com/PR">PR #</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/4">Issue #4</a></td><td>PR #N/A</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/5">Issue #5</a></td><td><a href="https://github.com/PR">PR #</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/5">Issue #5</a></td><td>PR #N/A</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>100</td><td></td>
     </tr>
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/6">Issue #6</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/59">PR #59</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>100</td><td></td>
@@ -50,22 +50,22 @@ You can access our team's deployed app at [this Heroku site](https://ourapp.hero
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/8">Issue #8</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/62">PR #62</a></td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/9">Issue #9</a></td><td><a href="https://github.com/PR">PR #</a></td><td>5</td><td>0</td><td>0</td><td>5</td><td>0</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/9">Issue #9</a></td><td>PR #N/A</a></td><td>5</td><td>0</td><td>0</td><td>5</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
         <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/10">Issue #10</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/61">PR #61</a></td><td>5</td><td>0</td><td>0</td><td>5</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/11">Issue #11</a></td><td><a href="https://github.com/PR">PR #</a></td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/11">Issue #11</a></td><td>PR #N/A</a></td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/12">Issue #12</a></td><td><a href="https://github.com/PR">PR #</a></td><td>3</td><td>1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/12">Issue #12</a></td><td>PR #N/A</a></td><td>3</td><td>1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>100</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/13">Issue #13</a></td><td><a href="https://github.com/PR">PR #</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/13">Issue #13</a></td><td>PR #N/A</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/57">Issue #57</a></td><td><a href="https://github.com/PR">PR #</a></td><td>5</td><td>0</td><td>1</td><td>3</td><td>1</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/57">Issue #57</a></td><td>PR #N/A</a></td><td>5</td><td>0</td><td>1</td><td>3</td><td>1</td><td>0</td><td>100</td><td></td>
     </tr>
     <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>54</b></td><td><b>7</b></td><td><b>7</b></td><td><b>22</b></td><td><b>12</b></td><td><b>6</b></td><td colspan="2"></td>
     </tr>
