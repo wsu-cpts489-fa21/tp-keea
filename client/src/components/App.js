@@ -13,6 +13,7 @@ import CoursesPage from './CoursesPage.js';
 import BuddiesPage from './BuddiesPage.js';
 import SideMenu from './SideMenu.js';
 import AppMode from './AppMode.js';
+import ProfileSettings from './ProfileSettings.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
             faSpinner, faSignInAlt, faBars, faTimes, faSearch,
@@ -25,6 +26,7 @@ class App extends React.Component {
     this.state = {mode: AppMode.LOGIN,
                   menuOpen: false,
                   modalOpen: false,
+                  editingProfile: false,
                   userData: {
                     accountData: {},
                     identityData: {},
@@ -146,9 +148,32 @@ class App extends React.Component {
     }
   }
 
-  updateUserData = (data) => {
-   localStorage.setItem(data.accountData.email,JSON.stringify(data));
-   this.setState({userData: data});
+  updateUserData = async(data) => {
+    const url = '/users/' + this.state.userData.accountData.id;
+    const res = await fetch(url, {
+      headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+        method: 'POST',
+        body: JSON.stringify(data)});
+    if (res.status == 200) {
+      const newUserData = data;
+      this.setState({userData: newUserData});
+      return("Account with email " + data.accountData.id + " updated");
+    }
+    else {
+      const resText = await res.text();
+      return("Account was not updated. " + resText);
+    }
+  }
+
+  startProfileEdit = () => {
+    this.setState({editingProfile: true});
+  }
+
+  cancelProfileEdit = () => {
+    this.setState({editingProfile: false});
   }
 
   //Round Management methods
@@ -236,20 +261,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <> 
         <NavBar mode={this.state.mode}
-                menuOpen={this.state.menuOpen}
-                toggleMenuOpen={this.toggleMenuOpen}
-                modalOpen={this.state.modalOpen}
-                toggleModalOpen={this.toggleModalOpen}
-                userData={this.state.userData}
-                updateUserData={this.updateUserData} /> 
+        menuOpen={this.state.menuOpen}
+        toggleMenuOpen={this.toggleMenuOpen}
+        modalOpen={this.state.modalOpen}
+        toggleModalOpen={this.toggleModalOpen}
+        userData={this.state.userData}
+        updateUserData={this.startProfileEdit}/>
+        {this.state.editingProfile ? null :
         <ModeTabs mode={this.state.mode}
                   setMode={this.setMode} 
                   menuOpen={this.state.menuOpen}
-                  modalOpen={this.state.modalOpen}/> 
+                  modalOpen={this.state.modalOpen}/>}
         {this.state.menuOpen  ? <SideMenu logOut={this.logOut}/> : null}
         {
+          this.state.editingProfile ?
+          <ProfileSettings  userData={this.state.userData}
+                            accountExists={this.accountExists}
+                            updateUserData={this.updateUserData}
+                            cancel={this.cancelProfileEdit}/> :
           {LoginMode:
             <LoginPage modalOpen={this.state.modalOpen}
                        toggleModalOpen={this.toggleModalOpen} 
