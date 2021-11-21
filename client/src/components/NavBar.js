@@ -36,6 +36,7 @@ class NavBar extends React.Component {
                 <button id="profileBtn" type="button" 
                   className="navbar-btn navbar-profile-btn" 
                   aria-label="Account and Profile Settings"
+                  onClick={this.props.updateUserData}
                   style={{backgroundImage: this.props.userData.identityData.profilePic === "" ? 
                             `url(${profilePic})` : 
                             `url(${this.props.userData.identityData.profilePic})`}}>
