@@ -2,7 +2,7 @@ import React from 'react';
 import { library } from "@fortawesome/fontawesome-svg-core"; 
 import { faWindowClose, faEdit, faCalendar, 
         faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-        faSort, faTrash, faEye, faUserPlus, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+        faSort, faTrash, faEye, faUserPlus, faUserEdit, faMap, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faGoogle} from '@fortawesome/free-brands-svg-icons';
 import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
@@ -17,7 +17,8 @@ import ProfileSettings from './ProfileSettings.js';
 
 library.add(faWindowClose,faEdit, faCalendar, 
             faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-            faSort, faTrash, faEye, faUserPlus, faGithub, faUserEdit, faGoogle);
+            faSort, faTrash, faEye, faUserPlus, faGithub, faUserEdit, 
+            faGoogle, faMap, faInfo);
 
 class App extends React.Component {
 
