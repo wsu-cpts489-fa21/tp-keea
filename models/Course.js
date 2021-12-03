@@ -8,6 +8,14 @@ const CourseSchema = new mongoose.Schema({
     geolocation: {type: String},
     picture: {type: String},
     tees: [TeeSchema]
+},
+{
+    toObject: {
+        virtuals: true,
+    },
+    toJSON: {
+        virtuals: true,
+    }   
 });
 
 const Course = mongoose.model("Course", CourseSchema);
