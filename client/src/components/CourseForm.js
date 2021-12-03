@@ -85,8 +85,7 @@ class CoursesForm extends React.Component {
                     {/* Course Picture Field */}
                     <div className="mb-3 centered">
                         <label htmlFor="coursePicture" className="form-label">
-                            Picture:
-                            <input id="coursePicture" name="picture" type="button" aria-describedby="coursePictureDescr" value={this.state.picture} onChange={this.handleChange}/>
+                            <input id="coursePicture" name="picture" type="button" aria-describedby="coursePictureDescr" value="Submit a Picture" onChange={this.handleChange}/>
                         </label>
                         <div id="coursePictureDescr" className="form-text">
                             Submit an optional course picture
@@ -95,11 +94,10 @@ class CoursesForm extends React.Component {
                     {/* Course Tee Field */}
                     <div className="mb-3 centered">
                         <label htmlFor="courseTee" className="form-label">
-                            Course Tee:
-                            <input id="courseTee" name="tees" type="button" aria-describedby="courseTeeDescr" value={this.state.tee} onChange={this.handleChange}/>
+                            <input id="courseTee" name="tees" type="button" aria-describedby="courseTeeDescr" value="Add a Tee" onChange={this.handleChange}/>
                         </label>
                         <div id="courseTeeDescr" className="form-text">
-                            Enter optional course tee
+                            Add optional course tee
                         </div>
                     </div>
                     {/* Button Container*/}
