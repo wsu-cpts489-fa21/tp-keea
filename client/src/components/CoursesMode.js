@@ -3,6 +3,7 @@ const CoursesMode = {
     COURSESTABLE: "CoursesTable",
     ADDCOURSE: "AddCourse",
     EDITCOURSE: "EditCourse",
+    ADDTEE: "AddTee",
 };
 
 Object.freeze(CoursesMode);

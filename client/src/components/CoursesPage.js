@@ -3,6 +3,7 @@ import logo from '../images/sslogo2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CoursesMode from './CoursesMode.js';
 import CourseForm from './CourseForm';
+import TeeForm from './TeeForm.js';
 import FloatingButton from './FloatingButton.js';
 
 class CoursesPage extends React.Component {
@@ -39,13 +40,13 @@ class CoursesPage extends React.Component {
                     </>
                 );
             case CoursesMode.ADDCOURSE:
+            case CoursesMode.EDITCOURSE:
                 return (
                     <CourseForm mode={this.state.mode} courseData={null} setMode={this.setMode} toggleModalOpen={this.props.toggleModalOpen} />
                 );
-            case CoursesMode.EDITCOURSE:
+            case CoursesMode.ADDTEE:
                 return (
-                    <>
-                    </>
+                    <TeeForm mode={this.state.mode} courseData={null} setMode={this.setMode} toggleModalOpen={this.props.toggleModalOpen} />
                 );
         }
     }

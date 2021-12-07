@@ -25,7 +25,10 @@
   },
   "homepage": "https://github.com/FSWebDevBook/speedscore-book#readme",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.3",
+    "@googlemaps/js-api-loader": "^1.12.11",
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
