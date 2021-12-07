@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { HoleSchema } from './Hole.js'
 
 const TeeSchema = new mongoose.Schema({
-    name: {type: String, required: true},
+    teeName: {type: String, required: true},
     golfingYardage: {type: Number, required: true, min: 0},
     runningYardage: {type: Number, required: true, min: 0},
     numberHoles: {type: Number, required: true, min: 1},

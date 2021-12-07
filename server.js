@@ -10,6 +10,8 @@ import passportConfig from './passport/config.js';
 import authRoute from './routes/authRoutes.js';
 import userRoute from './routes/userRoutes.js';
 import roundRoute from './routes/roundRoutes.js';
+import courseRoute from './routes/courseRoutes.js';
+import teeRoute from './routes/teeRoutes.js'
 import cors from 'cors';
 const __dirname = path.resolve();
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
@@ -50,4 +52,6 @@ app
   .use(authRoute)
   .use(userRoute)
   .use(roundRoute)
+  .use(courseRoute)
+  .use(teeRoute)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
