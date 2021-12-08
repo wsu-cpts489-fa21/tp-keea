@@ -187,6 +187,24 @@ General Notes from 2021-11-17 Checkup Meeting
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/20">Issue #20</a></td><td>PR #N/A</a></td><td>5</td><td>5</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100%</td><td></td>
     </tr>
+        <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/21">Issue #21</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
+            <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/21">Issue #25</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
+        <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/26">Issue #26</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
+        <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/28">Issue #28</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
+            <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/28">Issue #29</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
+        <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/32">Issue #32</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/40">Issue #40</a></td><td>PR #N/A</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100%</td><td></td>
     </tr>
@@ -199,7 +217,7 @@ General Notes from 2021-11-17 Checkup Meeting
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/45">Issue #45</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>0</td><td>4</td><td>4</td><td>0</td><td>53%</td><td></td>
     </tr>
-    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>43</b></td><td><b>9</b></td><td><b>6</b></td><td><b>6</b></td><td><b>6</b></td><td><b>2</b></td><td colspan="2"></td>
+    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>49</b></td><td><b>9</b></td><td><b>6</b></td><td><b>6</b></td><td><b>6</b></td><td><b>8</b></td><td colspan="2"></td>
     </tr>
   </tbody>
 </table>
