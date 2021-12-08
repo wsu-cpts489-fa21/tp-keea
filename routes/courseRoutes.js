@@ -93,7 +93,8 @@ courseRoute.get('/courses/', async(req, res) => {
       return res.status(400).send("No courses " + 
          "were found in the database.");
     } else {
-      return res.status(200).json(thisCourse);
+      // console.log(thisCourse);
+      return res.status(201).send(thisCourse); // json(thisCourse);
     }
   } catch (err) {
     console.log()

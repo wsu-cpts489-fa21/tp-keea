@@ -314,9 +314,19 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       method: 'GET'
-    });
+    })
+    .then((response) => response.json())
+    .then((payload => {
+      this.setState({
+        courses: payload,
+      });
+    }))
+
     if (res.status === 201) {
-      this.setState({courses: res.json()});
+      // console.log(res.json());
+      /*this.setState({
+        courses: res,
+      });*/
       return ("Courses Retrieved");
     }
     else {
