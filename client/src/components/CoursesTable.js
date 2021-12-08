@@ -18,6 +18,10 @@ class CoursesTable extends React.Component {
         <tr key={r}>
           <td>{this.props.courses[r].courseName}</td>
           <td>{this.props.courses[r].averageOverall}</td>
+          <td><button onClick={this.props.menuOpen ? null : 
+            () => this.props.initiateReviewCourse(r)}>
+                <FontAwesomeIcon icon="pencil"/>
+              </button></td>
           <td>{Number(this.props.courses[r].roundCount)}</td>
           <td><button onClick={this.props.menuOpen ? null : () => 
               this.openCourseOnGoogle(r)}>
