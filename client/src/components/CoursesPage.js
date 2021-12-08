@@ -12,7 +12,8 @@ class CoursesPage extends React.Component {
         this.state = {
             mode: CoursesMode.COURSESTABLE,
             deleteId: -1,
-            editId: -1
+            editId: -1,
+            courseData: null,
         }
     }
 
@@ -27,9 +28,12 @@ class CoursesPage extends React.Component {
     }
 
     initiateEditCourse = (val) => {
-        this.setState({editId: val,
-                       mode: CoursesMode.EDITCOURSE}, 
-                       this.props.toggleModalOpen);
+        this.setState({
+            editId: val,
+            mode: CoursesMode.EDITCOURSE,
+            courseData: this.props.courses[this.state.editId],
+        }, 
+        this.props.toggleModalOpen);
     }
     
     initiateDeleteCourse = (val) => {
@@ -88,7 +92,7 @@ class CoursesPage extends React.Component {
                 return (
                     <CourseForm 
                     mode={this.state.mode} 
-                    courseData={null}
+                    courseData={this.state.courseData}
                     saveCourse={this.props.updateCourse} 
                     setMode={this.setMode} 
                     toggleModalOpen={this.props.toggleModalOpen}/>

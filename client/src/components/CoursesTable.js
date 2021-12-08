@@ -7,8 +7,8 @@ class CoursesTable extends React.Component {
     
   }
 
-  openCourseOnGoogle = (val) => {
-    
+  openCourseContactInfo = (val) => {
+
   }
 
   renderTable = () => {
@@ -75,6 +75,9 @@ class CoursesTable extends React.Component {
             </th>
             <th scope="col" className="cell-align-middle">
               Contact
+            </th>
+            <th scope="col" className="cell-align-middle">
+              Google Maps
             </th>
             <th scope="col" className="cell-align-middle">
               View/Edit...

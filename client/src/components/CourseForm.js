@@ -5,27 +5,27 @@ import CoursesMode  from './CoursesMode.js';
 
 
 class CoursesForm extends React.Component {
-
-    
-
+ 
     constructor(props) {
         super(props);
         if (this.props.mode === CoursesMode.ADDCOURSE) {
             this.state = {
                 courseName: "",
-                courseAddress: "",
+                address: "",
                 phoneNumber: "",
                 geolocation: "",
                 picture: "",
                 tees: [],
                 btnIcon: "calendar",
                 btnLabel: "Add Course",
-                API_KEY: "AIzaSyBXdGsJ7lIMSWOAvFcSf3gOiZwwfmNzfPI",
             }
         } else {
             this.state = this.props.courseData;
-            this.state.btnIcon = "edit";
-            this.state.btnLabel = "Update Course";
+            this.setState({ 
+                btnIcon: "edit",
+                btnLabel: "Update Course",
+            });
+            
         }
     }
 
@@ -53,13 +53,24 @@ class CoursesForm extends React.Component {
         this.setState({
             [name]: event.target.value
         });
-        if (name === "courseName") {
-            this.getRecommendations(event.target.value);
-        }
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({
+            btnIcon: "spinner",
+            btnLabel: "Saving..."
+        },
+        this.handleSubmitCallback);
+    }
 
+    handleSubmitCallback = async() => {
+        const newCourse = {...this.state};
+        delete newCourse.btnIcon;
+        delete newCourse.btnLabel;
+        const response = await this.props.saveCourse(newCourse);
+        // this.props.toggleModalOpen();
+        this.props.setMode(CoursesMode.COURSESTABLE);
     }
 
     render() {
@@ -88,7 +99,7 @@ class CoursesForm extends React.Component {
                     <div className="mb-3 centered">
                         <label htmlFor="courseAddress" className="form-label">
                             Address:
-                            <input id="courseAddress" name="courseAddress" className="form-control centered" type="text" aria-describedby="courseAddressDescr" value={this.state.courseAddress} onChange={this.handleChange} required/>
+                            <input id="address" name="address" className="form-control centered" type="text" aria-describedby="courseAddressDescr" value={this.state.address} onChange={this.handleChange} required/>
                         </label>
                         <div id="courseAddressDescr" className="form-text">
                             Enter a valid course address

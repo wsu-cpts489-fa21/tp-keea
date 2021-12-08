@@ -320,7 +320,7 @@ class App extends React.Component {
       this.setState({
         courses: payload,
       });
-    }))
+    }));
 
     if (res.status === 201) {
       // console.log(res.json());
