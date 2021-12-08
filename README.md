@@ -191,16 +191,16 @@ General Notes from 2021-11-17 Checkup Meeting
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/21">Issue #21</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/26">Issue #26</a></td><td>PR #N/A</a></td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/26">Issue #26</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/28">Issue #28</a></td><td>PR #N/A</a></td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/28">Issue #28</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
             <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/28">Issue #29</a></td><td>PR #N/A</a></td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/28">Issue #29</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/32">Issue #32</a></td><td>PR #N/A</a></td><td>1</td><td>5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/32">Issue #32</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/40">Issue #40</a></td><td>PR #N/A</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100%</td><td></td>
