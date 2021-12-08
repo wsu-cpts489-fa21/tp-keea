@@ -31,7 +31,6 @@ class CoursesPage extends React.Component {
         this.setState({
             editId: val,
             mode: CoursesMode.EDITCOURSE,
-            courseData: this.props.courses[this.state.editId],
         }, 
         this.props.toggleModalOpen);
     }
@@ -92,7 +91,8 @@ class CoursesPage extends React.Component {
                 return (
                     <CourseForm 
                     mode={this.state.mode} 
-                    courseData={this.state.courseData}
+                    editId = {this.state.editId}
+                    courseData={this.props.courses[this.state.editId]}
                     saveCourse={this.props.updateCourse} 
                     setMode={this.setMode} 
                     toggleModalOpen={this.props.toggleModalOpen}/>

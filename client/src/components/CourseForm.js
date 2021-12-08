@@ -21,11 +21,8 @@ class CoursesForm extends React.Component {
             }
         } else {
             this.state = this.props.courseData;
-            this.setState({ 
-                btnIcon: "edit",
-                btnLabel: "Update Course",
-            });
-            
+            this.state.btnIcon = "edit";
+            this.state.btnLabel = "Update Course";            
         }
     }
 

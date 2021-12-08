@@ -113,7 +113,8 @@ courseRoute.put('/courses/:courseName', async (req, res, next) => {
       'courseName', 'address', 'phoneNumber', 
       'geolocation', 'picture', 'tees',
       'rating', 'roundCount', 'email',
-      'reviews'
+      'reviews', '_id', 'id', '__v', 'averageFriendliness',
+      'averageGolfChallenge', 'averageRunChallenge', 'averageOverall'
     ];
     for (const prop in req.body)
     {
