@@ -13,7 +13,13 @@ class TeeForm extends React.Component {
         }
     }
 
-    handleSubmit = (event) => {}
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const newTee = {...this.state};
+
+        this.props.setMdoe(CoursesMode.ADDCOURSE);
+        this.props.toggleModalOpen();
+    }
 
     handleChange = (event) => {
         const name = event.target.name;
@@ -33,7 +39,7 @@ class TeeForm extends React.Component {
                     <div className="mb-3 centered">
                         <label htmlFor="teeName" className="form-label">
                             Tee Name:
-                            <input id="teeName" name="teeName" className="form-control-centered" type="text" aria-describedby="teeNameDescr" size="50" maxLength="50" value={this.state.teeName} onChange={this.handleChange} required/>
+                            <input id="teeName" name="teeName" className="form-control centered" type="text" aria-describedby="teeNameDescr" size="50" maxLength="50" value={this.state.teeName} onChange={this.handleChange} required/>
                         </label>
                         <div id="courseNameDescr" className="form-text">
                             Enter a tee name of at most 50 characters
@@ -53,7 +59,7 @@ class TeeForm extends React.Component {
                     <div className="mb-3 centered">
                         <label htmlFor="teeRunningYardage" className="form-label">
                             Running Yardage:
-                            <input id="teeRunningYardage" name="teeRunningYardage" className="form-label centered" type="number" aria-describedby="teeRunningYardageDescr" value={this.state.teeRunningYardage} onChange={this.handleChange} min="0"/>
+                            <input id="teeRunningYardage" name="teeRunningYardage" className="form-control centered" type="number" aria-describedby="teeRunningYardageDescr" value={this.state.teeRunningYardage} onChange={this.handleChange} min="0"/>
                         </label>
                         <div id="teeRunningYardageDescr" className="form-text">
                             Enter total running yardage for tee
@@ -62,7 +68,8 @@ class TeeForm extends React.Component {
                     {/* Number of holes */}
                     <div className="mb-3 centered">
                         <label htmlFor="teeNumberOfHoles" className="form-label">
-                            <input id="teeNumberOfHoles" name="teeNumberOfHoles" className="form-label centered" type="number" aria-describedby="teeNumberOfHolesDescr" value={this.state.teeNumberOfHoles} onChange={this.handleChange} min="0"/>
+                            Number of Holes:
+                            <input id="teeNumberOfHoles" name="teeNumberOfHoles" className="form-control centered" type="number" aria-describedby="teeNumberOfHolesDescr" value={this.state.teeNumberOfHoles} onChange={this.handleChange} min="0"/>
                         </label>
                         <div id="teeNumberOfHolesDescr" className="form-text">
                             Enter total number of holes for tee
