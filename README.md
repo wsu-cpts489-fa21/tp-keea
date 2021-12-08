@@ -190,6 +190,9 @@ General Notes from 2021-11-17 Checkup Meeting
         <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/21">Issue #21</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
+            <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/21">Issue #25</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
+    </tr>
         <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/26">Issue #26</a></td><td>PR #N/A</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100%</td><td></td>
     </tr>
@@ -214,7 +217,7 @@ General Notes from 2021-11-17 Checkup Meeting
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/45">Issue #45</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>0</td><td>4</td><td>4</td><td>0</td><td>53%</td><td></td>
     </tr>
-    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>48</b></td><td><b>9</b></td><td><b>6</b></td><td><b>6</b></td><td><b>6</b></td><td><b>7</b></td><td colspan="2"></td>
+    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>49</b></td><td><b>9</b></td><td><b>6</b></td><td><b>6</b></td><td><b>6</b></td><td><b>8</b></td><td colspan="2"></td>
     </tr>
   </tbody>
 </table>
