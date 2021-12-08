@@ -21,6 +21,10 @@ class CoursesPage extends React.Component {
         this.props.retrieveCourses();
     }
 
+    modalRetrieveCourse() {
+        this.props.retrieveCourses();
+    }
+
     setMode = (newMode) => {
         this.setState({
             mode: newMode,
@@ -95,6 +99,7 @@ class CoursesPage extends React.Component {
                     courseData={this.props.courses[this.state.editId]}
                     saveCourse={this.props.updateCourse} 
                     setMode={this.setMode} 
+                    retrieveCourses={this.props.retrieveCourses}
                     toggleModalOpen={this.props.toggleModalOpen}/>
                 );
             case CoursesMode.ADDTEE:

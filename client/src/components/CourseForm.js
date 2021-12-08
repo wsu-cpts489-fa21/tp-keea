@@ -65,9 +65,21 @@ class CoursesForm extends React.Component {
         const newCourse = {...this.state};
         delete newCourse.btnIcon;
         delete newCourse.btnLabel;
+        
+        if (this.props.mode === CoursesMode.EDITCOURSE) {
+            delete newCourse._id;
+            delete newCourse.id;
+            delete newCourse.__v;
+        }
+
         const response = await this.props.saveCourse(newCourse);
-        // this.props.toggleModalOpen();
+
+        if (this.props.mode === CoursesMode.EDITCOURSE) {
+            console.log(`Retrieving courses from server.`);
+            this.props.retrieveCourses();
+        }
         this.props.setMode(CoursesMode.COURSESTABLE);
+        // this.props.toggleModalOpen();
     }
 
     render() {

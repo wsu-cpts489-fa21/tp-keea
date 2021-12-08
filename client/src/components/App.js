@@ -366,7 +366,7 @@ class App extends React.Component {
       method: 'PUT',
       body: JSON.stringify(newCourseData)
     });
-    if (res.status == 201) {
+    if (res.status == 200) {
       const newCourses = [...this.state.courses];
 
       let i;
