@@ -3,30 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class CoursesTable extends React.Component {
 
+  openCourseOnGoogle = (val) => {
+    
+  }
+
+  openCourseOnGoogle = (val) => {
+    
+  }
+
   renderTable = () => {
     const table = [];
     for (let r = 0; r < this.props.courses.length; ++r) {
       table.push(
         <tr key={r}>
           <td>{this.props.courses[r].name}</td>
-          {
-            //<td>{this.props.courses[r].rating}</td>
-          }
-          {
-            //<td>{Number(this.props.courses[r].roundCount)}</td>
-          }
-          {
-              /*<td><button onClick={this.props.menuOpen ? null : () => 
+          <td>{this.props.courses[r].averageOverall}</td>
+          <td>{Number(this.props.courses[r].roundCount)}</td>
+          <td><button onClick={this.props.menuOpen ? null : () => 
               this.openCourseOnGoogle(r)}>
               <FontAwesomeIcon icon="map"/>
-            </button></td>*/
-          }
-          {
-              /*<td><button onClick={this.props.menuOpen ? null : () => 
+          </button></td>
+          <td><button onClick={this.props.menuOpen ? null : () => 
               this.openCourseContactInfo(r)}>
               <FontAwesomeIcon icon="info"/>
-            </button></td>*/
-          }
+          </button></td>
           <td><button onClick={this.props.menuOpen ? null : () => 
                   this.props.initiateEditCourse(r)}>
                 <FontAwesomeIcon icon="eye"/> 

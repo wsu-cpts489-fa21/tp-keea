@@ -38,6 +38,7 @@ class App extends React.Component {
         rounds: [],
         roundCount: 0
       },
+      courses: [],
       authenticated: false
     };
   }
@@ -91,8 +92,10 @@ class App extends React.Component {
         speedgolfData: {},
         rounds: [],
       },
+      courses: [],
       authenticated: false,
-      menuOpen: false
+      menuOpen: false,
+      modalOpen: false
     });
   }
 
@@ -210,7 +213,6 @@ class App extends React.Component {
   addRound = async (newRoundData) => {
     const url = "/rounds/" + this.state.userData.accountData.id;
     let res = await fetch(url, {
-      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -238,7 +240,6 @@ class App extends React.Component {
   updateRound = async (newRoundData) => {
     const url = "/rounds/" + this.state.userData.accountData.id + "/" + newRoundData._id;
     let res = await fetch(url, {
-      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -273,7 +274,6 @@ class App extends React.Component {
   deleteRound = async (id) => {
     const url = "/rounds/" + this.state.userData.accountData.id + "/" + id;
     let res = await fetch(url, {
-      method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -302,6 +302,102 @@ class App extends React.Component {
     else {
       const resText = await res.text();
       return ("Round could not be deleted. " + resText);
+    }
+  }
+
+  // Course management methods
+
+  retrieveCourses = async () => {
+    let res = await fetch('/courses/', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    });
+    if (res.status === 201) {
+      this.setState({courses: res.json()});
+      return ("Courses Retrieved");
+    }
+    else {
+      const resText = await res.text();
+      return ("Courses could not be retrieved. " + resText);
+    }
+  }
+
+  addCourse = async (newCourseData) => {
+    const url = "/courses/" + newCourseData.courseName;
+    let res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(newCourseData)
+    });
+    if (res.status == 201) {
+      const newCourses = [...this.state.courses];
+      newCourses.push(newCourseData);
+      this.setState({ courses: newCourses });
+      return ("New course logged.");
+    } else {
+      const resText = await res.text();
+      return ("New course could not be logged. " + resText);
+    }
+  }
+
+  updateCourse = async (newCourseData) => {
+    const url = "/courses/" + newCourseData.courseName;
+    let res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PUT',
+      body: JSON.stringify(newCourseData)
+    });
+    if (res.status == 201) {
+      const newCourses = [...this.state.courses];
+
+      let i;
+      for (i = 0; i < newCourses.length; i++) {
+        if (newCourses[i].courseName === newCourseData.courseName) {
+          newCourses[i] = newCourseData;
+        }
+      }
+
+      this.setState({ courses: newCourses });
+      return ("Course updated.");
+    } else {
+      const resText = await res.text();
+      return ("Course could not be updated. " + resText);
+    }
+  }
+
+  deleteCourse = async (id) => {
+    const url = "/courses/" + id;
+    let res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'DELETE'
+    });
+    if (res.status == 201) {
+      const newCourses = [...this.state.courses];
+
+      let i;
+      for (i = 0; i < newCourses.length; i++) {
+        if (newCourses[i].courseName === id) {
+          newCourses.splice(i, 1);
+        }
+      }
+      this.setState({ courses: newCourses });
+      return ("Course deleted.");
+    }
+    else {
+      const resText = await res.text();
+      return ("Course could not be deleted. " + resText);
     }
   }
 
@@ -351,7 +447,12 @@ class App extends React.Component {
                   userId={this.state.userId} />,
               CoursesMode:
                 <CoursesPage modalOpen={this.state.modalOpen}
+                  courses={this.state.courses}
+                  addCourse={this.addCourse}
+                  updateCourse={this.updateCourse}
+                  deleteCourse={this.deleteCourse}
                   toggleModalOpen={this.toggleModalOpen}
+                  retrieveCourses={this.retrieveCourses}
                   menuOpen={this.state.menuOpen}
                   userId={this.state.userId} />,
               BuddiesMode:

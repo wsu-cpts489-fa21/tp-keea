@@ -82,6 +82,25 @@ courseRoute.get('/courses/:courseName', async(req, res) => {
         "up course in database: " + err);
     }
   });
+
+//READ course route: Returns all courses in 
+//the courses collection (GET)
+courseRoute.get('/courses/', async(req, res) => {
+  console.log("in /courses route (GET)");
+  try {
+    let thisCourse = await Course.find();
+    if (!thisCourse) {
+      return res.status(400).send("No courses " + 
+         "were found in the database.");
+    } else {
+      return res.status(200).json(thisCourse);
+    }
+  } catch (err) {
+    console.log()
+    return res.status(400).send("Unexpected error occurred when retrieving " +
+      "courses in database: " + err);
+  }
+});
   
 //UPDATE course route: Updates a specific course
 //in the courses collection (PUT)
