@@ -10,9 +10,13 @@ import passportConfig from './passport/config.js';
 import authRoute from './routes/authRoutes.js';
 import userRoute from './routes/userRoutes.js';
 import roundRoute from './routes/roundRoutes.js';
+import courseRoute from './routes/courseRoutes.js';
+import teeRoute from './routes/teeRoutes.js'
+import cors from 'cors';
 const __dirname = path.resolve();
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 const app = express(); //Instantiate express app
+// const cors = require('cors');
 const buildPath = (PORT === process.env.PORT) ?
   new URL('client/build/', import.meta.url).pathname :
   (new URL('client/build/', import.meta.url).pathname).substring(1);
@@ -37,13 +41,17 @@ mongoose.connect(connectStr, {useNewUrlParser: true, useUnifiedTopology: true})
 //in the client/ directory at PORT.
 /////////////////////////////////////////////////////////////////////////
 
+// const cors = require('cors');
+
 passportConfig(app); //Configure session and passport
 app
   .use(express.static(path.join(__dirname, 'client', 'build')))
   //.use(express.static(buildPath))
+  .use(cors())
   .use(express.json({limit: '20mb'}))
   .use(authRoute)
   .use(userRoute)
   .use(roundRoute)
+  .use(courseRoute)
+  .use(teeRoute)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
-  

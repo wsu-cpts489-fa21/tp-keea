@@ -85,6 +85,7 @@ class RoundsPage extends React.Component {
                 setMode={this.setMode}
                 toggleModalOpen={this.props.toggleModalOpen} />
             );
+        default: return (null);
         }
     }  
 
