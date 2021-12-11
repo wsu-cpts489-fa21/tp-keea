@@ -20,7 +20,7 @@ import ProfileSettings from './ProfileSettings.js';
 library.add(faWindowClose, faEdit, faCalendar,
   faSpinner, faSignInAlt, faBars, faTimes, faSearch,
   faSort, faTrash, faEye, faUserPlus, faGithub, faUserEdit,
-  faGoogle, faMap, faInfo);
+  faGoogle, faMap, faInfo,faPencil);
 
 class App extends React.Component {
 

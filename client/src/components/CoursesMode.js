@@ -4,6 +4,8 @@ const CoursesMode = {
     ADDCOURSE: "AddCourse",
     EDITCOURSE: "EditCourse",
     ADDTEE: "AddTee",
+    REVIEWTABLE: "ReviewTable",
+    WRITEREVIEW: "WriteReview",
 };
 
 Object.freeze(CoursesMode);

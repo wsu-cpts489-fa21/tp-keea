@@ -13,6 +13,7 @@ class CoursesPage extends React.Component {
             mode: CoursesMode.COURSESTABLE,
             deleteId: -1,
             editId: -1,
+            reviewId: -1,
             courseData: null,
         }
     }
@@ -29,6 +30,14 @@ class CoursesPage extends React.Component {
         this.setState({
             mode: newMode,
         });
+    }
+
+    initiateViewReviewPage = (val) => {
+        this.setState({
+            reviewId: val,
+            mode: CoursesMode.REVIEWTABLE,
+        }, 
+        this.props.toggleModalOpen);
     }
 
     initiateEditCourse = (val) => {
