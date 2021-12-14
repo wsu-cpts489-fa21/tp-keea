@@ -43,14 +43,14 @@ class RoundsTable extends React.Component {
         <h1 className="mode-page-header">Rounds</h1>
         <table id="roundsTable" className="table table-hover caption-top">
           <caption id="roundsTableCaption" aria-live="polite">
+            <button id="badgeBtn" type="button" 
+                  className="mode-page-btn action-dialog dialog-cancel-btn"
+                  onClick={this.props.toggleBadgeModal}>
+                    Earn Badges
+            </button> 
             {"Table displaying " + this.props.rounds.length  + " speedgolf round" + 
               (this.props.rounds.length !== 1 ? "s" : "")}
           </caption>
-          <button id="badgeBtn" type="button" 
-            className="mode-page-btn action-dialog dialog-cancel-btn"
-            onClick={this.props.toggleBadgeModal}>
-                    Earn Badges
-          </button>
           <thead className="table-light">
             <tr>
             <th scope="col" role="columnheader" 
