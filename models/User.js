@@ -23,7 +23,8 @@ const UserSchema = new mongoose.Schema({
     clubs: {},
     clubComments: String
   },
-  rounds:[RoundSchema]
+  rounds:[RoundSchema],
+  badges:[Boolean]
 });
 
 const User = mongoose.model("User",UserSchema);
