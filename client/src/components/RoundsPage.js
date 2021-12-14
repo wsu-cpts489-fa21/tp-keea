@@ -5,13 +5,15 @@ import RoundsTable from './RoundsTable.js';
 import RoundForm from './RoundForm.js';
 import FloatingButton from './FloatingButton.js'
 import PopUpModal from './PopUpModal.js';
+import BadgeModal from './BadgeModal.js';
 
 class RoundsPage extends React.Component {
     constructor(props) {
             super(props);
             this.state = {mode: RoundsMode.ROUNDSTABLE,
                           deleteId: -1,
-                          editId: -1};        
+                          editId: -1,
+                          viewingBadges: false};        
     }
 
     setMode = (newMode) => {
@@ -37,11 +39,20 @@ class RoundsPage extends React.Component {
         this.setState({deleteId: -1});
     }
 
+    toggleBadgeModal = () => {
+        this.setState(prevState => ({ viewingBadges: !prevState.viewingBadges }));
+    }
+
     render() {
         switch (this.state.mode) {
         case RoundsMode.ROUNDSTABLE: 
             return (
                 <>
+                    {this.state.viewingBadges ?
+                        <BadgeModal
+                            badges={this.props.badges}
+                        />
+                    : null}
                     {this.state.deleteId > -1 ? 
                             <PopUpModal
                                 id={"Delete Round"}
@@ -57,7 +68,8 @@ class RoundsPage extends React.Component {
                                 updateRound= {this.props.updateRound}
                                 setMode={this.setMode} 
                                 toggleModalOpen={this.props.toggleModalOpen}
-                                menuOpen={this.props.menuOpen} /> 
+                                menuOpen={this.props.menuOpen}
+                                toggleBadgeModal={this.toggleBadgeModal}/> 
                     {this.state.deleteId === -1 ? 
                     <FloatingButton
                         icon="calendar"

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import {RoundSchema} from './Round.js';
+import { BadgeSchema } from './Badge.js';
 
 const UserSchema = new mongoose.Schema({
   accountData: {
@@ -24,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     clubComments: String
   },
   rounds:[RoundSchema],
-  badges:[Boolean]
+  badges:[BadgeSchema]
 });
 
 const User = mongoose.model("User",UserSchema);

@@ -29,11 +29,10 @@ badgeRoute.put('/badges/:userId/:badgeIndex', async (req, res, next) => {
   }
 
   try {
-    let index = req.params.badgeIndex;
     const status = await User.findOneAndUpdate(
-      {"accountData.id": req.params.userId},
+      {"accountData.id": req.params.userId, "badges.name": req.params.badgeIndex},
       {"$set": {
-        [`badges.${index}.value`]: req.body.obtained
+        "badges.$.obtained": req.body.obtained
       }}
     );
     if (status == null)

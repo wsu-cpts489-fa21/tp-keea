@@ -46,6 +46,11 @@ class RoundsTable extends React.Component {
             {"Table displaying " + this.props.rounds.length  + " speedgolf round" + 
               (this.props.rounds.length !== 1 ? "s" : "")}
           </caption>
+          <button id="badgeBtn" type="button" 
+            className="mode-page-btn action-dialog dialog-cancel-btn"
+            onClick={this.props.toggleBadgeModal}>
+                    Earn Badges
+          </button>
           <thead className="table-light">
             <tr>
             <th scope="col" role="columnheader" 
