@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RoundsMode  from './RoundsMode.js';
 import RoundsTable from './RoundsTable.js';
 import RoundForm from './RoundForm.js';
@@ -40,7 +40,15 @@ class RoundsPage extends React.Component {
     }
 
     toggleBadgeModal = () => {
-        this.setState(prevState => ({ viewingBadges: !prevState.viewingBadges }));
+        // this.setState(prevState => ({ viewingBadges: !prevState.viewingBadges }));
+        console.log("Toggle Badge Modal called!");
+        if (this.state.mode == RoundsMode.ROUNDSTABLE) {
+            console.log("Switching to viewing badges...")
+            this.setMode(RoundsMode.VIEWBADGES);
+        } else {
+            console.log("Switching to rounds table...")
+            this.setMode(RoundsMode.ROUNDSTABLE);
+        }
     }
 
     render() {
@@ -99,7 +107,7 @@ class RoundsPage extends React.Component {
             );
         case RoundsMode.VIEWBADGES:
             return (
-                <></>
+                <BadgeModal badges={this.props.badges} />
             );
         default: return (null);
         }

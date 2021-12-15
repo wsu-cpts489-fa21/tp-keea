@@ -40,7 +40,15 @@ class App extends React.Component {
         roundCount: 0
       },
       courses: [],
-      authenticated: false
+      authenticated: false,
+      badges: [
+        {
+          icon: 'Void',
+          name: 'Speedgolf is my Passion',
+          dscription: 'Log 30 rounds of Speedgolf',
+          obtained: false,
+        }
+      ],
     };
   }
 
@@ -231,10 +239,61 @@ class App extends React.Component {
         rounds: newRounds
       };
       this.setState({ userData: newUserData });
+      this.checkBadges();
       return ("New round logged.");
     } else {
       const resText = await res.text();
       return ("New Round could not be logged. " + resText);
+    }
+  }
+
+  checkBadges = () => {
+    const rounds = this.state.rounds;
+
+    // If user has logged 10 rounds
+    if (this.state.roundCount >= 10) {
+      // Need code to check if badge already unlocked
+      console.log("Badge Unlocked! 10 Rounds Badge!");
+    }
+
+    // If user has logged 20 rounds
+    if (this.state.roundCount >= 20) {
+      // Need code to check if badge already unlocked
+      console.log("Badge Unlocked! 20 Rounds Badge!");
+    }
+
+    // If user has logged 30 rounds
+    if (this.state.roundCount >= 30) {
+      // Need code to check if badge already unlocked
+      console.log("Badge Unlocked! 30 Rounds Badge!");
+    }
+
+    // Rounds iteration
+    var streakRound = null;
+    var streakCount = 0;
+
+    // If user has streak of rounds
+    for (const round of rounds) {
+      // Can start measuring streak if streakRound not null
+      if (streakRound != null) {
+
+        const oldDate = new Date(streakRound.date);
+        const newDate = new Date(round.date);
+        const difference = Math.abs(newDate - oldDate);
+        const difference_minute = difference / 1000*60;
+
+        // If user logs series of rounds less than 30 minutes apart, increase streak
+        if (difference_minute < 30) {
+          streakCount++;
+        }
+      }
+
+      // If streak is over 10, unlock badge
+      if (streakCount >= 10) {
+        console.log("Badge Unlocked! Super-streak Badge!");
+      } else {
+        streakRound = round;
+      }
     }
   }
 
@@ -455,7 +514,8 @@ class App extends React.Component {
                   modalOpen={this.state.modalOpen}
                   toggleModalOpen={this.toggleModalOpen}
                   menuOpen={this.state.menuOpen}
-                  userId={this.state.userId} />,
+                  userId={this.state.userId} 
+                  badges={this.state.badges} />,
               CoursesMode:
                 <CoursesPage modalOpen={this.state.modalOpen}
                   courses={this.state.courses}
