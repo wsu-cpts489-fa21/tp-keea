@@ -373,7 +373,7 @@ you can tee off in different places color coded enter an arbitrary number of tee
       <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/44">Issue #44</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>8 (4 before)</td><td>0</td><td>0</td><td>0</td><td>25</td><td></td>
     </tr>
-    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>42</b></td><td><b>10</b></td><td><b>8</b></td><td><b>11</b></td><td><b>8</b></td><td><b>2</b></td><td colspan="2"></td>
+    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>55</b></td><td><b>10</b></td><td><b>8</b></td><td><b>11</b></td><td><b>8</b></td><td><b>2</b></td><td colspan="2"></td>
     </tr>
   </tbody>
 </table>
