@@ -264,7 +264,8 @@ class App extends React.Component {
         accountData: this.state.userData.accountData,
         identityData: this.state.userData.identityData,
         speedgolfData: this.state.userData.speedgolfData,
-        rounds: newRounds
+        rounds: newRounds,
+        badges: this.state.userData.badges
       };
       this.setState({ userData: newUserData });
       this.checkBadges();
@@ -275,6 +276,24 @@ class App extends React.Component {
     }
   }
 
+  updateBadge = async (newBadgeData) => {
+    const url = "/badges/" + this.state.userData.accountData.id + "/" + newBadgeData.name;
+    let res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PUT',
+      body: {"obtained": newBadgeData.obtained}
+    });
+    if (res.status == 201) {
+      return ("Badge updated.");
+    } else {
+      const resText = await res.text();
+      return ("Badge could not be updated. " + resText);
+    }
+  }
+
   checkBadges = async () => {
     const rounds = this.state.userData.rounds;
     const roundCount = rounds.length;
@@ -282,14 +301,15 @@ class App extends React.Component {
     console.log(`This states roundcount is ${roundCount}`);
 
     // If user has logged 10 rounds
-    if (roundCount >= 10 && !this.state.badges[1].obtained) {
+    if (roundCount >= 1 && !this.state.userData.badges[0].obtained) {
       // Need code to check if badge already unlocked
-      console.log("Badge Unlocked! 10 Rounds Badge!");
-      const currentBadges = this.state.badges;
-      currentBadges[1].obtained = true;
+      console.log("Badge Unlocked! First Round Badge!");
+      const currentBadges = this.state.userData.badges;
+      currentBadges[0].obtained = true;
       this.setState({
         badges: currentBadges,
       });
+      this.updateBadge(currentBadges[0]);
     }
 
     // If user has logged 20 rounds
@@ -327,9 +347,15 @@ class App extends React.Component {
         }
       }
 
-      // If streak is over 10, unlock badge
-      if (streakCount >= 10) {
-        console.log("Badge Unlocked! Super-streak Badge!");
+      // If streak is over 2, unlock badge
+      if (streakCount >= 2) {
+        console.log("Badge Unlocked! Golfing Spree Badge!");
+        const currentBadges = this.state.userData.badges;
+        currentBadges[3].obtained = true;
+        this.setState({
+          badges: currentBadges,
+        });
+        this.updateBadge(currentBadges[3]);
       } else {
         streakRound = round;
       }
