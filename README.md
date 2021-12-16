@@ -394,10 +394,13 @@ you can tee off in different places color coded enter an arbitrary number of tee
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------- | ---------------- |
 | [Issue #37](https://github.com/wsu-cpts489-fa21/tp-keea/issues/37) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/AddCourseTest.gif) | Add Course     | All tests passed |
 | [Issue #37](https://github.com/wsu-cpts489-fa21/tp-keea/issues/37) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/EditCourseTest.gif) | Edit Course    | All tests passed |
-| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/EditCourseTest.gif) | User Create    | All tests passed |
-| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/EditCourseTest.gif) | Badge Update    | All tests passed |
-| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/EditCourseTest.gif) | Unlock Badges    | All tests passed |
-| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/EditCourseTest.gif) | Badge Buttons   | All tests passed |
+| [Issue #37](https://github.com/wsu-cpts489-fa21/tp-keea/issues/37) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/CourseDeleteRoute.gif) | Delete Route    | All tests passed |
+| [Issue #37](https://github.com/wsu-cpts489-fa21/tp-keea/issues/37) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/CoursePostRoute.gif) | Post Route    | All tests passed |
+| [Issue #37](https://github.com/wsu-cpts489-fa21/tp-keea/issues/37) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_37_Courses_Add_Edit_Test/test/Recordings/CourseUpdateRoute.gif) | Update Route    | All tests passed |
+| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_14_Badge_System_Test/test/Recordings/Badge%20User%20Create%20Update.gif) | User Create    | All tests passed |
+| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_14_Badge_System_Test/test/Recordings/Badge%20Update.gif) | Badge Update    | All tests passed |
+| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_14_Badge_System_Test/test/Recordings/Badge%20Unlock%20Tests.gif) | Unlock Badges    | All tests passed |
+| [Issue #14](https://github.com/wsu-cpts489-fa21/tp-keea/issues/14) | [Gif of test](https://github.com/wsu-cpts489-fa21/tp-keea/blob/Issue_14_Badge_System_Test/test/Recordings/BadgeButtonTests.gif) | Badge Buttons   | All tests passed |
 
 ### Communication
 
