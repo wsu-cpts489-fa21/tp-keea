@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class CoursesTable extends React.Component {
+class ReviewTable extends React.Component {
 
   renderTable = () => {
     const table = [];

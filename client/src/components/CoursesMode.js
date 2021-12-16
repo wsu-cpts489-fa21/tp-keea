@@ -5,6 +5,7 @@ const CoursesMode = {
     EDITCOURSE: "EditCourse",
     ADDTEE: "AddTee",
     REVIEWTABLE: "ReviewTable",
+    REVIEWPAGE: "ReviewPage",
     WRITEREVIEW: "WriteReview",
 };
 
