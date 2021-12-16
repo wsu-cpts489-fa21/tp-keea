@@ -63,4 +63,4 @@ class CoursesTable extends React.Component {
     }   
 }
 
-export default CoursesTable;
+export default ReviewTable;

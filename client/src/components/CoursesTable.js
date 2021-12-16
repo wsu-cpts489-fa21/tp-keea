@@ -75,6 +75,9 @@ class CoursesTable extends React.Component {
                 </button>Rating
             </th>
             <th scope="col" className="cell-align-middle">
+              Review
+            </th>
+            <th scope="col" className="cell-align-middle">
               Round Count
             </th>
             <th scope="col" className="cell-align-middle">

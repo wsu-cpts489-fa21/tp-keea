@@ -14,7 +14,7 @@ class ReviewForm extends React.Component {
                         golfChallenge: "1",
                         runningChallenge: "1",
                         experience: "1",
-                        btnIcon: "pencil",
+                        btnIcon: "pencil-alt",
                         btnLabel: "Write Review"};
         } else { 
             this.state = this.props.courseData;
@@ -166,4 +166,4 @@ class ReviewForm extends React.Component {
     }
 }
 
-export default CourseForm;
+export default ReviewForm;
