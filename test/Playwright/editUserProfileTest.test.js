@@ -1,4 +1,4 @@
-import {test, expect} from "@playwright/test";
+/* import {test, expect} from "@playwright/test";
 
 test('Edit profile mouse input test', async ({page}) => {
     await page.goto('http://localhost:8081/');
@@ -55,4 +55,4 @@ test('Edit profile keyboard input test', async ({page}) => {
     await expect(clubs).toHaveText('I got all the clubs');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-});
+}); */

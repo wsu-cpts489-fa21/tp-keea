@@ -1,4 +1,4 @@
-import {test, expect} from "@playwright/test";
+/* import {test, expect} from "@playwright/test";
 
 test('Delete mouse input test', async ({page}) => {
     // Stub for delete process with mouse inputs
@@ -56,4 +56,4 @@ test('Delete keyboard input test', async ({page}) => {
     await page.click('#roundsModeActionBtn');
     await page.fill('#roundCourse', 'Marriotta');
     await page.click('#logRoundForm >> .mode-page-btn-container >> button >> nth=0');
-});
+}); */
