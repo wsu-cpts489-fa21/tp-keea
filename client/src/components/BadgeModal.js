@@ -16,8 +16,8 @@ class BadgeModal extends React.Component {
                     <td>{this.props.badges[r].description}</td>
                     <td>
                         {
-                            this.props.badges[r].obtained ? <FontAwesomeIcon icon={"check"} className="dialog-checkIcon"/> :
-                            <FontAwesomeIcon icon={"times"} className="dialog-xIcon"/>
+                            this.props.badges[r].obtained ? <FontAwesomeIcon id= {this.props.badges[r].name = "Check"} icon={"check"} className="dialog-checkIcon"/> :
+                            <FontAwesomeIcon id= {this.props.badges[r].name = "X"} icon={"times"} className="dialog-xIcon"/>
                         }
                     </td>
                 </tr> 
