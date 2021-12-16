@@ -3,7 +3,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faWindowClose, faEdit, faCalendar,
   faSpinner, faSignInAlt, faBars, faTimes, faSearch,
-  faSort, faTrash, faEye, faUserPlus, faUserEdit, faMap, faInfo
+  faSort, faTrash, faEye, faUserPlus, faUserEdit, faMap, faInfo, faPencilAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import NavBar from './NavBar.js';
@@ -20,7 +20,7 @@ import ProfileSettings from './ProfileSettings.js';
 library.add(faWindowClose, faEdit, faCalendar,
   faSpinner, faSignInAlt, faBars, faTimes, faSearch,
   faSort, faTrash, faEye, faUserPlus, faGithub, faUserEdit,
-  faGoogle, faMap, faInfo,faPencil);
+  faGoogle, faMap, faInfo,faPencilAlt);
 
 class App extends React.Component {
 
