@@ -11,7 +11,7 @@ class BadgeModal extends React.Component {
             let iconClass = `dialog-${this.props.badges[r]}Icon`
             table.push(
                 <tr key={r}>
-                    <td><FontAwesomeIcon icon={this.props.badges[r].icon} className={iconClass}/></td>
+                    <td><img src={this.props.badges[r].icon} alt={this.props.badges[r].name + " Badge"}/></td>
                     <td>{this.props.badges[r].name}</td>
                     <td>{this.props.badges[r].description}</td>
                     <td>
