@@ -141,7 +141,7 @@ courseRoute.put('/courses/:courseName', async (req, res, next) => {
       {"courseName": req.params.courseName},
       {"$set": req.body}
     );
-    if (status.modifiedCount != 1) { //course could not be found
+    if (status == null) { //course could not be found
         console.log("status: " + JSON.stringify(status));
         res.status(404).send("Course not updated. Either no course with that courseName exists, or no value in the course was changed.");
     } else {
@@ -158,9 +158,8 @@ courseRoute.delete('/courses/:courseName', async (req, res, next) => {
   console.log("in /courses (DELETE) route with params = " + 
               JSON.stringify(req.params));
   try {
-    const status = await Course.findOneAndUpdate(
-      {"courseName": req.params.courseName},
-      {"$pull": {"courses":{"courseName": req.params.courseName}}}
+    const status = await Course.remove(
+      {"courseName": req.params.courseName}
     );
     if (status == null)
     {
