@@ -43,10 +43,39 @@ class App extends React.Component {
       authenticated: false,
       badges: [
         {
-          icon: 'Void',
-          name: 'Speedgolf is my Passion',
-          dscription: 'Log 30 rounds of Speedgolf',
+          icon: 'flag',
+          name: 'Starting Off!',
+          description: 'Log 1 round of Speedgolf',
           obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Picking up Paces',
+          description: 'Log 10 rounds of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Speedgolf step',
+          description: 'Log 20 rounds of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Speedgolf is my Passion',
+          description: 'Log 30 rounds of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Streak-Starter',
+          description: 'Get a streak of 10 rounds, each within 60 minutes',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Endurance',
+          decsription: 'Make over 90 strokes in a round'
         }
       ],
     };

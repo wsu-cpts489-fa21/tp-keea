@@ -107,7 +107,7 @@ class RoundsPage extends React.Component {
             );
         case RoundsMode.VIEWBADGES:
             return (
-                <BadgeModal badges={this.props.badges} />
+                <BadgeModal badges={this.props.badges} setMode={this.setMode}/>
             );
         default: return (null);
         }
