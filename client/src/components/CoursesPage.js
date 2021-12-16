@@ -37,8 +37,7 @@ class CoursesPage extends React.Component {
         this.setState({
             reviewId: val,
             mode: CoursesMode.REVIEWPAGE,
-        },
-            this.props.toggleModalOpen);
+        });
     }
 
     initiateEditCourse = (val) => {
@@ -79,11 +78,12 @@ class CoursesPage extends React.Component {
                             deleteCourse={this.props.deleteCourse}
                             deleteId={this.state.deleteId}
                             initiateEditCourse={this.initiateEditCourse}
+                            initiateViewReviewPage={this.initiateViewReviewPage}
                             updateCourse={this.props.updateCourse}
                             setMode={this.setMode}
                             toggleModalOpen={this.props.toggleModalOpen}
                             menuOpen={this.props.menuOpen} />
-                        {this.state.deleteId === -1 ?
+                        {this.state.deleteId === -1 || this.state.reviewId === -1?
                             <FloatingButton
                                 icon="calendar"
                                 label={"Add Course"}

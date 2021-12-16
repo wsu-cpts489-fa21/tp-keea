@@ -3,6 +3,7 @@ import CoursesMode from './CoursesMode.js';
 import CourseForm from './CourseForm';
 import FloatingButton from './FloatingButton.js';
 import ReviewTable from './ReviewTable.js';
+import ReviewForm from './ReviewForm.js';
 
 class ReviewPage extends React.Component {
     constructor(props) {
@@ -14,10 +15,6 @@ class ReviewPage extends React.Component {
             reviewId: -1,
             courseData: null,
         }
-    }
-
-    componentDidMount() {
-        this.props.retrieveCourses();
     }
 
     modalRetrieveCourse() {
@@ -86,7 +83,7 @@ class ReviewPage extends React.Component {
                 );
             case CoursesMode.WRITEREVIEW:
                 return (
-                    <CourseForm mode={this.state.mode}
+                    <ReviewForm mode={this.state.mode}
                         courseData={null}
                         setMode={this.setMode}
                         toggleModalOpen={this.props.toggleModalOpen} />
