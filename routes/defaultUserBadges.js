@@ -20,7 +20,7 @@ const userBadges = [
     {
         icon: "https://www.halopedia.org/images/thumb/4/4b/H5G-Killing_Spree.png/120px-H5G-Killing_Spree.png",
         name: "Golfing Spree",
-        description: "Log two rounds that are within an hour of each other.",
+        description: "Log two rounds within the same day.",
         obtained: false
     },
 ];
