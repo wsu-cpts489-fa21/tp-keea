@@ -43,9 +43,39 @@ class App extends React.Component {
       authenticated: false,
       badges: [
         {
-          icon: 'Void',
+          icon: 'flag',
+          name: 'Starting Off!',
+          description: 'Log 1 round of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Picking up Paces',
+          description: 'Log 10 rounds of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Speedgolf step',
+          description: 'Log 20 rounds of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
           name: 'Speedgolf is my Passion',
-          dscription: 'Log 30 rounds of Speedgolf',
+          description: 'Log 30 rounds of Speedgolf',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Streak-Starter',
+          description: 'Get a streak of 10 rounds, each within 60 minutes',
+          obtained: false,
+        },
+        {
+          icon: 'flag',
+          name: 'Endurance',
+          description: 'Make over 90 strokes in a round',
           obtained: false,
         }
       ],
@@ -137,11 +167,7 @@ class App extends React.Component {
     const url = "/auth/login?username=" + id +
       "&password=" + pw;
     const res = await fetch(url, { method: 'POST' });
-    if (res.status == 200) { //successful login!
-      return true;
-    } else { //Unsuccessful login
-      return false;
-    }
+    return (res.status == 200)
   }
 
   logInUser = (userObj) => {
