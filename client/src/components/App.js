@@ -37,6 +37,7 @@ class App extends React.Component {
         identityData: {},
         speedgolfData: {},
         rounds: [],
+        badges: [],
         roundCount: 0
       },
       courses: [],
@@ -130,6 +131,7 @@ class App extends React.Component {
         identityData: {},
         speedgolfData: {},
         rounds: [],
+        badges: []
       },
       courses: [],
       authenticated: false,
@@ -347,7 +349,8 @@ class App extends React.Component {
         accountData: this.state.userData.accountData,
         identityData: this.state.userData.identityData,
         speedgolfData: this.state.userData.speedgolfData,
-        rounds: newRounds
+        rounds: newRounds,
+        badges: this.state.userData.badges
       };
       this.setState({ userData: newUserData });
       return ("Round updated.");
@@ -380,7 +383,8 @@ class App extends React.Component {
         accountData: this.state.userData.accountData,
         identityData: this.state.userData.identityData,
         speedgolfData: this.state.userData.speedgolfData,
-        rounds: newRounds
+        rounds: newRounds,
+        badges: this.state.userData.badges
       };
       this.setState({ userData: newUserData });
       return ("Round deleted.");
@@ -541,7 +545,7 @@ class App extends React.Component {
                   toggleModalOpen={this.toggleModalOpen}
                   menuOpen={this.state.menuOpen}
                   userId={this.state.userId} 
-                  badges={this.state.badges} />,
+                  badges={this.state.userData.badges} />,
               CoursesMode:
                 <CoursesPage modalOpen={this.state.modalOpen}
                   courses={this.state.courses}

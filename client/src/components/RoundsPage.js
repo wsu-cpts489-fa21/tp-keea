@@ -56,11 +56,6 @@ class RoundsPage extends React.Component {
         case RoundsMode.ROUNDSTABLE: 
             return (
                 <>
-                    {this.state.viewingBadges ?
-                        <BadgeModal
-                            badges={this.props.badges}
-                        />
-                    : null}
                     {this.state.deleteId > -1 ? 
                             <PopUpModal
                                 id={"Delete Round"}
