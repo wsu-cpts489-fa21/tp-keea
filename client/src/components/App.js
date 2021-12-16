@@ -275,23 +275,31 @@ class App extends React.Component {
     }
   }
 
-  checkBadges = () => {
-    const rounds = this.state.rounds;
+  checkBadges = async () => {
+    const rounds = this.state.userData.rounds;
+    const roundCount = rounds.length;
+
+    console.log(`This states roundcount is ${roundCount}`);
 
     // If user has logged 10 rounds
-    if (this.state.roundCount >= 10) {
+    if (roundCount >= 10 && !this.state.badges[1].obtained) {
       // Need code to check if badge already unlocked
       console.log("Badge Unlocked! 10 Rounds Badge!");
+      const currentBadges = this.state.badges;
+      currentBadges[1].obtained = true;
+      this.setState({
+        badges: currentBadges,
+      });
     }
 
     // If user has logged 20 rounds
-    if (this.state.roundCount >= 20) {
+    if (roundCount >= 20) {
       // Need code to check if badge already unlocked
       console.log("Badge Unlocked! 20 Rounds Badge!");
     }
 
     // If user has logged 30 rounds
-    if (this.state.roundCount >= 30) {
+    if (roundCount >= 30) {
       // Need code to check if badge already unlocked
       console.log("Badge Unlocked! 30 Rounds Badge!");
     }
@@ -301,6 +309,9 @@ class App extends React.Component {
     var streakCount = 0;
 
     // If user has streak of rounds
+    if (rounds == null) {
+      return;
+    }
     for (const round of rounds) {
       // Can start measuring streak if streakRound not null
       if (streakRound != null) {
