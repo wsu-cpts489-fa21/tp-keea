@@ -12,6 +12,7 @@ import userRoute from './routes/userRoutes.js';
 import roundRoute from './routes/roundRoutes.js';
 import courseRoute from './routes/courseRoutes.js';
 import teeRoute from './routes/teeRoutes.js'
+import badgeRoute from './routes/badgeRoute.js';
 import cors from 'cors';
 const __dirname = path.resolve();
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
@@ -54,4 +55,5 @@ app
   .use(roundRoute)
   .use(courseRoute)
   .use(teeRoute)
+  .use(badgeRoute)
   .listen(PORT, () => console.log(`Listening on ${PORT}`));

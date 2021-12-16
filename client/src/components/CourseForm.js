@@ -118,7 +118,7 @@ class CoursesForm extends React.Component {
                     <div className="mb-3 centered">
                         <label htmlFor="coursePhoneNumber" className="form-label">
                             Phone Number:
-                            <input id="coursePhoneNumber" name="phoneNumber" className="form-control centered" type="number" aria-describedby="coursePhoneNumberDescr" value={this.state.phoneNumber} onChange={this.handleChange}/>
+                            <input id="coursePhoneNumber" name="phoneNumber" className="form-control centered" type="text" aria-describedby="coursePhoneNumberDescr" value={this.state.phoneNumber} onChange={this.handleChange}/>
                         </label>
                         <div id="coursePhoneNumberDescr" className="form-text">
                             Enter an optional course phone number

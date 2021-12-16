@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 import User from "../models/User.js";
+import userBadges from './defaultUserBadges.js'
 import express from 'express';
 import bcrypt from 'bcrypt';
 const userRoute = express.Router();
@@ -89,7 +90,8 @@ userRoute.post('/users/:userId',  async (req, res, next) => {
                                 personalBest: req.body.speedgolfData.personalBest,
                                 clubs: req.body.speedgolfData.clubs,
                                 clubComments: req.body.speedgolfData.clubComments},
-                rounds: []
+                rounds: [],
+                badges: userBadges
             }).save();
         return res.status(201).send("New account for '" + 
             req.params.userId + "' successfully created.");
