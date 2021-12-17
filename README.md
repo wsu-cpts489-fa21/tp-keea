@@ -358,6 +358,9 @@ you can tee off in different places color coded enter an arbitrary number of tee
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/15">Issue #15</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>2</td><td>4</td><td>5</td><td>0</td><td>93</td><td></td>
     </tr>
+        <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/27">Issue #27</a></td><td>PR #N/A</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>100</td><td></td>
+    </tr>
       <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/37">Issue #37</a></td><td>PR #N/A</a></td><td>8</td><td>5</td><td>0</td><td>3</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
@@ -373,7 +376,7 @@ you can tee off in different places color coded enter an arbitrary number of tee
       <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/44">Issue #44</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>8 (4 before)</td><td>0</td><td>0</td><td>0</td><td>61</td><td></td>
     </tr>
-    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>55</b></td><td><b>10</b></td><td><b>8</b></td><td><b>15</b></td><td><b>8</b></td><td><b>2</b></td><td colspan="2"></td>
+    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>58</b></td><td><b>10</b></td><td><b>8</b></td><td><b>15</b></td><td><b>8</b></td><td><b>5</b></td><td colspan="2"></td>
     </tr>
   </tbody>
 </table>
