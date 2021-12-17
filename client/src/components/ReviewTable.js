@@ -1,11 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class CoursesTable extends React.Component {
+class ReviewTable extends React.Component {
 
   renderTable = () => {
     const table = [];
-    for (let r = 0; r < this.props.reviews.length; ++r) {
+    for (let r = 0; r < 0; ++r) {
       table.push(
         <tr key={r}>
           <td>{this.props.reviews[r].reviewerName}</td>
@@ -21,11 +21,11 @@ class CoursesTable extends React.Component {
       return(
         <div id="reviewsModeTab" className="mode-page" role="tabpanel"
             aria-label="Courses Tab" tabIndex="0">
-        <h1 className="mode-page-header">Reviewss</h1>
+        <h1 className="mode-page-header">Reviews</h1>
         <table id="reviewsTable" className="table table-hover caption-top">
           <caption id="reviewsTableCaption" aria-live="polite">
-            {"Table displaying " + this.props.reviews.length  + " course reviews" + 
-              (this.props.reviews.length !== 1 ? "s" : "")}
+            {"Table displaying 0 course reviews" + 
+              (0 !== 1 ? "s" : "")}
           </caption>
           <thead className="table-light">
             <tr>
@@ -51,7 +51,7 @@ class CoursesTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.reviews === null || this.props.reviews.length === 0 ? 
+            {this.props.reviews === null || 0 === 0 ? 
               <tr>
                 <td colSpan="5" scope="rowgroup"><i>No reviews logged</i></td>
               </tr> : this.renderTable()
@@ -63,4 +63,4 @@ class CoursesTable extends React.Component {
     }   
 }
 
-export default CoursesTable;
+export default ReviewTable;

@@ -1,6 +1,6 @@
 const userBadges = [
     {
-        icon: "https://cdn3.iconfinder.com/data/icons/line/36/runner-128.png",
+        icon: "https://cdn.discordapp.com/attachments/903044690989957125/921164698408341574/Marathon_Man.png",
         name: "Marathon Man",
         description: "Log your first round.",
         obtained: false
@@ -12,13 +12,13 @@ const userBadges = [
         obtained: false
     },
     {
-        icon: "https://cdn.discordapp.com/attachments/903044690989957125/920925361536106526/holeinone.gif",
+        icon: "https://cdn.discordapp.com/attachments/903044690989957125/921162564946239568/parforthecourse.png",
         name: "That's par for the course. Literally.",
         description: "Log a round with strokes equal to the average golf course par.",
         obtained: false
     },
     {
-        icon: "https://www.halopedia.org/images/thumb/4/4b/H5G-Killing_Spree.png/120px-H5G-Killing_Spree.png",
+        icon: "https://cdn.discordapp.com/attachments/903044690989957125/921097755672346675/GolfingSpreeWithText.png",
         name: "Golfing Spree",
         description: "Log two rounds within the same day.",
         obtained: false
