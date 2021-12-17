@@ -353,16 +353,19 @@ you can tee off in different places color coded enter an arbitrary number of tee
   </thead> 
   <tbody>
       <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/14">Issue #14</a></td><td>PR #N/A</a></td><td>8</td><td>0</td><td>0</td><td>8</td><td>0</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/14">Issue #14</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/78">PR #78</a></td><td>8</td><td>0</td><td>0</td><td>8</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/15">Issue #15</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>2</td><td>4</td><td>5</td><td>0</td><td>93</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/15">Issue #15</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/77">PR #77</a></td><td>13</td><td>0</td><td>2</td><td>4</td><td>5</td><td>0</td><td>93</td><td></td>
     </tr>
         <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/27">Issue #27</a></td><td>PR #N/A</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/27">Issue #27</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/74">PR #74</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>100</td><td></td>
+    </tr>
+       <tr>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/30">Issue #30</a></td><td>PR #N/A</a></td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2.5</td><td>100</td><td></td>
     </tr>
       <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/37">Issue #37</a></td><td>PR #N/A</a></td><td>8</td><td>5</td><td>0</td><td>3</td><td>0</td><td>0</td><td>100</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/37">Issue #37</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/76">PR #76</a></td><td>8</td><td>5</td><td>0</td><td>3</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
     <tr>
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/39">Issue #39</a></td><td>PR #N/A</a></td><td>5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>100</td><td></td>
@@ -374,9 +377,9 @@ you can tee off in different places color coded enter an arbitrary number of tee
       <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/42">Issue #42</a></td><td>PR #N/A</a></td><td>3</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>100</td><td></td>
     </tr>
       <tr>
-      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/44">Issue #44</a></td><td>PR #N/A</a></td><td>13</td><td>0</td><td>8 (4 before)</td><td>0</td><td>0</td><td>0</td><td>61</td><td></td>
+      <td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/issues/44">Issue #44</a></td><td><a href="https://github.com/wsu-cpts489-fa21/tp-keea/pull/75">PR #75</a></td><td>13</td><td>0</td><td>8 (4 before)</td><td>0</td><td>0</td><td>0</td><td>61</td><td></td>
     </tr>
-    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>58</b></td><td><b>10</b></td><td><b>8</b></td><td><b>15</b></td><td><b>8</b></td><td><b>5</b></td><td colspan="2"></td>
+    <tr><td colspan="2" align="right"><b>Totals:</b></td><td><b>61</b></td><td><b>10</b></td><td><b>8</b></td><td><b>15</b></td><td><b>8</b></td><td><b>7.5</b></td><td colspan="2"></td>
     </tr>
   </tbody>
 </table>
