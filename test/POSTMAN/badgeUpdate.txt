@@ -1,0 +1,5 @@
+Request Params: localhost:8081/badges/test@account.com/Marathon Man
+Request Body:
+{
+    "obtained": true
+}

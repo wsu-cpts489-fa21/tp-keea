@@ -1,0 +1,22 @@
+Request Params: localhost:8081/users/test@account.com
+Request Body:
+{
+    "accountData":
+    {
+        "id": "test@account.com",
+        "password": "Test1234",
+        "securityQuestion": "Test?",
+        "securityAnswer": "Test!"
+    },
+    "identityData":
+    {
+        "displayName": "test@account.com",
+        "profilePic": ""
+    },
+    "speedgolfData":
+    {
+        "bio": "",
+        "homeCourse": "",
+        "clubComments": ""
+    }
+}
