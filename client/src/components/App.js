@@ -300,7 +300,7 @@ class App extends React.Component {
 
     console.log(`This states roundcount is ${roundCount}`);
 
-    // If user has logged 10 rounds
+    // If user has logged 1 round
     if (roundCount >= 1 && !this.state.userData.badges[0].obtained) {
       // Need code to check if badge already unlocked
       console.log("Badge Unlocked! First Round Badge!");
@@ -324,6 +324,30 @@ class App extends React.Component {
       console.log("Badge Unlocked! 30 Rounds Badge!");
     }
 
+    // Check if most recent round was less than 30 minutes
+    if (rounds[rounds.length - 1].minutes < 30 && !this.state.userData.badges[1].obtained)
+    {
+      console.log("Badge Unlocked! Speed badge 1!");
+      const currentBadges = this.state.userData.badges;
+      currentBadges[1].obtained = true;
+      this.setState({
+        badges: currentBadges,
+      });
+      this.updateBadge(currentBadges[1]);
+    }
+
+    // Check if most recent round strokes is 72 (average par)
+    if (rounds[rounds.length - 1].strokes == 72 && !this.state.userData.badges[2].obtained)
+    {
+      console.log("Badge Unlocked! Par badge 1!");
+      const currentBadges = this.state.userData.badges;
+      currentBadges[2].obtained = true;
+      this.setState({
+        badges: currentBadges,
+      });
+      this.updateBadge(currentBadges[2]);
+    }
+
     // Rounds iteration
     var streakRound = null;
     var streakCount = 0;
@@ -338,17 +362,21 @@ class App extends React.Component {
 
         const oldDate = new Date(streakRound.date);
         const newDate = new Date(round.date);
-        const difference = Math.abs(newDate - oldDate);
-        const difference_minute = difference / 1000*60;
 
-        // If user logs series of rounds less than 30 minutes apart, increase streak
-        if (difference_minute < 30) {
-          streakCount++;
+        // If user logs series of rounds within the same day, increase streak
+        if (oldDate.toDateString() == newDate.toDateString()) {
+          if (streakCount == 0)
+          {
+            streakCount += 2;
+          }
+          else {
+            streakCount++;
+          }
         }
       }
 
-      // If streak is over 2, unlock badge
-      if (streakCount >= 2) {
+      // If streak is 2+, unlock badge
+      if (streakCount >= 2 && !this.state.userData.badges[3].obtained) {
         console.log("Badge Unlocked! Golfing Spree Badge!");
         const currentBadges = this.state.userData.badges;
         currentBadges[3].obtained = true;
