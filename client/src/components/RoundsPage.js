@@ -1,17 +1,19 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RoundsMode  from './RoundsMode.js';
 import RoundsTable from './RoundsTable.js';
 import RoundForm from './RoundForm.js';
 import FloatingButton from './FloatingButton.js'
 import PopUpModal from './PopUpModal.js';
+import BadgeModal from './BadgeModal.js';
 
 class RoundsPage extends React.Component {
     constructor(props) {
             super(props);
             this.state = {mode: RoundsMode.ROUNDSTABLE,
                           deleteId: -1,
-                          editId: -1};        
+                          editId: -1,
+                          viewingBadges: false};        
     }
 
     setMode = (newMode) => {
@@ -37,6 +39,18 @@ class RoundsPage extends React.Component {
         this.setState({deleteId: -1});
     }
 
+    toggleBadgeModal = () => {
+        // this.setState(prevState => ({ viewingBadges: !prevState.viewingBadges }));
+        console.log("Toggle Badge Modal called!");
+        if (this.state.mode == RoundsMode.ROUNDSTABLE) {
+            console.log("Switching to viewing badges...")
+            this.setMode(RoundsMode.VIEWBADGES);
+        } else {
+            console.log("Switching to rounds table...")
+            this.setMode(RoundsMode.ROUNDSTABLE);
+        }
+    }
+
     render() {
         switch (this.state.mode) {
         case RoundsMode.ROUNDSTABLE: 
@@ -57,7 +71,8 @@ class RoundsPage extends React.Component {
                                 updateRound= {this.props.updateRound}
                                 setMode={this.setMode} 
                                 toggleModalOpen={this.props.toggleModalOpen}
-                                menuOpen={this.props.menuOpen} /> 
+                                menuOpen={this.props.menuOpen}
+                                toggleBadgeModal={this.toggleBadgeModal}/> 
                     {this.state.deleteId === -1 ? 
                     <FloatingButton
                         icon="calendar"
@@ -84,6 +99,10 @@ class RoundsPage extends React.Component {
                 saveRound={this.props.updateRound}
                 setMode={this.setMode}
                 toggleModalOpen={this.props.toggleModalOpen} />
+            );
+        case RoundsMode.VIEWBADGES:
+            return (
+                <BadgeModal badges={this.props.badges} setMode={this.setMode}/>
             );
         default: return (null);
         }

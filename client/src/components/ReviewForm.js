@@ -14,7 +14,7 @@ class ReviewForm extends React.Component {
                         golfChallenge: "1",
                         runningChallenge: "1",
                         experience: "1",
-                        btnIcon: "pencil",
+                        btnIcon: "pencil-alt",
                         btnLabel: "Write Review"};
         } else { 
             this.state = this.props.courseData;
@@ -71,7 +71,7 @@ class ReviewForm extends React.Component {
                 className="mode-page action-dialog" role="dialog" 
                 aria-modal="true" aria-labelledby="courseFormHeader" tabIndex="0">
             <h1 id="courseFormHeader" className="mode-page-header">
-                {this.props.mode==CoursesMode.WRITEREVIEW ? "Log Course" : "Edit Course"}
+                {this.props.mode==CoursesMode.WRITEREVIEW ? "Write Review" : "Write Review"}
             </h1>
             <form id="logCourseForm" 
                   onSubmit={this.handleSubmit} noValidate>
@@ -166,4 +166,4 @@ class ReviewForm extends React.Component {
     }
 }
 
-export default CourseForm;
+export default ReviewForm;
