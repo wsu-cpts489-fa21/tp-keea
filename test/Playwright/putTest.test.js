@@ -48,4 +48,4 @@ test('Update round test with keyboard input', async ({page}) => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab'); // 8 Tab presses to get to the submit button
     await page.keyboard.press('Enter');
-});  */
+}); */

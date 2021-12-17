@@ -284,7 +284,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       method: 'PUT',
-      body: {"obtained": newBadgeData.obtained}
+      body: JSON.stringify(newBadgeData)
     });
     if (res.status == 201) {
       return ("Badge updated.");
@@ -309,6 +309,7 @@ class App extends React.Component {
       this.setState({
         badges: currentBadges,
       });
+      
       this.updateBadge(currentBadges[0]);
     }
 
@@ -333,6 +334,7 @@ class App extends React.Component {
       this.setState({
         badges: currentBadges,
       });
+      
       this.updateBadge(currentBadges[1]);
     }
 
@@ -345,6 +347,7 @@ class App extends React.Component {
       this.setState({
         badges: currentBadges,
       });
+      
       this.updateBadge(currentBadges[2]);
     }
 
@@ -383,6 +386,7 @@ class App extends React.Component {
         this.setState({
           badges: currentBadges,
         });
+        
         this.updateBadge(currentBadges[3]);
       } else {
         streakRound = round;

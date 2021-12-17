@@ -4,10 +4,10 @@
 const config = {
     use: {
       launchOptions: {
-        slowMo: 100,
+        slowMo: 800,
       },
       headless: false,
-      viewport: { width: 1280, height: 720 },
+      viewport: { width: 1920, height: 1080 },
       ignoreHTTPSErrors: true,
       video: 'on-first-retry',
     },
