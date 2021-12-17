@@ -19,8 +19,8 @@ class CoursesTable extends React.Component {
           <td>{this.props.courses[r].courseName}</td>
           <td>{this.props.courses[r].averageOverall}</td>
           <td><button onClick={this.props.menuOpen ? null : 
-            () => this.props.initiateReviewCourse(r)}>
-                <FontAwesomeIcon icon="pencil"/>
+            () => this.props.initiateViewReviewPage(r)}>
+                <FontAwesomeIcon icon="pencil-alt"/>
               </button></td>
           <td>{Number(this.props.courses[r].roundCount)}</td>
           <td><button onClick={this.props.menuOpen ? null : () => 
@@ -73,6 +73,9 @@ class CoursesTable extends React.Component {
                         aria-label="Sort ascending by rating">
                   <FontAwesomeIcon icon="sort" /> 
                 </button>Rating
+            </th>
+            <th scope="col" className="cell-align-middle">
+              Review
             </th>
             <th scope="col" className="cell-align-middle">
               Round Count

@@ -379,6 +379,14 @@ button::-moz-focus-inner {
   padding: 50;
 }
 
+.dialog-checkIcon {
+  color: var(--main-color);
+}
+
+.dialog-xIcon {
+  color: var(--main-red-color);
+}
+
 /*************************************************************************
 * CSS CLASSES FOR TOAST NOTIFICATION
 *************************************************************************/
